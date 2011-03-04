@@ -1,0 +1,6 @@
+--- !ruby/object:Baker::AutoShellRecipe
+program: make
+version: 3.8+
+updated: 2003-12-20
+maintainer: transami@runbox.com
+

@@ -1,0 +1,5 @@
+--- !ruby/object:Baker::AutoShellRecipe
+program: less
+version: 380+
+updated: 2003-12-20
+maintainer: transami@runbox.com

@@ -1,0 +1,24 @@
+
+<html>
+<head><title>install (Baker::ShellRecipe)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style>
+  .kw { color: #3333FF; font-weight: bold }
+  .cmt { color: green; font-style: italic }
+  .str { color: #662222; font-style: italic }
+  .re  { color: #662222; }
+</style>
+</head>
+<body bgcolor="white">
+<pre><span class="cmt"># File src/recipe.rb, line 509</span>
+    <span class="kw">def</span> install
+      <span class="cmt"># build fake root</span>
+      <span class="cmt"># ...</span>
+      @already_installed = <span class="kw">self</span>.installed? <span class="kw">if</span> @already_installed == <span class="kw">nil</span>
+      <span class="kw">if</span> @already_installed <span class="kw">and</span> !SETTINGS.opt_redo
+        raise BakerError, &quot;#{@program} is already installed (use -r to reinstall)&quot;
+      <span class="kw">end</span>
+      shell(<span class="kw">self</span>.install_script, <span class="kw">self</span>.source_dir)
+    <span class="kw">end</span></pre>
+</body>
+</html>

@@ -1,0 +1,37 @@
+--- !baker.rubyforge.org,2004/ShellRecipe
+program    : autoconf
+version    : 2.5+
+maintainer : transami@runbox.com
+updated    : 2003-12-20
+
+# est. disk space require to build (include install size)
+build_size: 3MB
+
+# architectures this script *knowingly* will not build upon
+noarch: []
+
+# full path to any system files this script effects
+# keep in mind we use FHSConfig to map paths
+system_files: []
+
+# any notes
+notes: ''
+
+# don't try to use common shell vars between these scripts!
+# use baker's #{} substitutions instead, a double #{#{}}
+# means the whole is conditional on the parts.
+
+config_script: |
+  ./configure #{--prefix=#{prefix}}
+
+setup_script: |
+  make
+
+test_script: |
+  make test
+
+install_script: |
+  make install
+
+clean_script: |
+  make clean

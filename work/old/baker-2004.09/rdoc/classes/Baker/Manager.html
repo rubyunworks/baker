@@ -1,0 +1,434 @@
+
+<html><head>
+  <title>Class: Baker::Manager</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <link rel=StyleSheet href="../.././rdoc-style.css" type="text/css" media=screen>
+  <script type="text/javascript" language="JavaScript">
+  <!--
+  function popCode(url) {
+    parent.frames.source.location = url
+  }
+  //-->
+  </script>
+</head>
+<body bgcolor="white">
+
+
+<table width="100%" border=0 cellspacing=0>
+ <tr class="title-row">
+ <td class="big-title-font">
+   <font size=-3><B>Class</B><BR></font>Baker::Manager
+ </td>
+ <td align="right">
+   <table cellspacing=0 cellpadding=2>
+     <tr valign="top">
+      <td class="small-title-font">In:</td>
+      <td class="small-title-font">
+<a href="../../files/src/manager_rb.html">src/manager.rb</a>
+      </td>
+     </tr>
+     <tr>
+      <td class="small-title-font">Parent:</td>
+      <td class="small-title-font">
+Object
+      </td>
+     </tr>
+   </table>
+  </td>
+  </tr>
+</table><br>
+  <!-- banner header -->
+
+
+<div class="description"><p>
+<a href="Manager.html">Manager</a>
+</p>
+<p>
+this is the primary interface class it controls the over all functionality
+of baker
+</p>
+</div>
+
+</div>
+
+<table cellpadding=5 width="100%">
+<tr><td class="tablesubtitle">Methods</td></tr>
+</table><br>
+<div class="name-list">
+<a href="#M000086">cast</a>,
+<a href="#M000083">compile</a>,
+<a href="#M000068">conflicts</a>,
+<a href="#M000069">conflicts?</a>,
+<a href="#M000073">dependency_tree</a>,
+<a href="#M000080">extract</a>,
+<a href="#M000079">fetch</a>,
+<a href="#M000077">find</a>,
+<a href="#M000085">install</a>,
+<a href="#M000070">install_conflicts</a>,
+<a href="#M000071">missing</a>,
+<a href="#M000072">missing?</a>,
+<a href="#M000065">new</a>,
+<a href="#M000081">patch</a>,
+<a href="#M000082">prepare</a>,
+<a href="#M000075">raise_on_missing_or_conflicts</a>,
+<a href="#M000066">recipes=</a>,
+<a href="#M000074">recurse_dependency_tree</a>,
+<a href="#M000067">recursive_add_recipes</a>,
+<a href="#M000076">sync</a>,
+<a href="#M000078">template</a>,
+<a href="#M000084">test</a>,
+</div>
+
+<table cellpadding=5 width="100%">
+<tr><td class="tablesubtitle">Attributes</td></tr>
+</table><br>
+<table cellspacing=5>
+     <tr valign="top">
+       <td align="center" class="attr-rw">&nbsp;[R]&nbsp;</td>
+       <td class="attr-name">buildconfig</td>
+       <td><p>
+attributes:
+</p>
+<pre>
+  buildconfig         : holds the current build configuration object
+  catalog             : hold the catalog object
+  recipe_lookup       : hash of { 'recipe file name' =&gt; recipe_object } mashalled from the yaml file
+  selected_recipes    : list of the recipe file names passed in on the command line
+  prioritized_recipes : is the above plus the dependent recipes in prioritized order
+</pre>
+</td>
+     </tr>
+     <tr valign="top">
+       <td align="center" class="attr-rw">&nbsp;[R]&nbsp;</td>
+       <td class="attr-name">catalog</td>
+       <td><p>
+attributes:
+</p>
+<pre>
+  buildconfig         : holds the current build configuration object
+  catalog             : hold the catalog object
+  recipe_lookup       : hash of { 'recipe file name' =&gt; recipe_object } mashalled from the yaml file
+  selected_recipes    : list of the recipe file names passed in on the command line
+  prioritized_recipes : is the above plus the dependent recipes in prioritized order
+</pre>
+</td>
+     </tr>
+     <tr valign="top">
+       <td align="center" class="attr-rw">&nbsp;[R]&nbsp;</td>
+       <td class="attr-name">prioritized_recipes</td>
+       <td><p>
+attributes:
+</p>
+<pre>
+  buildconfig         : holds the current build configuration object
+  catalog             : hold the catalog object
+  recipe_lookup       : hash of { 'recipe file name' =&gt; recipe_object } mashalled from the yaml file
+  selected_recipes    : list of the recipe file names passed in on the command line
+  prioritized_recipes : is the above plus the dependent recipes in prioritized order
+</pre>
+</td>
+     </tr>
+     <tr valign="top">
+       <td align="center" class="attr-rw">&nbsp;[R]&nbsp;</td>
+       <td class="attr-name">recipe_lookup</td>
+       <td><p>
+attributes:
+</p>
+<pre>
+  buildconfig         : holds the current build configuration object
+  catalog             : hold the catalog object
+  recipe_lookup       : hash of { 'recipe file name' =&gt; recipe_object } mashalled from the yaml file
+  selected_recipes    : list of the recipe file names passed in on the command line
+  prioritized_recipes : is the above plus the dependent recipes in prioritized order
+</pre>
+</td>
+     </tr>
+     <tr valign="top">
+       <td align="center" class="attr-rw">&nbsp;[R]&nbsp;</td>
+       <td class="attr-name">selected_recipes</td>
+       <td><p>
+attributes:
+</p>
+<pre>
+  buildconfig         : holds the current build configuration object
+  catalog             : hold the catalog object
+  recipe_lookup       : hash of { 'recipe file name' =&gt; recipe_object } mashalled from the yaml file
+  selected_recipes    : list of the recipe file names passed in on the command line
+  prioritized_recipes : is the above plus the dependent recipes in prioritized order
+</pre>
+</td>
+     </tr>
+</table>
+
+
+  
+
+<table cellpadding=5 width="100%">
+<tr><td class="tablesubtitle">Public Class methods</td></tr>
+</table>
+<table width="100%" cellspacing = 0 cellpadding=5 border=0>
+<tr><td class="methodtitle">
+<a name="M000065">
+<b>new</b>() 
+<a href="Manager.src/M000065.html" target="source" class="srclink">src</a>
+</a></td></tr>
+</table>
+<table cellpadding=5 width="100%">
+<tr><td class="tablesubtitle">Public Instance methods</td></tr>
+</table>
+<table width="100%" cellspacing = 0 cellpadding=5 border=0>
+<tr><td class="methodtitle">
+<a name="M000066">
+<b>recipes=</b>(selected_recipes) 
+<a href="Manager.src/M000066.html" target="source" class="srclink">src</a>
+</a></td></tr>
+</table>
+<div class="description">
+<p>
+load the selected receipes
+</p>
+</div>
+<table width="100%" cellspacing = 0 cellpadding=5 border=0>
+<tr><td class="methodtitle">
+<a name="M000067">
+<b>recursive_add_recipes</b>(recipe_object, matched=[]) 
+<a href="Manager.src/M000067.html" target="source" class="srclink">src</a>
+</a></td></tr>
+</table>
+<div class="description">
+<p>
+adds recipe and recuses through dependencies
+</p>
+</div>
+<table width="100%" cellspacing = 0 cellpadding=5 border=0>
+<tr><td class="methodtitle">
+<a name="M000068">
+<b>conflicts</b>() 
+<a href="Manager.src/M000068.html" target="source" class="srclink">src</a>
+</a></td></tr>
+</table>
+<div class="description">
+<p>
+what are there any recipe conflicts returns a hash of pending conflicts: {
+recipe_name =&gt; [conlicting_recipes, &#8230;] } these are just known
+conflicts between recipe programs
+</p>
+</div>
+<table width="100%" cellspacing = 0 cellpadding=5 border=0>
+<tr><td class="methodtitle">
+<a name="M000069">
+<b>conflicts?</b>() 
+<a href="Manager.src/M000069.html" target="source" class="srclink">src</a>
+</a></td></tr>
+</table>
+<div class="description">
+<p>
+are there any recipe conflicts?
+</p>
+</div>
+<table width="100%" cellspacing = 0 cellpadding=5 border=0>
+<tr><td class="methodtitle">
+<a name="M000070">
+<b>install_conflicts</b>() 
+<a href="Manager.src/M000070.html" target="source" class="srclink">src</a>
+</a></td></tr>
+</table>
+<div class="description">
+<p>
+what are the install conflicts returns a hash of conflicts in the form of {
+&#8216;recipe_name&#8217; =&gt; [ &#8216;path/to/conflicting/file&#8217; ],
+&#8230; }
+</p>
+</div>
+<table width="100%" cellspacing = 0 cellpadding=5 border=0>
+<tr><td class="methodtitle">
+<a name="M000071">
+<b>missing</b>() 
+<a href="Manager.src/M000071.html" target="source" class="srclink">src</a>
+</a></td></tr>
+</table>
+<div class="description">
+<p>
+what are the any missing dependencies
+</p>
+</div>
+<table width="100%" cellspacing = 0 cellpadding=5 border=0>
+<tr><td class="methodtitle">
+<a name="M000072">
+<b>missing?</b>() 
+<a href="Manager.src/M000072.html" target="source" class="srclink">src</a>
+</a></td></tr>
+</table>
+<div class="description">
+<p>
+are there any missing dependencies?
+</p>
+</div>
+<table width="100%" cellspacing = 0 cellpadding=5 border=0>
+<tr><td class="methodtitle">
+<a name="M000073">
+<b>dependency_tree</b>() 
+<a href="Manager.src/M000073.html" target="source" class="srclink">src</a>
+</a></td></tr>
+</table>
+<div class="description">
+<p>
+build a dependency tree
+</p>
+</div>
+<table width="100%" cellspacing = 0 cellpadding=5 border=0>
+<tr><td class="methodtitle">
+<a name="M000074">
+<b>recurse_dependency_tree</b>(recipe_node, matched=[]) 
+<a href="Manager.src/M000074.html" target="source" class="srclink">src</a>
+</a></td></tr>
+</table>
+<table width="100%" cellspacing = 0 cellpadding=5 border=0>
+<tr><td class="methodtitle">
+<a name="M000075">
+<b>raise_on_missing_or_conflicts</b>() 
+<a href="Manager.src/M000075.html" target="source" class="srclink">src</a>
+</a></td></tr>
+</table>
+<div class="description">
+<p>
+raise errors if missing?, install confliicts, or recipe conflicts?
+</p>
+</div>
+<table width="100%" cellspacing = 0 cellpadding=5 border=0>
+<tr><td class="methodtitle">
+<a name="M000076">
+<b>sync</b>() 
+<a href="Manager.src/M000076.html" target="source" class="srclink">src</a>
+</a></td></tr>
+</table>
+<div class="description">
+<p>
+sync catalog
+</p>
+</div>
+<table width="100%" cellspacing = 0 cellpadding=5 border=0>
+<tr><td class="methodtitle">
+<a name="M000077">
+<b>find</b>(pattern) 
+<a href="Manager.src/M000077.html" target="source" class="srclink">src</a>
+</a></td></tr>
+</table>
+<div class="description">
+<p>
+look for a recipe in the catalog pattern is a regexp
+</p>
+</div>
+<table width="100%" cellspacing = 0 cellpadding=5 border=0>
+<tr><td class="methodtitle">
+<a name="M000078">
+<b>template</b>(recipe_type, recipe_name, recipe_version) 
+<a href="Manager.src/M000078.html" target="source" class="srclink">src</a>
+</a></td></tr>
+</table>
+<div class="description">
+<p>
+new recipe from template file currently only &#8216;simple&#8217; recipe
+type (the name of file in templates dir)
+</p>
+</div>
+<table width="100%" cellspacing = 0 cellpadding=5 border=0>
+<tr><td class="methodtitle">
+<a name="M000079">
+<b>fetch</b>() 
+<a href="Manager.src/M000079.html" target="source" class="srclink">src</a>
+</a></td></tr>
+</table>
+<div class="description">
+<p>
+download that source package
+</p>
+</div>
+<table width="100%" cellspacing = 0 cellpadding=5 border=0>
+<tr><td class="methodtitle">
+<a name="M000080">
+<b>extract</b>() 
+<a href="Manager.src/M000080.html" target="source" class="srclink">src</a>
+</a></td></tr>
+</table>
+<div class="description">
+<p>
+extract source
+</p>
+</div>
+<table width="100%" cellspacing = 0 cellpadding=5 border=0>
+<tr><td class="methodtitle">
+<a name="M000081">
+<b>patch</b>() 
+<a href="Manager.src/M000081.html" target="source" class="srclink">src</a>
+</a></td></tr>
+</table>
+<div class="description">
+<p>
+patch source
+</p>
+</div>
+<table width="100%" cellspacing = 0 cellpadding=5 border=0>
+<tr><td class="methodtitle">
+<a name="M000082">
+<b>prepare</b>() 
+<a href="Manager.src/M000082.html" target="source" class="srclink">src</a>
+</a></td></tr>
+</table>
+<div class="description">
+<p>
+prepare source
+</p>
+</div>
+<table width="100%" cellspacing = 0 cellpadding=5 border=0>
+<tr><td class="methodtitle">
+<a name="M000083">
+<b>compile</b>() 
+<a href="Manager.src/M000083.html" target="source" class="srclink">src</a>
+</a></td></tr>
+</table>
+<div class="description">
+<p>
+compile source
+</p>
+</div>
+<table width="100%" cellspacing = 0 cellpadding=5 border=0>
+<tr><td class="methodtitle">
+<a name="M000084">
+<b>test</b>() 
+<a href="Manager.src/M000084.html" target="source" class="srclink">src</a>
+</a></td></tr>
+</table>
+<div class="description">
+<p>
+test right now this is not in the event chain
+</p>
+</div>
+<table width="100%" cellspacing = 0 cellpadding=5 border=0>
+<tr><td class="methodtitle">
+<a name="M000085">
+<b>install</b>() 
+<a href="Manager.src/M000085.html" target="source" class="srclink">src</a>
+</a></td></tr>
+</table>
+<div class="description">
+<p>
+install program
+</p>
+</div>
+<table width="100%" cellspacing = 0 cellpadding=5 border=0>
+<tr><td class="methodtitle">
+<a name="M000086">
+<b>cast</b>() 
+<a href="Manager.src/M000086.html" target="source" class="srclink">src</a>
+</a></td></tr>
+</table>
+<div class="description">
+<p>
+do it all
+</p>
+</div>
+  <!-- method descriptions -->
+
+</body>
+</html>

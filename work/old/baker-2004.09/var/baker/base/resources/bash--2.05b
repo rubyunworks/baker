@@ -1,0 +1,38 @@
+--- !baker.rubyforge.org,2004/resource
+program: Bash
+version: 2.05b
+updated: 2003-11-11
+maintainer: Mika Pesu <pmika@japo.fi>
+brief: bash shell
+description: >
+  bash is the Bourne-Again Shell,
+  which is a widely used command interpreter on Unix systems.
+  The bash program reads from standard input (the keyboard).
+  A user types something and the program will evaluate
+  what he has typed and do something with it, like running a program.
+install_size: 2MB
+website: http://freshmeat.net/projects/gnubash/
+categories: [shell]
+source_urls:
+  - [ 'ftp://ftp.gnu.org/gnu/bash/bash-2.05b.tar.gz', 'Unspecified',   '5238251b4926d778dfe162f6ce729733', 1956216 ]
+  - [ 'ftp://ftp.gnu.org/gnu/bash/bash-2.05b.tar.gz', 'Australia',     '5238251b4926d778dfe162f6ce729733', 1956216 ]
+  - [ 'ftp://ftp.gnu.org/gnu/bash/bash-2.05b.tar.gz', 'North America', '5238251b4926d778dfe162f6ce729733', 1956216 ]
+  - [ 'ftp://ftp.gnu.org/gnu/bash/bash-2.05b.tar.gz', 'North America', '5238251b4926d778dfe162f6ce729733', 1956216 ]
+  - [ 'ftp://ftp.gnu.org/gnu/bash/bash-2.05b.tar.gz', 'North America', '5238251b4926d778dfe162f6ce729733', 1956216 ]
+  - [ 'ftp://ftp.gnu.org/gnu/bash/bash-2.05b.tar.gz', 'North America', '5238251b4926d778dfe162f6ce729733', 1956216 ]
+  - [ 'ftp://ftp.gnu.org/gnu/bash/bash-2.05b.tar.gz', 'North America', '5238251b4926d778dfe162f6ce729733', 1956216 ]
+  - [ 'ftp://ftp.gnu.org/gnu/bash/bash-2.05b.tar.gz', 'Europe',        '5238251b4926d778dfe162f6ce729733', 1956216 ]
+  - [ 'ftp://ftp.gnu.org/gnu/bash/bash-2.05b.tar.gz', 'Europe',        '5238251b4926d778dfe162f6ce729733', 1956216 ]
+  - [ 'ftp://ftp.gnu.org/gnu/bash/bash-2.05b.tar.gz', 'Europe',        '5238251b4926d778dfe162f6ce729733', 1956216 ]
+  - [ 'ftp://ftp.gnu.org/gnu/bash/bash-2.05b.tar.gz', 'Asia',          '5238251b4926d778dfe162f6ce729733', 1956216 ]
+patch_urls: []
+install_indicators:
+  - /bin/bash
+install_conflicts: {}
+dependencies: []
+conflicts: []
+compliment: []
+supplement: []
+no_architecture: []
+notes: |
+

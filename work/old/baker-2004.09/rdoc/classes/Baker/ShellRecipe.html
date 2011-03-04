@@ -1,0 +1,194 @@
+
+<html><head>
+  <title>Class: Baker::ShellRecipe</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <link rel=StyleSheet href="../.././rdoc-style.css" type="text/css" media=screen>
+  <script type="text/javascript" language="JavaScript">
+  <!--
+  function popCode(url) {
+    parent.frames.source.location = url
+  }
+  //-->
+  </script>
+</head>
+<body bgcolor="white">
+
+
+<table width="100%" border=0 cellspacing=0>
+ <tr class="title-row">
+ <td class="big-title-font">
+   <font size=-3><B>Class</B><BR></font>Baker::ShellRecipe
+ </td>
+ <td align="right">
+   <table cellspacing=0 cellpadding=2>
+     <tr valign="top">
+      <td class="small-title-font">In:</td>
+      <td class="small-title-font">
+<a href="../../files/src/recipe_rb.html">src/recipe.rb</a>
+      </td>
+     </tr>
+     <tr>
+      <td class="small-title-font">Parent:</td>
+      <td class="small-title-font">
+        <a href="Recipe.html" class="cyan">
+Recipe
+         </a>
+      </td>
+     </tr>
+   </table>
+  </td>
+  </tr>
+</table><br>
+  <!-- banner header -->
+
+
+<div class="description"><p>
+<a href="ShellRecipe.html">ShellRecipe</a>
+</p>
+<p>
+all details of preparing, compiling and installing are handled by yaml
+embedded shell scripts
+</p>
+<p>
+notes:
+</p>
+<pre>
+  - could used improved security so any &quot;renegade&quot; recipes can't hurt user's system
+    is there a way to do some sort of sandboxing?
+  - register a generic type with yaml rather then ---!ruby/object
+</pre>
+</div>
+
+</div>
+
+<table cellpadding=5 width="100%">
+<tr><td class="tablesubtitle">Methods</td></tr>
+</table><br>
+<div class="name-list">
+<a href="#M000026">compile</a>,
+<a href="#M000028">install</a>,
+<a href="#M000023">methods_available_to_script</a>,
+<a href="#M000024">new</a>,
+<a href="#M000025">prepare</a>,
+<a href="#M000030">shell</a>,
+<a href="#M000027">test</a>,
+<a href="#M000022">to_yaml_properties</a>,
+<a href="#M000029">uninstall</a>,
+</div>
+
+
+
+  
+
+<table cellpadding=5 width="100%">
+<tr><td class="tablesubtitle">Public Class methods</td></tr>
+</table>
+<table width="100%" cellspacing = 0 cellpadding=5 border=0>
+<tr><td class="methodtitle">
+<a name="M000024">
+<b>new</b>() 
+<a href="ShellRecipe.src/M000024.html" target="source" class="srclink">src</a>
+</a></td></tr>
+</table>
+<table cellpadding=5 width="100%">
+<tr><td class="tablesubtitle">Public Instance methods</td></tr>
+</table>
+<table width="100%" cellspacing = 0 cellpadding=5 border=0>
+<tr><td class="methodtitle">
+<a name="M000022">
+<b>to_yaml_properties</b>() 
+<a href="ShellRecipe.src/M000022.html" target="source" class="srclink">src</a>
+</a></td></tr>
+</table>
+<table width="100%" cellspacing = 0 cellpadding=5 border=0>
+<tr><td class="methodtitle">
+<a name="M000023">
+<b>methods_available_to_script</b>() 
+<a href="ShellRecipe.src/M000023.html" target="source" class="srclink">src</a>
+</a></td></tr>
+</table>
+<div class="description">
+<p>
+which attributes are available to recipe shell scripts
+</p>
+</div>
+<table width="100%" cellspacing = 0 cellpadding=5 border=0>
+<tr><td class="methodtitle">
+<a name="M000025">
+<b>prepare</b>() 
+<a href="ShellRecipe.src/M000025.html" target="source" class="srclink">src</a>
+</a></td></tr>
+</table>
+<div class="description">
+<p>
+these simply run scripts given in the yaml recipe (hence the name
+<b>simple</b> recipe) there are general substitutions for many of the
+receipe&#8217;s instance variables and all of the build variables (see
+shell)
+</p>
+</div>
+<table width="100%" cellspacing = 0 cellpadding=5 border=0>
+<tr><td class="methodtitle">
+<a name="M000026">
+<b>compile</b>() 
+<a href="ShellRecipe.src/M000026.html" target="source" class="srclink">src</a>
+</a></td></tr>
+</table>
+<table width="100%" cellspacing = 0 cellpadding=5 border=0>
+<tr><td class="methodtitle">
+<a name="M000027">
+<b>test</b>() 
+<a href="ShellRecipe.src/M000027.html" target="source" class="srclink">src</a>
+</a></td></tr>
+</table>
+<div class="description">
+<p>
+test is not in the execution chain by default (should it be?) <a
+href="../../files/TODO.html">TODO</a>: make shell option -t (?)
+</p>
+</div>
+<table width="100%" cellspacing = 0 cellpadding=5 border=0>
+<tr><td class="methodtitle">
+<a name="M000028">
+<b>install</b>() 
+<a href="ShellRecipe.src/M000028.html" target="source" class="srclink">src</a>
+</a></td></tr>
+</table>
+<div class="description">
+<p>
+this needs to be fake rooted (TO DO!!!!!!!)
+</p>
+</div>
+<table width="100%" cellspacing = 0 cellpadding=5 border=0>
+<tr><td class="methodtitle">
+<a name="M000029">
+<b>uninstall</b>() 
+<a href="ShellRecipe.src/M000029.html" target="source" class="srclink">src</a>
+</a></td></tr>
+</table>
+<div class="description">
+<p>
+<a href="../../files/TODO.html">TODO</a>!!!!
+</p>
+</div>
+<table cellpadding=5 width="100%">
+<tr><td class="tablesubtitle">Private Instance methods</td></tr>
+</table>
+<table width="100%" cellspacing = 0 cellpadding=5 border=0>
+<tr><td class="methodtitle">
+<a name="M000030">
+<b>shell</b>(raw_script, working_directory='./') 
+<a href="ShellRecipe.src/M000030.html" target="source" class="srclink">src</a>
+</a></td></tr>
+</table>
+<div class="description">
+<p>
+shell executes a shell command from a string it dumps the string into a
+temporary file in the given directory, then executes it and deletes it. if
+no #! appears at the beginning it is assumed to be a bash script
+</p>
+</div>
+  <!-- method descriptions -->
+
+</body>
+</html>

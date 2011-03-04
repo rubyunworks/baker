@@ -1,0 +1,25 @@
+
+<html>
+<head><title>install_conflicts (Baker::Manager)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style>
+  .kw { color: #3333FF; font-weight: bold }
+  .cmt { color: green; font-style: italic }
+  .str { color: #662222; font-style: italic }
+  .re  { color: #662222; }
+</style>
+</head>
+<body bgcolor="white">
+<pre><span class="cmt"># File src/manager.rb, line 123</span>
+    <span class="kw">def</span> install_conflicts
+      conflicts_hash = {}
+      @recipe_lookup.each <span class="kw">do</span> |recipe_name, recipe|
+        ic = recipe.check_install_conflicts
+        <span class="kw">if</span> ic.length &gt; 0
+          conflicts_hash[recipe_name] = ic
+        <span class="kw">end</span>
+      <span class="kw">end</span>
+      <span class="kw">return</span> conflicts_hash
+    <span class="kw">end</span></pre>
+</body>
+</html>

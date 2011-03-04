@@ -1,0 +1,37 @@
+
+<html>
+<head><title>new (Baker::RecipeCollection)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style>
+  .kw { color: #3333FF; font-weight: bold }
+  .cmt { color: green; font-style: italic }
+  .str { color: #662222; font-style: italic }
+  .re  { color: #662222; }
+</style>
+</head>
+<body bgcolor="white">
+<pre><span class="cmt"># File src/recipe.rb, line 413</span>
+    <span class="kw">def</span> initialize(program, version, dependencies=[])
+      @program = program
+      @version = version
+      @created = <span class="str">&quot;&quot;</span>
+      @updated = <span class="str">&quot;&quot;</span>
+      @maintainer = { <span class="str">'name'</span> =&gt; <span class="str">&quot;&quot;</span>, <span class="str">'email'</span> =&gt; <span class="str">''</span>}
+      @brief = <span class="str">&quot;&quot;</span>
+      @description = <span class="str">&quot;&quot;</span>
+      @website = <span class="str">&quot;&quot;</span>
+      @categories = []
+      @super = <span class="kw">nil</span>
+      @install_size = 0
+      @install_indicators = []
+      @install_conflicts = {}
+      @dependencies = dependencies
+      @conflicts = []
+      @compliment = []
+      @supplement = []
+      @no_architecture = []
+      @notes = <span class="str">&quot;&quot;</span>
+      <span class="kw">super</span>()
+    <span class="kw">end</span></pre>
+</body>
+</html>

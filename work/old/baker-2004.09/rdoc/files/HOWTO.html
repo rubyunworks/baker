@@ -1,0 +1,557 @@
+
+<html><head>
+  <title>File: HOWTO</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <link rel=StyleSheet href=".././rdoc-style.css" type="text/css" media=screen>
+  <script type="text/javascript" language="JavaScript">
+  <!--
+  function popCode(url) {
+    parent.frames.source.location = url
+  }
+  //-->
+  </script>
+</head>
+<body bgcolor="white">
+
+<table width="100%">
+ <tr class="title-row">
+ <td><table width="100%"><tr>
+   <td class="big-title-font" colspan=2><font size=-3><B>File</B><BR></font>HOWTO</td>
+   <td align="right"><table cellspacing=0 cellpadding=2>
+         <tr>
+           <td  class="small-title-font">Path:</td>
+           <td class="small-title-font">HOWTO</td>
+         </tr>
+         <tr>
+           <td class="small-title-font">Modified:</td>
+           <td class="small-title-font">Thu Dec 04 21:16:51 CET 2003</td>
+         </tr>
+        </table>
+    </td></tr></table></td>
+  </tr>
+</table><br>
+  <!-- banner header -->
+
+
+<div class="description"><h1><a href="../classes/Baker.html">Baker</a>, The Delicious Program Maker</h1>
+<h2>OVERVIEW</h2>
+<p>
+From the outside <a href="../classes/Baker.html">Baker</a> consists command
+line command called &#8216;bake&#8217; which provides a complete interface
+for the compilation of programs and maintenance of source package
+information. This information is refered to as a <b>recipe</b>. Every
+program and version of that program, you wish to compile needs a recipe.
+You can easily create you own recipes, and maintain your own recipe
+repository, or download <b>catalogs</b> of recipes from other repositories
+available over the internet.
+</p>
+<p>
+It is important to understand, that while <a
+href="../classes/Baker.html">Baker</a> itself is distribution independent,
+recipes may not be! A Recipe contains a listing of the distributions it is
+known to support. But even if your distribution is not listed, it does not
+neccessarily mean the receipe won&#8217;t work, but only that the recipe
+maintainer either does not know, or is working only on recipes for a
+particular distribution. This issue is usually not of great concern,
+becasue on the whole, catalogs of recipes will be designated for a specific
+distribution. The dream of a universal repository is sadly still some ways
+off. But <a href="../classes/Baker.html">Baker</a> is working on it!
+</p>
+<p>
+Please keep in mind that these instructions neccessarily lag behind the
+actual implmenation. We update them as fast as we can, but expect to find
+some descrepencies. Please lets us know when you do. Thanks.
+</p>
+<h2>PREPING THE OVEN</h2>
+<p>
+IF you completed the <a href="INSTALL.html">INSTALL</a>, the you&#8217;re
+ready to get started. First thing we need to do is set up a few parameters
+called a Build Configuration. If everything is set up properly you shoud be
+able to do:
+</p>
+<pre>
+  % bake-config show
+</pre>
+<p>
+And it will show you the current build configuration. If it instead tells
+you it can&#8217;t find the configuration file then somethings wrong with
+the setup. Try to figure out what went wrong. If you need help contact me.
+</p>
+<p>
+If all is well, you will see something like this:
+</p>
+<pre>
+  --- !ruby/object:Baker::BuildConfig
+  source_dirpath: '/home/transami/Files/Programs/Ruby/Baker/var/baker/src/%s/%s'
+  work_dirpath: '/home/transami/Files/Programs/Ruby/Baker/var/baker/fooroot/%s/%s'
+  local_region: North America
+  host: i686
+  target: i686
+  cflags: []
+  check: true
+  concurrent_threads: 1
+  cxxflags: []
+  distcc: true
+  kernel_config: ''
+  strip: false
+  thread_library: nptl
+  prefix: /usr/local
+  man_dirpath: ''
+  info_dirpath: ''
+  avoid: [ 'tk' ]
+  ensure: []
+</pre>
+<p>
+Boy! Oh, boy! Dosen&#8216;t that look fun! :) So the most important thing
+for you to adjust here are the source_dirpath, which tells <a
+href="../classes/Baker.html">Baker</a> where to keep the source files it
+downloads, and also the host and target fields, which tell <a
+href="../classes/Baker.html">Baker</a> what cpu architecture you&#8217;re
+running and will compile. The prefix field too is useful to generally tell
+where programs will be installed. For instance, GobLinux users should put
+/Programs here.
+</p>
+<p>
+To see what kind of architectures that <a
+href="../classes/Baker.html">Baker</a> supports type:
+</p>
+<pre>
+  % bake-config arch
+</pre>
+<p>
+If you have doubts then use &#8216;i386&#8217;, which will work for all
+Intel-compatible machines.
+</p>
+<p>
+To edit this file type:
+</p>
+<pre>
+  % bake-config edit
+</pre>
+<p>
+If your EDITOR enviornment variable is set to you favorite editor then you
+can edit the build config. If not then first set your EDITOR environment
+variable, and try again.
+</p>
+<p>
+Let go over each of these and what they are for:
+</p>
+<pre>
+  NOTE: The build config might need these, not sure yet.
+          cc: 'gcc'
+          cpp: '????'
+          ldflags: []
+        I've included them below just in case.
+</pre>
+<ul>
+<li>source_dirpath:: This tells <a href="../classes/Baker.html">Baker</a> where
+to keep the source files it downloads.
+
+</li>
+<li>local_region:: This is the location of your computer. It should be North
+America, South America, Europe, Australia, Asia, or Unspecified.
+
+</li>
+<li>host:: This is you cpu architecture of the machine you are running <a
+href="../classes/Baker.html">Baker</a>.
+
+</li>
+<li>target:: This is you cpu architecture you will be compiling for.
+
+</li>
+<li>cc:: The c/c++ compiler command.
+
+</li>
+<li>cpp:: The c/c++ preprocessor command.
+
+</li>
+<li>cflags:: These are special c/c++ flags to be passed to the compiler.
+
+</li>
+<li>cppflags:: These are special c/c++ flags to be passed to the preprocessor.
+(eg. -I)
+
+</li>
+<li>ldflags:: These are special library flags to be passed to the compiler.
+(eg. -L)
+
+</li>
+<li>concurrent_threads:: The number of parallel build jobs to do at once. (NOT
+YET WORKING)
+
+</li>
+<li>check:: Be sure to do a make check.
+
+</li>
+<li>distcc:: This is either true or false and determines if &#8230;
+
+</li>
+<li>strip:: This is either true or false and determines if debugging info
+should be stripped from the compiled code.
+
+</li>
+<li>thread_library:: The thread library to use. This can be either
+&#8216;nptl&#8217; or &#8216;linuxthreads&#8217;.
+
+</li>
+<li>kernel_config:: The path to you kernal configuration.
+
+</li>
+<li>prefix:: The main part of the path to where programs are to be installed.
+Usually /usr or /usr/local
+
+</li>
+<li>man_dirpath:: The path to man documentation on your system.
+
+</li>
+<li>info_dirpath:: The path to info documentation on your system.
+
+</li>
+<li>avoid:: This is a list of program &quot;use&quot; names for compliment
+program support that should be avioded as program add-ons.
+
+</li>
+<li>ensure:: This designates the &quot;use&quot; names for supplement progam
+support that should be included as program add-ons.
+
+</li>
+</ul>
+<p>
+If you don&#8217;t understand all of this, don&#8217;t worry I don&#8217;t
+either :) But it will become clearer as we continue.
+</p>
+<p>
+To see what else you can do with the bake-config command line program type,
+</p>
+<pre>
+  % bake-config help
+</pre>
+<p>
+You will notice that you have some pretty good options for storing mutiple
+configurations.
+</p>
+<h2>BAKE ME A CAKE!</h2>
+<p>
+Now lets do some real baking. First of all we will skip synronizing with a
+master recipe repository because none currently exist. (<a
+href="../classes/Baker.html">Baker</a> is brand new remember! But you can
+help!) So lets look at creating your own recipes.
+</p>
+<p>
+The recipe catalog directory that we created earlier contains the recipe
+files, also in Yaml format, with names in the form of:
+Program&#8212;Version. So for example, my-program&#8212;1.0. We keep
+seperate recipes for different versions b/c sometimes various important
+aspects change from version to version. Lets create a new recipe. We can
+easily do this by typing
+</p>
+<pre>
+  % bake new simple MyProgram 1.0
+</pre>
+<p>
+This creates a new SimpleRecipe (the only kind we have so far) and names it
+MyProgram&#8212;1.0, and places it in the your personal recipe catalog.
+</p>
+<p>
+PLEASE NOTE: There&#8217;s a good chance this still has bug or two b/c
+I&#8217;m still working on the exact details of storing the recipes.
+Technically personal recipes should be stored in you home directory, but
+for now they are going directly into /=(cvspath)/baker/var/cat/. If you
+look in there you will see that is a test directory. That&#8217;s the test
+repository. You can have multiple repositories.
+</p>
+<p>
+A good test test at this point is to do
+</p>
+<pre>
+  % bake find M
+</pre>
+<p>
+And you should see MyProgram&#8212;1.0 listed. Now to work on it we type:
+</p>
+<pre>
+  % bake edit MyProgram 1.0
+</pre>
+<p>
+And again with EDITOR set, our favorite editor will load up the recipe
+which will look like this pretend example:
+</p>
+<pre>
+  --- !ruby/object:Baker::SimpleRecipe
+  program: Fung-Calc
+  version: 1.3.2b
+  created: 2003-11-11
+  updated: 2003-11-11
+  maintainer:
+    name: T. Onoma
+    email: transami@runbox.com
+  brief: Advanced Graphics Calculator
+  description: &gt;
+    Fung-Calc is a free, open source advanced, yet easy to use,
+    graphing calculator for Linux using Qt/KDE. It plots several types
+    of 2D and 3D graphs. It combines the use of advanced mathematical
+    features and ease of use all in one package.
+  package_size: 1200
+  website: http://fung-calc.sourceforge.net/index.php
+  categories: [qt, math]
+  distributions: [debian--3.0]
+  super: ~
+  source_urls:
+    - [ 'http://prdownloads.sourceforge.net/fung-calc/fung-calc-1.3.2b.tar.gz',              'Unspecified',   'bae7a2d39fd6658d4aa181ddc73bd5d5', 1123189 ]
+    - [ 'http://flow.dl.sourceforge.net/sourceforge/fung-calc/fung-calc-1.3.2b.tar.gz',      'Australia',     'bae7a2d39fd6658d4aa181ddc73bd5d5', 1123189 ]
+    - [ 'http://umn.dl.sourceforge.net/sourceforge/fung-calc/fung-calc-1.3.2b.tar.gz',       'North America', 'bae7a2d39fd6658d4aa181ddc73bd5d5', 1123189 ]
+    - [ 'http://aleron.dl.sourceforge.net/sourceforge/fung-calc/fung-calc-1.3.2b.tar.gz',    'North America', 'bae7a2d39fd6658d4aa181ddc73bd5d5', 1123189 ]
+    - [ 'http://unc.dl.sourceforge.net/sourceforge/fung-calc/fung-calc-1.3.2b.tar.gz',       'North America', 'bae7a2d39fd6658d4aa181ddc73bd5d5', 1123189 ]
+    - [ 'http://easynews.dl.sourceforge.net/sourceforge/fung-calc/fung-calc-1.3.2b.tar.gz',  'North America', 'bae7a2d39fd6658d4aa181ddc73bd5d5', 1123189 ]
+    - [ 'http://twtelecom.dl.sourceforge.net/sourceforge/fung-calc/fung-calc-1.3.2b.tar.gz', 'North America', 'bae7a2d39fd6658d4aa181ddc73bd5d5', 1123189 ]
+    - [ 'http://cesnet.dl.sourceforge.net/sourceforge/fung-calc/fung-calc-1.3.2b.tar.gz',    'Europe',        'bae7a2d39fd6658d4aa181ddc73bd5d5', 1123189 ]
+    - [ 'http://belnet.dl.sourceforge.net/sourceforge/fung-calc/fung-calc-1.3.2b.tar.gz',    'Europe',        'bae7a2d39fd6658d4aa181ddc73bd5d5', 1123189 ]
+    - [ 'http://heanet.dl.sourceforge.net/sourceforge/fung-calc/fung-calc-1.3.2b.tar.gz',    'Europe',        'bae7a2d39fd6658d4aa181ddc73bd5d5', 1123189 ]
+    - [ 'http://keihanna.dl.sourceforge.net/sourceforge/fung-calc/fung-calc-1.3.2b.tar.gz',  'Asia',          'bae7a2d39fd6658d4aa181ddc73bd5d5', 1123189 ]
+  patch_urls: []
+  install_indicators:
+    - /Programs/Fung-Calc/1.3.2b/bin/fung-calc
+    - /usr/bin/fung-calc
+    - /usr/local/bin/fung-calc
+  #  - /usr .*/bin/fung-calc include
+  install_conflicts: {}
+  dependencies:
+    - QT--3.1+
+  conflicts: []
+  compliment:
+    - KDE--3.1+
+    - Mesa--5+
+  supplement: []
+  no_architecture: []
+  test_script: |
+    echo &quot;Testing... \=(program) \=(version) \=(cflags) \=(maintainer.email) \=(categories?qt yes) needed.&quot;
+  prepare_script: |
+    ./configure \=(avoid?KDE --disable-kde-app) \=(avoid?Mesa --disable-glgraph)
+  compile_script: |
+    make clean
+    make
+  install_script: |
+    make install
+  system_files: []
+  notes: |
+    Just a place to keep some notes.
+</pre>
+<p>
+Most of this will be farily obvious. There are only a few things we need to
+directly address, before we get into the actual script writing.
+</p>
+<p>
+First catagories is nothing special, just put what you think fits, but make
+some effort to be consistanct with what others might put. Good ones are QT,
+KDE, GTK, Gnome, and Mesa, as well as basic subjects like: Office, Math,
+Internet, Security and so on.
+</p>
+<p>
+Super is the name of the RecipeCollection this recipe belongs, if it
+belongs to any. For example there are an number of programs that would be a
+part of the Gnome&#8212;2.4 RecipeCollection, and in fact these are further
+subdived into collections like GnomeOffice&#8212;2.4.
+</p>
+<p>
+Dependencies are other recipes that this one require to do a complete
+build.
+</p>
+<p>
+Conlficts are other recipes that won&#8217;t work with this one. This is
+related to <a
+href="../classes/Baker/Manager.html#M000070">install_conflicts</a>, but
+that one is for already installed programs. This one is just for recipes
+that the user might try to compile together or include in a collection.
+</p>
+<p>
+Compliment are programs that will be included with this program, unless the
+program name is specifically listed in the avoid list in the build config
+being used. (Doesn&#8216;t apply if you use the -i ooption which ignores
+all dependencies and such, not recommended) Suppliment are programs that
+will NOT be added in unless the program name is included in the ensure list
+in the current build condig.
+</p>
+<p>
+Programs are given in full using recipename&#8212;version. An optional + is
+added to mean any version greater than this. <a
+href="../classes/Baker.html">Baker</a> will always look for the higest
+version it can when the + is given.
+</p>
+<p>
+The no_architecture list gives the cpus the program can&#8217;t be compiled
+on.
+</p>
+<p>
+Oh, install_indicators. This is a list of file paths that would indicate
+that this program has been installed. <a
+href="../classes/Baker.html">Baker</a> looks for these files to determine
+this so be sure to consider this carefully. Notice the last one in this
+list. That a special seach form. The first part is the root dir to search
+the second is grep expression for the remainder of the path anf an remaonig
+word are directories off the root to prune (i.e. not search) This turns out
+to be slow as crap. So it will probably be removed.
+</p>
+<p>
+The <a href="../classes/Baker/Manager.html#M000070">install_conflicts</a>
+are the same. The list paths to files that would indicate this program is
+going to have a problem.
+</p>
+<p>
+The system_files is a list of system files that the installer will change.
+For example the installer maight add an entry to /etc/profile. In that case
+that file should be listed here.
+</p>
+<p>
+Right now these paths are absolute, we will be making them relative soon.
+</p>
+<p>
+The xxx_script fields are actually scripts that are excuted to do those
+jobs. These will usually be shell scripts, but the can be Ruby or Perl,
+etc. too. /=(var) are used in them to substitue certain values from this
+file and the current build config.
+</p>
+<h2>BAKE COMMAND</h2>
+<p>
+Here is the help information from the bake command.
+</p>
+<pre>
+  USAGE: bake [options...] &lt;command&gt; [arguments...]
+
+  CATALOG COMMANDS:
+</pre>
+<pre>
+    sync
+        Syncronize package catalog with master catalog.
+
+    find &lt;arg&gt;
+        Search the package catalog for all matching recipes.
+        Argument is a grep expression. (Currently only searches on file name.)
+</pre>
+<pre>
+    info &lt;program&gt;
+        Provides a description of the specified progam.
+
+    dep &lt;programs...&gt;
+        Displays a dependency tree.
+</pre>
+<pre>
+    con &lt;programs...&gt;
+        Displays confilcts.
+
+    new &lt;type&gt; &lt;program&gt; &lt;version&gt;
+        Creates a new receipe of given type. (Type is case sensitive.)
+</pre>
+<pre>
+    edit &lt;program--version&gt;
+        Edit the recipe with default editor.
+        (The editor is determined by enviornment variable 'EDITOR'.)
+
+  BUILD COMMANDS:
+</pre>
+<pre>
+    cast &lt;programs...&gt;
+        The cast processes does the following in order:
+        1) fetch 2) extract 3) patch 4) prepare 5) compile 6) install
+        The following commands can be used to do these individually.
+
+    fetch &lt;programs...&gt;
+        Fetches the source.
+</pre>
+<pre>
+    extract &lt;programs...&gt;
+        Extracts the source. (Will fetch if -b is set)
+
+    patch &lt;programs...&gt;
+        Patches the source. (Will extract if -b is set)
+</pre>
+<pre>
+    prepare &lt;programs...&gt;
+        Prepares the source. (Will patch if -b is set)
+
+    compile &lt;programs...&gt;
+        Compiles the source. (Will prepare if -b is set)
+</pre>
+<pre>
+    install &lt;programs...&gt;
+        Installs the programs. (Will compile if -b is set)
+        In batch mode this is the same as cast.
+
+    uninstall &lt;programs...&gt;
+        Uninstalls the programs. This is not recommended if you did
+        not use this program to install!
+</pre>
+<pre>
+    purge &lt;programs...&gt;
+        Purge source file and directory, completely removing the source.
+        (NOTE: This is not functional yet.)
+
+  OTHER COMMANDS:
+</pre>
+<pre>
+    help
+        Displays this help information. (Same as -h or --help option)
+
+  OPTIONS:
+</pre>
+<pre>
+    -h  --help
+        Display this help information.
+
+    -b  --batch
+        Batch mode will back track operations to accomplish task.
+</pre>
+<pre>
+    -f  --force
+        Force downloads and extractions.
+
+    -i  --ignore
+        Ignore dependencies and conflicts.
+</pre>
+<pre>
+    -r  --redo
+        Will recompile and reinstall even program already appears to be installed.
+
+    -v  --verbose
+        Provides extra verbose processing information.
+</pre>
+<pre>
+    -p  --pretend  (NOT YET IMPLEMENTED)
+        Pretend, just to see what would happen.
+
+    -u  --use &lt;file&gt;
+        Use the specified configuration file for this build,
+        but does not set configuration.
+</pre>
+<p>
+This has proabably has changed a bit. Do
+</p>
+<pre>
+  % bake help
+</pre>
+<p>
+To see the latest.
+</p>
+<h2>END NOTES</h2>
+<p>
+These instructions are far from complete and the program itself is still
+going through a number of changes, so at this point expect to contribute to
+devleopment if you wish to use <a href="../classes/Baker.html">Baker</a>.
+</p>
+<p>
+If all goes as planned, it won&#8217;t be long before we will have the most
+robust, the only truly distro nuetral, and certaily the most delicious,
+source package manager in the world :)
+</p>
+</div>
+
+</div>
+
+
+
+
+  
+
+  <!-- method descriptions -->
+
+</body>
+</html>

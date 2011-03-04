@@ -1,0 +1,34 @@
+
+<html>
+<head><title>instance (Baker::BuildConfig)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style>
+  .kw { color: #3333FF; font-weight: bold }
+  .cmt { color: green; font-style: italic }
+  .str { color: #662222; font-style: italic }
+  .re  { color: #662222; }
+</style>
+</head>
+<body bgcolor="white">
+<pre><span class="cmt"># File src/buildconfig.rb, line 73</span>
+    <span class="kw">def</span> BuildConfig.instance(reload=<span class="kw">false</span>)
+      <span class="kw">if</span> !<span class="kw">defined?</span>(@@instance) <span class="kw">or</span> reload
+        config_file = SETTINGS.opt_use
+        <span class="kw">if</span> !config_file
+          <span class="kw">if</span> FileTest::exists?(SETTINGS.current_config_file)
+            @@instance = YAML::load(File.new(SETTINGS.current_config_file))
+          <span class="kw">else</span>
+            raise BakerError, &quot;could not find current build configuration:\n#{SETTINGS.current_config_file}&quot;
+          <span class="kw">end</span>
+        <span class="kw">else</span>
+          <span class="kw">if</span> FileTest::exists?(SETTINGS.opt_use_filepath)
+            @@instance = YAML::load(File.new(SETTINGS.opt_use_filepath))
+          <span class="kw">else</span>
+            raise BakerError, <span class="str">&quot;could not find specified build configuration&quot;</span>
+          <span class="kw">end</span>
+        <span class="kw">end</span>
+      <span class="kw">end</span>
+      @@instance
+    <span class="kw">end</span></pre>
+</body>
+</html>

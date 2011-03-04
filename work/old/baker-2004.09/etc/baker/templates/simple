@@ -1,0 +1,46 @@
+--- !ruby/object:Baker::SimpleRecipe
+program: TheProgramName
+version: 1.0.0
+created: 2003-11-11
+updated: 2003-11-11
+maintainer:
+  name: Unassigned
+  email: xxx@xxx.cccc
+brief: Give a one line descript.
+description: >
+  Give a detial description
+  on the program.
+package_size: 200000
+website: http://website/index.html
+categories: [ 'qt?', 'gtk?', 'kde?', 'gnome?', 'x?', 'math?', 'etc...' ]
+distributions: []
+super: ~
+source_urls:
+  - [ 'http://download.url/yourprogram.tar.gz',  'Unspecified',   'MD5...658d4aa181ddc73bd5d5', 100000 ]
+patch_urls: []
+install_indicators:
+  - /Programs/Fung-Calc/1.0.0/bin/exename
+  - /usr/bin/exename
+  - /usr/local/bin/exename
+#  - /usr .*/bin/exename include
+install_conflicts: {}
+dependencies:
+  - OtherRecipe--1.0+
+conflicts: []
+compliment:
+  - ComplimentRecipe--1.0+
+supplement: []
+no_architecture: []
+test_script: |
+  echo "Testing... \=(program) \=(version) \=(cflags) \=(maintainer.email) \=(categories?qt yes) needed."
+prepare_script: |
+  ./configure \=(avoid?KDE --disable-kde-app) \=(avoid?Mesa --disable-glgraph)
+compile_script: |
+  make clean
+  make
+install_script: |
+  make install
+system_files: []
+notes: |
+  Put whatever notes you like here.
+  

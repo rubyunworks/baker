@@ -1,0 +1,19 @@
+--- !ruby/object:Baker::ShellRecipe
+program      : automake
+version      : 1.8+
+maintainer   : transami@runbox.com
+updated      : 2004-12-20
+build_size   : 2MB
+noarch       : []
+system_files : []
+notes: ''
+config_script: |
+  ./configure #{--prefix=#{prefix}}
+setup_script: |
+  make
+test_script:
+  make test
+install_script: |
+  make install
+clean_script: |
+  make clean

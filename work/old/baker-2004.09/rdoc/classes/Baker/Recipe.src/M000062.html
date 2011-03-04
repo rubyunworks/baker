@@ -1,0 +1,47 @@
+
+<html>
+<head><title>eval_token (Baker::Recipe)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style>
+  .kw { color: #3333FF; font-weight: bold }
+  .cmt { color: green; font-style: italic }
+  .str { color: #662222; font-style: italic }
+  .re  { color: #662222; }
+</style>
+</head>
+<body bgcolor="white">
+<pre><span class="cmt"># File src/recipe.rb, line 349</span>
+    <span class="kw">def</span> eval_token(raw_marker_match)
+      marker_match = raw_marker_match[3..-2].strip
+      <span class="kw">if</span> marker_match.include?(<span class="str">'?'</span>)
+        <span class="cmt"># well i would have used regexp if it frig'n worked! :|</span>
+        match_rest = marker_match.dup
+        mq = match_rest.index(<span class="str">'?'</span>)
+        match = match_rest[0..(mq-1)].downcase
+        match_rest = marker_match[(mq+1)..-1].strip
+        mq = match_rest.index(<span class="str">' '</span>)
+        match_include = match_rest[0..(mq-1)].downcase
+        match_print = match_rest[mq..-1].strip.downcase
+        match_on = <span class="kw">true</span>
+      <span class="kw">elsif</span> marker_match.include?(<span class="str">'!'</span>)
+        match_rest = marker_match.dup
+        mq = match_rest.index(<span class="str">'!'</span>)
+        match = match_rest[0..(mq-1)].downcase
+        match_rest = marker_match[(mq+1)..-1].strip
+        mq = match_rest.index(<span class="str">' '</span>)
+        match_include = match_rest[0..(mq-1)].downcase
+        match_print = match_rest[mq..-1].strip.downcase
+        match_on = <span class="kw">false</span>
+      <span class="kw">else</span>
+        match = marker_match.downcase
+        match_on = <span class="kw">nil</span>
+      <span class="kw">end</span>
+      match_method, match_keys = match.split(<span class="str">'.'</span>)  <span class="cmt"># split off hash lookups</span>
+      match_eval = match_method.dup                <span class="cmt"># build eval</span>
+      match_eval += match_keys.collect { |m| &quot;['#{m}']&quot; }.to_s <span class="kw">if</span> match_keys
+      match_eval += &quot;.include?('#{match_include}') ? '#{match_print}' : ''&quot; <span class="kw">if</span> match_on == <span class="kw">true</span>
+      match_eval += &quot;.include?('#{match_include}') ? '' : '#{match_print}'&quot; <span class="kw">if</span> match_on == <span class="kw">false</span>
+      <span class="kw">return</span> match_eval, match_method
+    <span class="kw">end</span></pre>
+</body>
+</html>

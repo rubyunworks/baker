@@ -1,0 +1,35 @@
+
+<html>
+<head><title>resolve_name (Baker::Recipe)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style>
+  .kw { color: #3333FF; font-weight: bold }
+  .cmt { color: green; font-style: italic }
+  .str { color: #662222; font-style: italic }
+  .re  { color: #662222; }
+</style>
+</head>
+<body bgcolor="white">
+<pre><span class="cmt"># File src/recipe.rb, line 178</span>
+    <span class="kw">def</span> resolve_name(program_reference)
+      resolved_name = <span class="kw">nil</span>  <span class="cmt"># will return nil if can't resolve</span>
+      possible_name = program_reference.strip
+      <span class="kw">if</span> possible_name[-1..-1] == <span class="str">'+'</span>
+        <span class="cmt"># okay lets see what recipes fit the bill</span>
+        recipe_lookup = &quot;^#{possible_name[0..-2]}&quot;
+        possible_recipes = @@catalog.search(recipe_lookup)
+        <span class="kw">if</span> possible_recipes.length &gt; 0
+          <span class="cmt"># get the latest version</span>
+          latest_name = possible_recipes.sort.reverse[0]
+          <span class="cmt"># is it later then whats wanted?</span>
+          <span class="kw">if</span> latest_name &gt; possible_name
+            resolved_name = latest_name
+          <span class="kw">end</span>
+        <span class="kw">end</span>
+      <span class="kw">else</span>  <span class="cmt"># okay the name is good but does it exist?</span>
+        resolved_name = possible_name <span class="kw">if</span> File.exists?(File.join(@@catalog.catalog_dir, possible_name))
+      <span class="kw">end</span>
+      <span class="kw">return</span> resolved_name
+    <span class="kw">end</span></pre>
+</body>
+</html>

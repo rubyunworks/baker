@@ -1,0 +1,19 @@
+= Baker, The Delicious Program Maker
+
+== What Needs Do'in
+
+* These probably need to be in with build-scripts:
+    - system_files: []  # the system files potetnially effected (like etc/*)
+    - distributions: [debian]  # the distributions it si KNOWN to work for
+
+* README are confusing. At the moment you need to read/skip though
+  four pages of text, and still purpose are unclear.
+  When reading the first 10-20 lines of a document, I expect to
+  know the purpose of it.
+
+* separate installation notes from README to a seperate file
+  (INSTALL). So that README become more understandable.
+
+* README should also mention the current status and state of the
+  project.
+

@@ -1,0 +1,38 @@
+
+<html>
+<head><title>shell (Baker::ShellRecipe)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style>
+  .kw { color: #3333FF; font-weight: bold }
+  .cmt { color: green; font-style: italic }
+  .str { color: #662222; font-style: italic }
+  .re  { color: #662222; }
+</style>
+</head>
+<body bgcolor="white">
+<pre><span class="cmt"># File src/recipe.rb, line 529</span>
+    <span class="kw">def</span> shell(raw_script, working_directory=<span class="str">'./'</span>)
+      script = raw_script.to_s.strip
+      <span class="cmt">#puts script  # debug</span>
+      <span class="kw">if</span> script != <span class="str">''</span>
+        <span class="cmt">#script = build_sub(script)</span>
+        <span class="cmt">#check_sub(script)</span>
+        current_dir = Dir.getwd
+        Dir.chdir(working_directory)
+        <span class="kw">begin</span>
+          File.open(<span class="str">'baker__tempscript.sh'</span>,<span class="str">'w'</span>) <span class="kw">do</span> |exe|
+            <span class="cmt">#exe &lt;&lt; &quot;#!#{ENV['SHELL']}\n&quot; if script[0..1] != '#!'</span>
+            exe &lt;&lt; script
+          <span class="kw">end</span>
+          system(<span class="str">'chmod +x baker__tempscript.sh;./baker__tempscript.sh'</span>)
+        <span class="kw">rescue</span>
+          raise
+          raise BakerError, <span class="str">&quot;error occured while tryng to execute script.&quot;</span>
+        <span class="kw">ensure</span>
+          <span class="cmt">#File.delete('baker__tempscript.sh')  # temporary remark</span>
+          Dir.chdir(current_dir)
+        <span class="kw">end</span>
+      <span class="kw">end</span>
+    <span class="kw">end</span></pre>
+</body>
+</html>

@@ -1,0 +1,33 @@
+
+<html>
+<head><title>check_install_conflicts (Baker::Recipe)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style>
+  .kw { color: #3333FF; font-weight: bold }
+  .cmt { color: green; font-style: italic }
+  .str { color: #662222; font-style: italic }
+  .re  { color: #662222; }
+</style>
+</head>
+<body bgcolor="white">
+<pre><span class="cmt"># File src/recipe.rb, line 125</span>
+    <span class="kw">def</span> check_install_conflicts
+      conflicts_found = []
+      @install_conflicts.each <span class="kw">do</span> |ic_name, ic_indicators|
+        ic_indicators.each <span class="kw">do</span> |ici|
+          <span class="kw">if</span> ici.include?(<span class="str">' '</span>)
+            root, pattern, exclusions = ici.split(<span class="str">' '</span>)
+            success = findfile(root, pattern, exclusions) ? <span class="kw">true</span> : <span class="kw">false</span>
+          <span class="kw">else</span>
+            success = FileTest::exists?(ici)
+          <span class="kw">end</span>
+          <span class="kw">if</span> success
+            conflicts_found &lt;&lt; ic_name
+            <span class="kw">break</span>
+          <span class="kw">end</span>
+        <span class="kw">end</span>
+      <span class="kw">end</span>
+      conflicts_found
+    <span class="kw">end</span></pre>
+</body>
+</html>

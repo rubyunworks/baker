@@ -1,0 +1,282 @@
+
+<html><head>
+  <title>File: INSTALL</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <link rel=StyleSheet href=".././rdoc-style.css" type="text/css" media=screen>
+  <script type="text/javascript" language="JavaScript">
+  <!--
+  function popCode(url) {
+    parent.frames.source.location = url
+  }
+  //-->
+  </script>
+</head>
+<body bgcolor="white">
+
+<table width="100%">
+ <tr class="title-row">
+ <td><table width="100%"><tr>
+   <td class="big-title-font" colspan=2><font size=-3><B>File</B><BR></font>INSTALL</td>
+   <td align="right"><table cellspacing=0 cellpadding=2>
+         <tr>
+           <td  class="small-title-font">Path:</td>
+           <td class="small-title-font">INSTALL</td>
+         </tr>
+         <tr>
+           <td class="small-title-font">Modified:</td>
+           <td class="small-title-font">Thu Dec 04 21:14:17 CET 2003</td>
+         </tr>
+        </table>
+    </td></tr></table></td>
+  </tr>
+</table><br>
+  <!-- banner header -->
+
+
+<div class="description"><h1><a href="../classes/Baker.html">Baker</a>, The Delicious Program Maker</h1>
+<h2>REQUIREMENTS</h2>
+<ul>
+<li>Ruby 1.8+
+
+</li>
+<li>Patch of open-uri.rb (Included)
+
+</li>
+<li>Patched version of Progressbar (Also Included)
+
+</li>
+<li>Cohonas :) Hey, it&#8217;s still beta!
+
+</li>
+</ul>
+<h2>INSTALLING</h2>
+<p>
+There is no automated installed yet.
+</p>
+<h3>For Developers</h3>
+<ol>
+<li>Don&#8216;t move anything! <a href="../classes/Baker.html">Baker</a> can be
+configured to look wherever you need it to, so we can point it to look for
+everything in your working CVS directory. That way you can test your
+changes easily and you don&#8217;t have to do anything special.
+
+<p>
+The other option is to place links in the places were a normal end user
+would have the <a href="../classes/Baker.html">Baker</a> files (see below)
+and configure <a href="../classes/Baker.html">Baker</a> to follow those.
+It&#8217;s your choice. Maikng links is a little more work though. (BTW if
+more then one user planes to use the same receipe repository then you will
+need to move that to a central location.)
+</p>
+</li>
+<li>The main thing is to set the environment variable
+BAKERETC=/path/to/your/cvs/working/dir/baker/etc. be sure to export it and
+add it to you ~/.profile file or the master /etc/profile file so it is
+automatically set the next time you boot.
+
+<p>
+From here on we&#8217;ll call you cvs path /=(cvspath). So the above would
+then be /=(cvspath)/baker/etc.
+</p>
+</li>
+<li>Be sure your EDITOR environment variable is also set to your favorite
+editor. EDITOR=vim for example.
+
+</li>
+<li>Now we need to edit a few config files to let baker know where everyting
+is.
+
+<pre>
+  &gt; cd /=(cvspath)/baker/etc
+</pre>
+<p>
+and edit the cat-config file. The first line probably looks like this,
+</p>
+<pre>
+ recipe_dir: '/home/transami/Files/Source/ruby/baker/var/cat'
+</pre>
+<p>
+Change it to,
+</p>
+<pre>
+  recipe_dir: '/=(cvspath)/baker/var/cat'
+</pre>
+</li>
+<li>Now we need to do the same thing to the current and default build configs.
+
+<pre>
+  &gt; cd build
+</pre>
+<p>
+You will see 3 files. current, default, undo. In both the default and
+current files change these lines,
+</p>
+<pre>
+  source_dirpath: '/home/transami/Files/Programs/Ruby/Baker/var/baker/src/%s/%s'
+  work_dirpath: '/home/transami/Files/Programs/Ruby/Baker/var/baker/fooroot/%s/%s'
+</pre>
+<p>
+in the same manner,
+</p>
+<pre>
+  source_dirpath: '/=(cvspath)/baker/src/%s/%s'
+  work_dirpath: '/=(cvspath)/baker/fooroot/%s/%s'
+</pre>
+<p>
+Actually the last one dosen&#8217;t do anything yet, and will probably
+change. But go ahead and do anyway for now. The two %s represent where the
+program name and version number will be substitued. So what happens is,
+when you tell baker to fetch a program, it will place the source in the
+dir,
+</p>
+<pre>
+  /=(cvspath)/baker/src/program-name/program-version/'
+</pre>
+</li>
+<li>Almost there. You will need to go to the ext dir.
+
+<pre>
+  &gt; cd /=(cvspath)/baker/ext
+</pre>
+<p>
+There you will find some extras. You can read the file EXT-NOTES for
+additional info.
+</p>
+<p>
+The open-uri.rb ruby file is a replacement for the open-uri.rb file in your
+ruby installation. Probably in /usr/local/lib/ruby/1.8/. You will need to
+replace the one there with this one. You might want to backup the old one
+just in case.
+</p>
+<p>
+You also need to move the progressbar directory to your site_ruby dir,
+probably /usr/local/lib/ruby/site_ruby/1.8/.
+</p>
+</li>
+<li>Finally make two links in the appropriate bin directories to bake.rb and
+bake-config.rb, called bake and bake-config, respectively. Something like
+this:
+
+<pre>
+   &gt; ln -s /=(cvspath)/baker/src/baker.rb /usr/local/bin/baker
+   &gt; ln -s /=(cvspath)/baker/src/baker-config.rb /usr/local/bin/baker-config
+
+ GoboUsers, you know what to do.
+</pre>
+</li>
+<li>That should be it! If you have toruble read the End User section for some
+additioanl info, or give me an email: transami@runbox.com. If all wnt well
+skip to the next section.
+
+</li>
+</ol>
+<h3>For End Users</h3>
+<ol>
+<li>This Procedure is similiar to the above except we will be moving
+directories to there &quot;proper&quot; places in your file system.
+
+<p>
+PLEASE NOTE: This procedure is not complete and is slightly out of date.
+</p>
+</li>
+<li>In the unpacked baker directory you will see 4 directories etc, ext, src,
+var. Plus a few extra files, like this <a href="README.html">README</a> and
+the license info in <a href="COPYING.html">COPYING</a>. You will want to
+move the etc directory to your main configuration directorey, probably
+/etc, and rename it baker. From the unpacked dir:
+
+<pre>
+  &gt; mv etc /etc/baker
+</pre>
+<p>
+For more experienced users, you can of course put this wherever you&#8217;d
+like and create links to suit &#8212;or baker can be configured to look
+where you want it too. GoboLinux users will of course move this dir to
+/Programs/<a href="../classes/Baker.html">Baker</a>/Settings.
+</p>
+</li>
+<li>In a shell console set the environment variable BAKERETC to the path of the
+settings directory you just moved. Probably do:
+
+<pre>
+  &gt; BAKERETC=/etc/Baker; export BAKERETC
+</pre>
+<p>
+You will want to add this line to your personal ~/.profile file or to the
+master profile file, probably in /etc/profile, so that it will be set the
+next time you boot your computer.
+</p>
+</li>
+<li>Now copy the src directory to your site_ruby/1.8 directory, probably
+/usr/lib/ruby/site_ruby/1.8/ or some such nonsense :), and rename it to
+baker as well.
+
+<pre>
+  &gt; mv src /usr/lib/ruby/site_ruby/1.8/baker
+</pre>
+<p>
+For GoboLinux users rename it to <a href="../classes/Baker.html">Baker</a>
+and move it to /Programs, and add a link in
+/Programs/Ruby/1.8/lib/site_ruby/ back to /Programs/<a
+href="../classes/Baker.html">Baker</a> called baker. (At least I think
+that&#8217;s the proper way.)
+</p>
+</li>
+<li>You will need to create a new directory for the recipe catalog. On a
+typical system a good place for this is /var/baker/recipes. GoboLinux users
+probably will want it in /Files/ProgramRecipes. Again <a
+href="../classes/Baker.html">Baker</a> is configurable, so you can put it
+anywhere else you&#8217;d like.
+
+</li>
+<li>Then cd to /etc/baker (or where ever you decided to put the settings
+directory) and you will see a file Ccat-config, and two folders: build and
+templates.
+
+</li>
+<li>Edit cat-config with your favorite editor.
+
+</li>
+<li>This file is in Yaml format. Just looking at this file carefully will teach
+you most of the Yaml syntax. But Yaml is used extensively by <a
+href="../classes/Baker.html">Baker</a> so it&#8217;s a good idea to go to
+<a href="http://www.yaml.org">www.yaml.org</a> and learn more. By the way,
+never change the frist line! This tells <a
+href="../classes/Baker.html">Baker</a> what kind of file this is. Right now
+it&#8217;s tied to Ruby, the language <a
+href="../classes/Baker.html">Baker</a> is implemented in, this will be made
+generic in the future.
+
+</li>
+<li>You will see a line labeled recipe_dir: After this put in the directory
+path to the catalog directory you created in step 5. Make sure there is a
+space after the colon (:) and that there is no slash (/) at the end of the
+path name.
+
+</li>
+<li>Finally make two links in the appropriate bin directories to bake.rb and
+bake-config.rb, called bake and bake-config, respectively. Something like
+this:
+
+<pre>
+  &gt; ln -s /usr/lib/ruby/site_ruby/1.8/baker/baker.rb /usr/bin/baker
+  &gt; ln -s /usr/lib/ruby/site_ruby/1.8/baker/baker.rb /usr/bin/baker
+</pre>
+<p>
+GoboUsers, you know what to do.
+</p>
+</li>
+</ol>
+</div>
+
+</div>
+
+
+
+
+  
+
+  <!-- method descriptions -->
+
+</body>
+</html>

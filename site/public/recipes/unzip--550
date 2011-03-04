@@ -1,0 +1,6 @@
+--- !ruby/object:Baker::AutoShellRecipe
+program: unzip
+version: 550+
+updated: 2003-12-11
+maintainer: transami@runbox.com
+

@@ -1,0 +1,29 @@
+EXTERNAL FILE NOTES
+
+These are external libs and files that Baker needs to work or are useful
+for reference. If required they are provided here b/c they either
+have some minor alteration made to them, or for your convenience.
+
+Required
+--------
+
+open-uri.rb - Modified for progress bar hook. this cahnge is being integrated into
+              the official version by Tanaka once he figures out the "best" implementation.
+
+progressbar - A small change was made to this to allow for external alteration of the
+              bar symbol, which was a static |ooooooo|, but I prefered the |>>>>>>| :)
+
+To install these move open-uri.rb to you ruby/1.8 installation directory
+(probably /usr/lib/ruby/1.8/ or /usr/local/lib/ruby/1.8/). You will overwrite the
+file already there. You may back it up just in case.
+
+Copy progressbar directory in full to ruby/site-ruby/1.8 (similiar to above locations).
+
+That's it.
+
+
+Reference
+---------
+
+rubyx - Andrew Walrond's mini-Ruby source-package/distro management system.
+

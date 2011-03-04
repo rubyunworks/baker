@@ -1,0 +1,29 @@
+--- !baker.rubyforge.org,2004/resource
+program: sudo
+version: 1.6.7p5
+created: 2003-12-11
+updated: 2003-12-11
+maintainer: transami@runbox.com
+brief: Sudo - Superuser Do
+description: >
+  Sudo (superuser do) allows a system administrator to give certain users
+  (or groups of users) the ability to run some (or all) commands as root
+  or another user while logging the commands and arguments.
+install_size: 1MB
+website: http://www.courtesan.com/sudo/
+categories: [base, admin, console]
+source_urls:
+  - [ 'ftp://ftp.cs.colorado.edu/pub/sudo/sudo-1.6.7p5.tar.gz', 'North America', '55d503e5c35bf1ea83d38244e0242aaf', 360000 ]
+  - [ 'ftp://ftp.eunet.cz/pub/security/sudo/sudo-1.6.7p5.tar.gz', 'Europe', '55d503e5c35bf1ea83d38244e0242aaf', 360000 ]
+patch_urls: []
+install_indicators:
+  - /bin/sudo
+install_conflicts: {}
+dependencies: []
+conflicts: []
+compliment: []
+supplement: []
+no_architecture: []
+notes: |
+
+

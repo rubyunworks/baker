@@ -1,0 +1,28 @@
+--- !baker.rubyforge.org,2004/resource
+program: m4
+version: 1.4
+created: 2003-12-20
+updated: 2003-12-20
+maintainer: transami@runbox.com
+brief: M4 Macro Processor
+description: >
+  GNU m4 is an implementation of the traditional Unix macro processor.
+  It is mostly SVR4 compatible although it has some extensions
+  (for example, handling more than 9 positional parameters to macros).
+  GNU m4 also has built-in functions for including files, running shell
+  commands, doing arithmetic, etc.
+install_size: 1MB
+website: http://www.gnu.org/software/m4/m4.html
+categories: [base, programming]
+source_urls:
+  - [ 'http://ftp.gnu.org/pub/gnu/m4/m4-1.4.tar.gz', 'Unspecified', '', 320000 ]
+patch_urls: []
+install_indicators:
+  - /bin/bzip
+install_conflicts: {}
+dependencies: []
+conflicts: []
+compliment: []
+supplement: []
+no_architecture: []
+notes: |

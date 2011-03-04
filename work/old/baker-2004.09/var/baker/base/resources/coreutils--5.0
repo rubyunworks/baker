@@ -1,0 +1,27 @@
+--- !baker.rubyforge.org,2004/resource
+program: Coreutils
+version: 5.0
+created: 2003-12-20
+updated: 2003-12-20
+maintainer: transami@runbox.com
+brief: Core Unix Tools
+description: >
+  The GNU Core Utilities are the basic file, shell and text manipulation
+  utilities of the GNU operating system. These are the core utilities which
+  are expected to exist on every operating system.
+install_size: 15MB
+website: http://www.gnu.org/software/binutils/
+categories: [base, programming]
+source_urls:
+  - [ 'http://ftp.gnu.org/pub/gnu/coreutils/coreutils-5.0.tar.bz2', 'Unspecified', '', 4900000 ]
+  - [ 'http://ftp.gnu.org/pub/gnu/coreutils/coreutils-5.0.tar.gz',  'Unspecified', '', 8900000 ]
+patch_urls: []
+install_indicators:
+  - /bin/ls
+install_conflicts: {}
+dependencies: []
+conflicts: []
+compliment: []
+supplement: []
+no_architecture: []
+notes: |

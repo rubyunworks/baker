@@ -1,0 +1,19 @@
+
+<html>
+<head><title>extract (Baker::Manager)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style>
+  .kw { color: #3333FF; font-weight: bold }
+  .cmt { color: green; font-style: italic }
+  .str { color: #662222; font-style: italic }
+  .re  { color: #662222; }
+</style>
+</head>
+<body bgcolor="white">
+<pre><span class="cmt"># File src/manager.rb, line 227</span>
+    <span class="kw">def</span> extract
+      <span class="kw">self</span>.fetch <span class="kw">if</span> SETTINGS.opt_batch
+      @prioritized_recipes.each { |recipe_name| @recipe_lookup[recipe_name].extract }
+    <span class="kw">end</span></pre>
+</body>
+</html>

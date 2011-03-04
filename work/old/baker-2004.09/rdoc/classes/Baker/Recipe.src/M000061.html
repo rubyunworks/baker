@@ -1,0 +1,35 @@
+
+<html>
+<head><title>eval_scripter (Baker::Recipe)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style>
+  .kw { color: #3333FF; font-weight: bold }
+  .cmt { color: green; font-style: italic }
+  .str { color: #662222; font-style: italic }
+  .re  { color: #662222; }
+</style>
+</head>
+<body bgcolor="white">
+<pre><span class="cmt"># File src/recipe.rb, line 327</span>
+    <span class="kw">def</span> eval_scripter(raw_script)
+      script = raw_script.dup
+      script.gsub!( <span class="re">/\\=\((.+?)\)/</span> ) <span class="kw">do</span>
+        match_eval, match_method = eval_token($&amp;)
+        <span class="kw">if</span> @@buildconfig.respond_to?(match_method)
+          match_eval = &quot;@@buildconfig.#{match_eval}&quot;
+        <span class="kw">elsif</span> <span class="kw">self</span>.methods_available_to_script.include?(match_method)
+          match_eval = &quot;self.#{match_eval}&quot;
+        <span class="kw">else</span>
+          raise BakerError, &quot;recipe script error on undefined subsitution: #{$&amp;}&quot;
+        <span class="kw">end</span>
+        <span class="cmt"># run the evalutation</span>
+        <span class="kw">begin</span>
+          <span class="kw">self</span>.instance_eval(match_eval)
+        <span class="kw">rescue</span>
+          raise BakerError, &quot;recipe script subsitution evaluation error: #{$&amp;}&quot;
+        <span class="kw">end</span>
+      <span class="kw">end</span>
+      script
+    <span class="kw">end</span></pre>
+</body>
+</html>

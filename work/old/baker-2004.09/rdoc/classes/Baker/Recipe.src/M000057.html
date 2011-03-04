@@ -1,0 +1,27 @@
+
+<html>
+<head><title>fetch (Baker::Recipe)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style>
+  .kw { color: #3333FF; font-weight: bold }
+  .cmt { color: green; font-style: italic }
+  .str { color: #662222; font-style: italic }
+  .re  { color: #662222; }
+</style>
+</head>
+<body bgcolor="white">
+<pre><span class="cmt"># File src/recipe.rb, line 258</span>
+    <span class="kw">def</span> fetch
+      <span class="cmt"># source directory already exists? if not then create</span>
+      pkg_dir = <span class="kw">self</span>.package_dir
+      <span class="kw">if</span> !File.directory?(pkg_dir)
+        File.makedirs(pkg_dir)
+      <span class="kw">end</span>
+      <span class="cmt"># have download manger do a region based download</span>
+      success = DownloadManager.regional_download(<span class="kw">self</span>.source_urls,@@catalog.local_region,pkg_dir,SETTINGS.opt_force)
+      <span class="kw">if</span> !success
+        raise BakerError, <span class="str">&quot;source package fetch failed&quot;</span>
+      <span class="kw">end</span>
+    <span class="kw">end</span></pre>
+</body>
+</html>

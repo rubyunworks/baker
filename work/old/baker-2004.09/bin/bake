@@ -1,0 +1,281 @@
+#!/bin/env ruby
+
+# Baker - The Delicious Program Maker
+# (c)2003 PsiT Corporation, GPL
+
+# LICENSE HERE
+
+# external libs
+require 'yaml'
+require 'getoptlong'
+
+# internal libs
+require 'error'
+require 'settings'
+require 'catalog'
+require 'manager'
+
+include Baker
+
+# perform actions
+def process_command(cmd, args)
+  begin
+    #mgr = Baker::Manager.new
+    #Recipe.set_configuration
+    case cmd
+    when 'sync', 'update'
+      Baker::Catalog.instance.sync
+    when 'find', 'search', 'query', 'lookup'
+      results = Baker::Catalog.instance.search(args[0])
+      if results.length > 0 then
+        #puts "Found #{results.length} matching #{ results.length > 1 ? 'entries' : 'entry'}:"
+        results.each { |r| puts "#{r}" }
+        puts "Found (#{results.length}) matching #{ results.length > 1 ? 'entries' : 'entry'}."
+      else
+        puts "No matches found."
+      end
+    when 'catd'
+      puts Settings.catalog_dir
+    when /^info/i
+      recipe = Baker::Catalog.instance.find(args[0])
+      if recipe
+        puts
+        puts "#{recipe.brief} | #{recipe.name} | #{recipe.install_size}KB"
+        puts "#{recipe.description}"
+        puts(recipe.installed? ? "[This program is INSTALLED]" : "[This program is NOT INSTALLED]")
+        puts
+      else
+        raise Baker::BakerError, "could not find recipe for #{args[0]}"
+      end
+    when /^dep/i
+      session = SessionManager.new(args)
+      #session.resolve_dependencies
+      #mgr.recipes = args
+      puts session.dependency_tree.to_yaml
+    when /^con/i
+      session = SessionManager.new(args)
+      rc, ic = session.conflicts
+      puts "Recipe conflicts #{rc.to_yaml}" if !rc.empty?
+      puts "Install conflicts #{ic.to_yaml}" if !ic.empty?
+      puts "No conflicts." if rc.empty? and ic.empty?
+    when /^pri/i
+      session = SessionManager.new(args)
+      puts session.priorities.to_yaml
+    #when 'new'
+    #   temp, name, vers = args[0], args[1], args[2]
+    #   args[1], args[2] = args[1].split('--') if args[1].include?('--')
+    #   raise Baker::BakerError, "no version was given" if !args[2]
+    #   f = mgr.template(args[0], args[1], args[2])
+    #   puts "Successfully created #{f} in your personal catalog." if f
+    when 'edit'
+      # this should be changed
+      # when a user goes to edit a respositry recipe
+      # it should probably be copied to personal
+      # so not to effect the original best way to do?
+      recipe_path = File.join(mgr.catalog.catalog_dir,args[0])
+      if FileTest::exists?(recipe_path)
+        system "#{ENV['EDITOR']} #{recipe_path}"
+      else
+        raise Baker::BakerError, "recipe #{recipe_path} dosen't exist"
+      end
+    when 'cake'
+      session = SessionManager.new(args)
+      #Settings.opt_batch = true  # casting is always autobatch
+      session.build
+    when 'fetch'
+      session = SessionManager.new(args)
+      session.fetch
+    when 'extract'
+      session = SessionManager.new(args)
+      session.extract
+    when 'patch'
+      session = SessionManager.new(args)
+      session.patch
+    when 'prepare'
+      session = SessionManager.new(args)
+      session.prepare
+    when 'compile'
+      session = SessionManager.new(args)
+      session.compile
+   when 'test'
+      session = SessionManager.new(args)
+      session.test
+    when 'install'
+      session = SessionManager.new(args)
+      session.install
+    #when 'purge'
+    #  mgr.recipes = args
+    #  mgr.purge
+    else
+      puts 'Unknown command.'
+    end
+  rescue Baker::DependencyError
+    print "Unresovled dependencies."
+    #puts mgr.dependency_tree.to_yaml
+  rescue Baker::ConflictError
+    print "Conflicts exist."
+    #puts mgr.conflicts.to_yaml
+  rescue Baker::BakerError => error_message
+    puts "Error: #{error_message}"
+  end
+end
+
+# dislpay the help information
+def show_help
+  puts <<-HERE
+
+bake v.10
+
+  USAGE: bake [options...] <command> [arguments...]
+
+  CATALOG COMMANDS:
+
+    sync
+        Syncronize local catalogs with masters.
+
+    find <arg>
+        Search the package catalog for all matching recipes.
+        Argument is a grep expression. (Currently only searches on file name.)
+
+    catd
+        Outputs the local path of the recipe catalog.
+
+    info <program>
+        Provides a description of the specified progam.
+
+    dep <programs...>
+        Displays a dependency tree.
+
+    con <programs...>
+        Displays confilcts.
+
+    new <type> <program> <version>
+        Creates a new receipe of given type. (Type is case sensitive.)
+
+    edit <program--version>
+        Edit the recipe with default editor.
+        (The editor is determined by enviornment variable 'EDITOR'.)
+
+  BUILD COMMANDS:
+
+    cast <programs...>
+        The cast processes does the following in order:
+        1) fetch 2) extract 3) patch 4) prepare 5) compile 6) install
+        The following commands can be used to do these individually.
+
+    fetch <programs...>
+        Fetches the source.
+
+    extract <programs...>
+        Extracts the source. (Will fetch if -b is set)
+
+    patch <programs...>  (NOT YET IMPLEMENTED)
+        Patches the source. (Will extract if -b is set)
+
+    prepare <programs...>
+        Prepares the source. (Will patch if -b is set)
+
+    compile <programs...>
+        Compiles the source. (Will prepare if -b is set)
+
+    install <programs...>
+        Installs the program. (Will compile if -b is set)
+        In batch mode this is the same as cast.
+
+    uninstall <programs...>
+        Uninstalls the program(s). This is not recommended if you did
+        not use this program to install.
+
+    purge <programs...>
+        Purges source. Completely removes the source. Ready for fresh fetch.
+
+  OTHER COMMANDS:
+
+    help
+        Displays this help information. (Same as -h or --help option)
+
+  OPTIONS:
+
+    -h  --help
+        Display this help information.
+
+    -b  --batch
+        Batch mode will back track operations to accomplish task.
+
+    -f  --force
+        Force downloads and extractions.
+
+    -i  --ignore
+        Ignore dependencies and conflicts.
+
+    -r  --redo
+        Will recompile and reinstall even if program is already installed.
+
+    -v  --verbose
+        Provides extra verbose processing information.
+
+    -p  --pretend  (NOT YET IMPLEMENTED)
+        Pretend, just to see what would happen.
+
+    -u  --use <file>
+        Use the specified configuration file for this build,
+        but does not set configuration.
+
+  HERE
+end
+
+# START OF EXECUTION
+
+if __FILE__ == $0
+
+  opts = GetoptLong.new(
+    [ "-h", "--help", GetoptLong::NO_ARGUMENT ],
+    [ "-v", "--verbose", GetoptLong::NO_ARGUMENT ],
+    [ "-p", "--pretend", GetoptLong::NO_ARGUMENT ],
+    [ "-b", "--batch", GetoptLong::NO_ARGUMENT ],
+    [ "-f", "--force", GetoptLong::NO_ARGUMENT ],
+    [ "-i", "--ignore", GetoptLong::NO_ARGUMENT ],
+    [ "-r", "--redo", GetoptLong::NO_ARGUMENT ],
+    [ "-u", "--use", GetoptLong::REQUIRED_ARGUMENT ]
+  )
+
+  opt_help = false
+
+  opts.each do |opt, arg|
+    case opt
+      when '-h'
+        opt_help = true
+      when '-v'
+        Baker::Settings.opt_verbose = true
+      when '-p'
+        Baker::Settings.opt_pretend = true
+      when '-f'
+        Baker::Settings.opt_force = true
+      when '-b'
+        Baker::Settings.opt_batch = true
+      when '-i'
+        Baker::Settings.opt_ignore = true
+      when '-u'
+        Baker::Settings.opt_use = arg
+      when '-r'
+        Baker::Settings.opt_redo = arg
+    end
+  end
+
+  if ARGV.length == 0 or opt_help then
+    cmd = 'help'
+  else
+    cmd = ARGV[0].downcase
+    args = ARGV[1..-1]
+  end
+
+  if cmd == 'help'
+    show_help
+    exit 0
+  end
+
+  process_command(cmd, args)
+
+end
+
+# That's it, baby!

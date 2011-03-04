@@ -1,0 +1,33 @@
+--- !baker.rubyforge.org,2004/resource
+program: tar
+version: 1.13.25
+created: 2003-12-11
+updated: 2003-12-11
+maintainer: transami@runbox.com
+brief: GNU Tape Archiver
+description: >
+  The tar program provides the ability to create tar archives, as well as various other
+  kinds of manipulation. For example, you can use tar on previously created archives to
+  extract files, to store additional files, or to update or list files which were already
+  stored. Initially, tar archives were used to store files conveniently on magnetic tape.
+  The name `tar' comes from this use; it stands for tape archiver. Despite the utility's
+  name, tar can direct its output to available devices, files, or other programs (using pipes).
+  Tar may even access remote devices or files (as archives).
+install_size: 2MB
+website: http://www.gnu.org/software/tar/tar.html
+categories: [base, file, archive]
+source_urls:
+  - [ 'ftp://ftp.gnu.org/gnu/tar/tar-1.13.tar.gz', 'Unspecified', '', 1100000 ]
+patch_urls: []
+install_indicators:
+  - /usr/bin/tar
+  - /usr/local/bin/tar
+install_conflicts: {}
+dependencies: []
+conflicts: []
+compliment: []
+supplement: []
+no_architecture: []
+notes: |
+
+

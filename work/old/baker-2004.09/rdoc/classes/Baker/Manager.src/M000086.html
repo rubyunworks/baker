@@ -1,0 +1,24 @@
+
+<html>
+<head><title>cast (Baker::Manager)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style>
+  .kw { color: #3333FF; font-weight: bold }
+  .cmt { color: green; font-style: italic }
+  .str { color: #662222; font-style: italic }
+  .re  { color: #662222; }
+</style>
+</head>
+<body bgcolor="white">
+<pre><span class="cmt"># File src/manager.rb, line 269</span>
+    <span class="kw">def</span> cast
+      old_batch = SETTINGS.opt_batch    <span class="cmt"># since cast is auto batch</span>
+      <span class="kw">begin</span>                             <span class="cmt"># get the current batch option</span>
+        SETTINGS.opt_batch = <span class="kw">true</span>       <span class="cmt"># set batch to true for cast</span>
+        <span class="kw">self</span>.install                    <span class="cmt"># now call install</span>
+      <span class="kw">ensure</span>
+        SETTINGS.opt_batch = old_batch  <span class="cmt"># reset batch option to what it was</span>
+      <span class="kw">end</span>
+    <span class="kw">end</span></pre>
+</body>
+</html>

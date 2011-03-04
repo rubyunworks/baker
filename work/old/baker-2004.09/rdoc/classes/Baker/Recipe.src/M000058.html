@@ -1,0 +1,43 @@
+
+<html>
+<head><title>extract (Baker::Recipe)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style>
+  .kw { color: #3333FF; font-weight: bold }
+  .cmt { color: green; font-style: italic }
+  .str { color: #662222; font-style: italic }
+  .re  { color: #662222; }
+</style>
+</head>
+<body bgcolor="white">
+<pre><span class="cmt"># File src/recipe.rb, line 272</span>
+    <span class="kw">def</span> extract
+      success = <span class="kw">false</span> <span class="cmt"># assume the worst</span>
+      <span class="cmt"># do we have the source package?</span>
+      pkg_file = <span class="kw">self</span>.package_file
+      <span class="kw">if</span> !pkg_file
+        raise BakerError, &quot;source package not found for #{@program}--#{version}, likely it has not been downloaded&quot;
+      <span class="kw">end</span>
+      pkg_fn = File.basename(pkg_file)
+      <span class="cmt"># build dir exist? if not create it</span>
+      bld_dir = <span class="kw">self</span>.build_dir
+      <span class="kw">if</span> !FileTest::exists?(bld_dir)
+        File.makedirs(bld_dir)
+      <span class="kw">end</span>
+      <span class="cmt"># if no unpacked source dir exists or if the force option is set</span>
+      <span class="cmt"># then copy package to build dir and extract</span>
+      src_dir = <span class="kw">self</span>.source_dir
+      <span class="kw">if</span> !src_dir <span class="kw">or</span> SETTINGS.opt_force
+        bld_pkg = File.join(bld_dir,pkg_fn)
+        File.install(pkg_file,bld_dir)  <span class="cmt"># copies package file to build dir</span>
+        success = DownloadManager.extract(bld_pkg)  <span class="cmt"># extract</span>
+        <span class="kw">if</span> !success
+          raise BakerError, &quot;extraction of source package failed for #{@program}--#{@version}&quot;
+        <span class="kw">end</span>
+        <span class="cmt"># remove source package file from build dir</span>
+        File.delete(bld_pkg)
+      <span class="kw">end</span>
+      <span class="kw">return</span> success
+    <span class="kw">end</span></pre>
+</body>
+</html>

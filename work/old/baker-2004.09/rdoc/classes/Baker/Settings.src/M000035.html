@@ -1,0 +1,28 @@
+
+<html>
+<head><title>new (Baker::Settings)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style>
+  .kw { color: #3333FF; font-weight: bold }
+  .cmt { color: green; font-style: italic }
+  .str { color: #662222; font-style: italic }
+  .re  { color: #662222; }
+</style>
+</head>
+<body bgcolor="white">
+<pre><span class="cmt"># File src/settings.rb, line 95</span>
+    <span class="kw">def</span> initialize
+      @cat_config_file = File.join(ETC_DIRPATH, CAT_CONFIG_FILENAME)
+      @fhs_config_file = File.join(ETC_DIRPATH, FHS_CONFIG_FILENAME)
+      @templates_dir = File.join(ETC_DIRPATH, TEMPLATE_FILENAME)
+      @build_config_dir = File.join(ETC_DIRPATH, BUILD_CONFIG_DIRNAME)
+      @current_config_file = File.join(@build_config_dir, CURRENT_CONFIG_FILENAME)
+      @default_config_file = File.join(@build_config_dir, DEFAULT_CONFIG_FILENAME)
+      @undo_config_file = File.join(@build_config_dir, UNDO_CONFIG_FILENAME)
+      @temp_config_file = File.join(@build_config_dir, TEMP_CONFIG_FILENAME)
+      @tmp_dir = TMP_DIR
+      @fakeroot_dir = File.join(TMP_DIR, FAKEROOT_DIRNAME)
+      @build_dir = File.join(TMP_DIR, BUILD_DIRNAME)
+    <span class="kw">end</span></pre>
+</body>
+</html>

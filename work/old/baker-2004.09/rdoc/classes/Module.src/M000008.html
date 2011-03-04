@@ -1,0 +1,21 @@
+
+<html>
+<head><title>scripter (Module)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style>
+  .kw { color: #3333FF; font-weight: bold }
+  .cmt { color: green; font-style: italic }
+  .str { color: #662222; font-style: italic }
+  .re  { color: #662222; }
+</style>
+</head>
+<body bgcolor="white">
+<pre><span class="cmt"># File src/recipe.rb, line 57</span>
+  <span class="kw">def</span> scripter(*args)
+    args.each <span class="kw">do</span> |name|
+      class_eval <span class="str">&quot;        attr_accessor :\#{name}\n        alias __\#{name} \#{name}\n        def \#{name}()\n          eval_scripter(self.__\#{name})\n        end\n&quot;</span>
+    <span class="kw">end</span>
+    args
+  <span class="kw">end</span></pre>
+</body>
+</html>

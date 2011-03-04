@@ -1,0 +1,47 @@
+
+<html>
+<head><title>regional_download (Baker::DownloadManager)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style>
+  .kw { color: #3333FF; font-weight: bold }
+  .cmt { color: green; font-style: italic }
+  .str { color: #662222; font-style: italic }
+  .re  { color: #662222; }
+</style>
+</head>
+<body bgcolor="white">
+<pre><span class="cmt"># File src/download.rb, line 34</span>
+    <span class="kw">def</span> DownloadManager.regional_download(regional_urls, local_region, source_dir, force=<span class="kw">false</span>)
+      <span class="cmt"># source file exists and passes checksum then we need not fetch</span>
+      regional_urls.each <span class="kw">do</span> |url|
+        file_path = File.join(source_dir,File.basename(url[0]))
+        file_location = url[1]
+        file_checksum = url[2]
+        file_size= url[3]
+        <span class="kw">if</span> File.exists?(file_path)
+          <span class="kw">if</span> force <span class="kw">or</span> DownloadManager.checksum(file_path) != file_checksum
+            File.delete(file_path)
+            <span class="kw">break</span>
+          <span class="kw">else</span>
+            <span class="cmt"># prefer this puts not be here as it is interface code</span>
+            <span class="cmt"># but i haven't found a good way to seperate concersn yet</span>
+            puts <span class="str">&quot;File has already been fetched and passes checksum.&quot;</span> <span class="kw">if</span> SETTINGS.opt_verbose
+            <span class="kw">return</span> <span class="kw">true</span>
+          <span class="kw">end</span>
+        <span class="kw">end</span>
+      <span class="kw">end</span>
+      <span class="cmt"># prioritize urls</span>
+      prioritized_urls = DownloadManager.prioritize_regional_urls(regional_urls, local_region)
+      <span class="cmt"># download</span>
+      success = <span class="kw">nil</span>
+      prioritized_urls.each <span class="kw">do</span> |url|
+        file_path = File.join(source_dir,File.basename(url[0]))
+        file_checksum = url[2]
+        file_size = url[3]
+        success = DownloadManager.download(url[0], file_path, file_checksum, file_size)
+        <span class="kw">break</span> <span class="kw">if</span> success  <span class="cmt"># we got it</span>
+      <span class="kw">end</span>
+      <span class="kw">return</span> success
+    <span class="kw">end</span></pre>
+</body>
+</html>

@@ -1,0 +1,25 @@
+--- !baker.rubyforge.org,2004/resource
+program: kdb
+version: 1.08
+created: 2003-12-20
+updated: 2003-12-20
+maintainer: transami@runbox.com
+brief: Keyboard Utilities
+description: >
+  Diffutils is a set of utilities for processing file differences.
+install_size: 20957
+website: http://www.gnu.org/software/binutils/
+categories: [base, programming]
+source_urls:
+  - [ 'http://ftp.gnu.org/gnu/binutils/binutils-2.14.tar.bz2', 'Unspecified', '', 12900000 ]
+  - [ 'http://ftp.gnu.org/gnu/binutils/binutils-2.14.tar.gz',  'Unspecified', '', 15900000 ]
+patch_urls: []
+install_indicators:
+  - /bin/bzip
+install_conflicts: {}
+dependencies: []
+conflicts: []
+compliment: []
+supplement: []
+no_architecture: []
+notes: |

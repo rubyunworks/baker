@@ -1,0 +1,35 @@
+--- !baker.rubyforge.org,2004/resource
+program: sharutils
+version: 4.2.1
+created: 2003-12-11
+updated: 2003-12-11
+maintainer: transami@runbox.com
+brief: GNU Shar Utilities
+description: >
+  GNU shar makes so-called shell archives out of many files, preparing them for transmission
+  by electronic mail services. A shell archive is a collection of files that can be unpacked
+  by /bin/sh. A wide range of features provide extensive flexibility in manufacturing shars
+  and in specifying shar smartness. For example, shar may compress files, uuencode binary
+  files, split long files and construct multi-part mailings, ensure correct unsharing order,
+  and provide simplistic checksums. GNU unshar scans a set of mail messages looking for the
+  start of shell archives. It will automatically strip off the mail headers and other introductory
+  text. The archive bodies are then unpacked by a copy of the shell. unshar may also process
+  files containing concatenated shell archives.
+install_size: 1MB
+website: http://www.gnu.org/software/sharutils/sharutils.html
+categories: [base, file, mail]
+source_urls:
+  - [ 'ftp://ftp.gnu.org/gnu/sharutils/sharutils-4.2.1.tar.gz', 'Unspecified', '', 310000 ]
+patch_urls: []
+install_indicators:
+  - /usr/bin/shar
+  - /usr/local/bin/shar
+install_conflicts: {}
+dependencies: []
+conflicts: []
+compliment: []
+supplement: []
+no_architecture: []
+notes: |
+
+

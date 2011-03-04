@@ -1,0 +1,69 @@
+= Baker, The Delicious Program Maker
+
+== What is It?
+
+Baker is a source-based package management system
+(although it can handle binary packages too).
+It is 100% well structed OO Ruby code, which can easily be extended
+and called upon as a library. Its commandline interface called 'bake'
+makes it easy to download, compile and install programs.
+A catalog of &quot;recipes&quot; (also called the &quot;recipe book&quot;)
+can be sync'd with a master (or mirrored master) and contains yaml files
+that describe where to get a program (handles mirrors and local regions),
+how to compile it and how to install it. Thus it is easily suited
+to any distribution, even those with non-standard FHS.
+It is quite flexible, having extensible types of build recipes, already
+including a basic shell recipe class. Shell recipes simply runs yaml embedded
+shell scripts for each stage, subsequent to package download and extraction).
+We are working on "smarter" make recipes handling compilation semi-automatically
+augmented with yaml embedded build options. It also automatically handles
+dependencies and conflicts. The goal of the project is to offer
+open operating systems an easy means to manage large
+collections of packages. Most of the system is functional,
+but some aspects (mainly the smart-mode) are still being designed.
+
+Note: a few of these features are still subject to alteration.
+
+
+== Installation
+
+See INSTALL file.
+
+
+== Usaage
+
+See HOWTO file.
+
+
+== Requirements
+
+* Ruby 1.8.0 or later
+
+
+== Inspiration
+
+Pat-a-cake, pat-a-cake,
+Baker's man!
+So I do, master,
+As fast as I can.
+
+Pat it, and prick it,
+And mark it with T,
+Put it in the oven
+For Tommy and me.
+
+
+== Authors
+
+* Trans
+* Mika Pesu
+
+
+== Copying
+
+Copyright (c) 2003 Tab Computing
+
+This software is provided "as is" and without any express or
+implied warranties, including, without limitation, the implied
+warranties of merchantibility and fitness for a particular
+

@@ -1,0 +1,126 @@
+
+<html><head>
+  <title>File: simple</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <link rel=StyleSheet href="../../.././rdoc-style.css" type="text/css" media=screen>
+  <script type="text/javascript" language="JavaScript">
+  <!--
+  function popCode(url) {
+    parent.frames.source.location = url
+  }
+  //-->
+  </script>
+</head>
+<body bgcolor="white">
+
+<table width="100%">
+ <tr class="title-row">
+ <td><table width="100%"><tr>
+   <td class="big-title-font" colspan=2><font size=-3><B>File</B><BR></font>simple</td>
+   <td align="right"><table cellspacing=0 cellpadding=2>
+         <tr>
+           <td  class="small-title-font">Path:</td>
+           <td class="small-title-font">etc/templates/simple</td>
+         </tr>
+         <tr>
+           <td class="small-title-font">Modified:</td>
+           <td class="small-title-font">Fri Dec 05 16:16:49 CET 2003</td>
+         </tr>
+        </table>
+    </td></tr></table></td>
+  </tr>
+</table><br>
+  <!-- banner header -->
+
+
+<div class="description"><p>
+&#8212; !ruby/object:Baker::SimpleRecipe program: TheProgramName version:
+1.0.0 created: 2003-11-11 updated: 2003-11-11 maintainer:
+</p>
+<pre>
+  name: Unassigned
+  email: xxx@xxx.cccc
+</pre>
+<p>
+brief: Give a one line descript. description: &gt;
+</p>
+<pre>
+  Give a detial description
+  on the program.
+</pre>
+<p>
+package_size: 200000 website: <a
+href="http://website/index.html">website/index.html</a> categories: [
+&#8216;qt?&#8217;, &#8216;gtk?&#8217;, &#8216;kde?&#8217;,
+&#8216;gnome?&#8217;, &#8216;x?&#8217;, &#8216;math?&#8217;,
+&#8216;etc&#8230;&#8217; ] distributions: [] super: ~ source_urls:
+</p>
+<pre>
+  - [ 'http://download.url/yourprogram.tar.gz',  'Unspecified',   'MD5...658d4aa181ddc73bd5d5', 100000 ]
+</pre>
+<p>
+patch_urls: [] install_indicators:
+</p>
+<pre>
+  - /Programs/Fung-Calc/1.0.0/bin/exename
+  - /usr/bin/exename
+  - /usr/local/bin/exename
+</pre>
+<p>
+# - /usr .*/bin/exename include <a
+href="../../../classes/Baker/Manager.html#M000070">install_conflicts</a>:
+{} dependencies:
+</p>
+<pre>
+  - OtherRecipe--1.0+
+</pre>
+<p>
+conflicts: [] compliment:
+</p>
+<pre>
+  - ComplimentRecipe--1.0+
+</pre>
+<p>
+supplement: [] no_architecture: [] test_script: |
+</p>
+<pre>
+  echo &quot;Testing... \=(program) \=(version) \=(cflags) \=(maintainer.email) \=(categories?qt yes) needed.&quot;
+</pre>
+<p>
+prepare_script: |
+</p>
+<pre>
+  ./configure \=(avoid?KDE --disable-kde-app) \=(avoid?Mesa --disable-glgraph)
+</pre>
+<p>
+compile_script: |
+</p>
+<pre>
+  make clean
+  make
+</pre>
+<p>
+install_script: |
+</p>
+<pre>
+  make install
+</pre>
+<p>
+system_files: [] notes: |
+</p>
+<pre>
+  Put whatever notes you like here.
+</pre>
+</div>
+
+</div>
+
+
+
+
+  
+
+  <!-- method descriptions -->
+
+</body>
+</html>

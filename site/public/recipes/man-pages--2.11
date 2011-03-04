@@ -1,0 +1,9 @@
+require 'baker/dsl'
+
+recipe     'man-pages'
+maintainer 'trans', 'trans at gmail.com'
+date       '2005-11-04'
+
+# this package has no compile phase
+make_install
+

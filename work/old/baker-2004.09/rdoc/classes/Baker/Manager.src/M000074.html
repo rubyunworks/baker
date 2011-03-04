@@ -1,0 +1,31 @@
+
+<html>
+<head><title>recurse_dependency_tree (Baker::Manager)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style>
+  .kw { color: #3333FF; font-weight: bold }
+  .cmt { color: green; font-style: italic }
+  .str { color: #662222; font-style: italic }
+  .re  { color: #662222; }
+</style>
+</head>
+<body bgcolor="white">
+<pre><span class="cmt"># File src/manager.rb, line 155</span>
+    <span class="kw">def</span> recurse_dependency_tree(recipe_node, matched=[])
+      dep_tree = {}
+      @recipe_lookup[recipe_node].resolved_dependencies.each <span class="kw">do</span> |dep_name|
+        <span class="kw">if</span> matched.include?(dep_name)
+          <span class="cmt">#dep_tree[dep_name] = ''  #.merge!( { dep_name =&gt; '' } )</span>
+        <span class="kw">else</span>
+          matched &lt;&lt; dep_name
+          branch_leaf = <span class="kw">self</span>.recurse_dependency_tree(dep_name, matched)
+          dep_tree[dep_name] = (branch_leaf == {} ? <span class="kw">true</span> : branch_leaf)
+        <span class="kw">end</span>
+      <span class="kw">end</span>
+      @recipe_lookup[recipe_node].unresolved_dependencies.each <span class="kw">do</span> |dep_name|
+        dep_tree[dep_name] = <span class="kw">false</span>
+      <span class="kw">end</span>
+      <span class="kw">return</span> dep_tree
+    <span class="kw">end</span></pre>
+</body>
+</html>

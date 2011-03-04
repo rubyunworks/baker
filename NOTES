@@ -1,0 +1,29 @@
+# Notes for distro creation
+- Create partition and setup fstab
+- mount /mnt/dgl1
+- export $LFS = /mnt/dgl1
+- mkdir $LFS/build/
+- mkdir $LFS/build/sources
+- mkdir $LFS/build/tools
+- ln -s $LFS/build /build
+- groupadd baker
+- useradd -s /bin/bash -g baker -m -k /dev/null baker
+- chown baker /build
+- chown -R baker $LFS/build
+- su - baker
+- |
+  cat > ~/.bash_profile << "EOF"
+  exec env -i HOME=$HOME TERM=$TERM PS1='\u:\w\$ ' /bin/bash
+  EOF
+- |
+  cat > ~/.bashrc << "EOF"
+  set +h
+  umask 022
+  LFS=/mnt/lfs
+  LC_ALL=POSIX
+  PATH=/boot/strap/tools/bin:/bin:/usr/bin
+  export LFS LC_ALL PATH
+  EOF
+- source .bash_profile
+# Target triplet is ?  (./config.guess)
+# The dynamic linker for debian is ld-linux.so.2

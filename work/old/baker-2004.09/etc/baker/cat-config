@@ -1,0 +1,6 @@
+#source_dir: /var/lib/baker/src
+#catalog_dir: /home/transami/Files/Source/ruby/baker/var/cat
+#personal_dir: /home/transami/Files/Source/ruby/baker/var/cat
+local_region: North America
+catalog_urls:
+  - http://rubyforge.org/download.php/212/test.tgz

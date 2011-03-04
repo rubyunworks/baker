@@ -1,0 +1,40 @@
+--- !ruby/object:Baker::ShellRecipe
+program: Pong
+version: 1.0.2
+created: 2003-12-11
+updated: 2003-12-11
+maintainer:
+  name: T. Onoma
+  email: transami@runbox.com
+brief: Old Fashion Console-based Pong Game
+description: >
+  Are you telling me you've never played Pong? :-)
+install_size: 1000
+website: ''
+categories: [games]
+distributions: [debian--3.0]
+super: ~
+source_urls:
+  - [ 'http://rpmfind.net/linux/gnome.org/sources/pong/1.0/pong-1.0.2.tar.bz2', 'Unspecified', 'bda9ea23b470fe0e4e2ace3599687f05', 566280 ]
+  - [ 'http://rpmfind.net/linux/gnome.org/sources/pong/1.0/pong-1.0.2.tar.gz',  'Unspecified', '6d794f21b5e6d09eb438f432725cb3d4', 787460 ]
+patch_urls: []
+install_indicators:
+  - /usr/bin/pong
+  - /usr/bin/local/pong
+install_conflicts: {}
+dependencies: []
+conflicts: []
+compliment: []
+supplement: []
+no_architecture: []
+prepare_script: |
+  ./configure --prefix=\=(prefix)
+compile_script: |
+  make clean
+  make
+test_script: ''
+install_script: |
+  make install
+system_files: []
+notes: |
+  untested

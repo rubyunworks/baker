@@ -1,0 +1,32 @@
+--- !baker.rubyforge.org,2004/resource
+program: Ruby
+version: 1.8.1p3
+created: 2003-12-11
+updated: 2003-12-11
+maintainer:
+  name: T. Onoma
+  email: transami@runbox.com
+brief: Ruby Dynamic Object Oriented Programming Language
+description: >
+  Ruby is the interpreted scripting language for quick and easy object-oriented programming.
+  It has many features to process text files and to do system management tasks (as in Perl).
+  It is simple, straight-forward, extensible, and portable.
+install_size: 10600
+website: http://ruby-lang.org
+categories: [programming]
+distributions: [debian--3.0]
+source_urls:
+  - [ 'ftp://ftp.ruby-lang.org/pub/ruby/1.8/ruby-1.8.1-preview3.tar.gz', 'Unspecified', 'b68032fc40688242f57f61a412e229f8', 2591000 ]
+patch_urls: []
+install_indicators:
+  - /usr/bin/ruby
+  - /usr/local/bin/ruby
+install_conflicts: {}
+dependencies: []
+conflicts: []
+compliment: []
+supplement: []
+no_architecture: []
+notes: |
+  Kind of a bootstrap deal here since Baker requires Ruby to work.
+

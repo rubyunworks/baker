@@ -1,0 +1,34 @@
+--- !baker.rubyforge.org,2004/resource
+program: Expect
+version: 5.39.0
+updated: 2004-12-20
+maintainer:
+  name: Mika Pesu
+  email: pmika@japo.fi
+brief: Tool Automation Utility
+description: >
+  Expect is a tool for automating interactive applications such as telnet,
+  ftp, passwd, fsck, rlogin, tip, etc. Expect really makes this stuff
+  trivial. Expect is also useful for testing these same applications.
+  And by adding Tk, you can also wrap interactive applications in X11
+  GUIs. Expect can make easy all sorts of tasks that are prohibitively
+  difficult with anything else. You will find that Expect is an absolutely
+  invaluable tool - using it, you will be able to automate tasks that
+  you've never even thought of before - and you'll be able to do this
+  automation quickly and easily.
+install_size: 2MB
+website: http://expect.nist.gov/
+categories: [base, programming]
+source_urls:
+  - [ 'http://freshmeat.net/redir/expect/2476/url_tgz/expect.tar.gz', 'Unspecified', '', 600000 ]
+patch_urls: []
+install_indicators:
+  - /bin/expect
+  - /user/bin/expect
+install_conflicts: {}
+dependencies: []
+conflicts: []
+compliment: []
+supplement: []
+no_architecture: []
+notes: |

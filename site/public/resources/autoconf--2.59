@@ -1,0 +1,45 @@
+--- !baker.rubyforge.org,2004/Resource
+program: Autoconf
+version: 2.59
+created: 2003-12-20
+updated: 2003-12-20
+maintainer: transami@runbox.com
+brief: Source Code Auto-Configuration Creation Tool
+description: >
+  Autoconf is an extensible package of m4 macros that produce shell scripts to automatically
+  configure software source code packages. These scripts can adapt the packages to many kinds
+  of UNIX-like systems without manual user intervention. Autoconf creates a configuration script
+  for a package from a template file that lists the operating system features that the package
+  can use, in the form of m4 macro calls.
+website: http://www.gnu.org/software/autoconf/
+categories: [base, programming]
+source_urls:
+  - [ 'http://ftp.gnu.org/gnu/autoconf/autoconf-2.59.tar.bz2', 'Unspecified', '', 1000000 ]
+  - [ 'http://ftp.gnu.org/gnu/autoconf/autoconf-2.59.tar.gz', 'Unspecified', '', 1300000 ]
+patch_urls: []
+bittorrents: []
+installation_size: 2MB
+installation_indicators:
+  - /bin/autoconf
+runtime_conflicts: {}
+dependencies:
+  - m4
+conflicts: []
+compliment:
+  - perl
+supplement: []
+
+# est. disk space require to build (include install size)
+build_size: 3MB
+
+# architectures this script *knowingly* will not build upon
+noarch: []
+
+# full path to any system files this script effects
+# keep in mind we use FHSConfig to map paths
+system_files: []
+
+# any notes
+notes: ''
+
+

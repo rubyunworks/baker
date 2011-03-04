@@ -1,0 +1,63 @@
+--- !baker.rubyforge.org,2004/resource_collection
+program: Baker-Base
+version: 1.0.0
+created: 2003-12-20
+updated: 2003-12-20
+maintainer: transami@runbox.com
+brief: Base Recipe Collection for Baker Build Process
+description: >
+  Collection of programs required for Baker to operate.
+  Your current system will be used to build these packages
+  in order to bootstap the Baker system. Once the base is
+  built, these programs can be used to provide
+  a protected environment for building all other programs.
+website: http://baker.rubyforge.org/index.html
+categories: [baker, base]
+dependencies:
+  - coreutils
+  - diffutils
+  - shareutils
+  - findutils
+  - binutils
+  - sed
+  - gawk
+  - gcc
+  - glibc
+  - m4
+  - autoconf
+  - automake
+  - make
+  - perl
+  - pcre
+  - rsync
+  - libtool
+  - groff
+  - bison
+  - flex
+  - ncurses
+  - less
+  - openssl
+  - file
+  - readline
+  - kbd
+  - mktemp
+  - gdbm
+  - zlib
+  - gettext
+  - bash
+  - uucp
+  - gzip
+  - unzip
+  - bzip2
+  - grep
+  - sudo
+  - tar
+  - patch
+  - man
+  - texinfo
+  - ruby
+conflicts: []
+compliment: []
+supplement: []
+notes: |
+  This collecton may need modification for variant systems.

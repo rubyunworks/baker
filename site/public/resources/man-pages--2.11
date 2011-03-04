@@ -1,0 +1,24 @@
+--- !baker.rubyforge.org,2004/resource
+program: man-pages
+version: 2.11
+created: 2005-11-05
+updated: 2005-11-05
+maintainer: Mika Pesu <pmika@japo.fi>
+brief: Linux Manual
+description: >
+  Linux manual pages provide console documentation.
+install_size: 20957
+website: http://www.kernel.org/pub/linux/docs/manpages/
+categories: [base, documentation, doc]
+source_urls:
+  - [ 'http://www.kernel.org/pub/linux/docs/manpages/man-pages-2.11.tar.bz2', 'Unspecified', '2a773368d50d91fbba33da48b7beebe3', 1700000 ]
+patch_urls: []
+install_indicators:
+  - /include/man/man1/
+install_conflicts: {}
+dependencies: []
+conflicts: []
+compliment: []
+supplement: []
+no_architecture: []
+notes: ''

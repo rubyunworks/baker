@@ -1,0 +1,13 @@
+require 'baker/dsl'
+
+recipe     'autoconf', '> 2.5'
+maintainer 'trans', 'transfire at gmail.com'
+date       '2003-12-20'
+
+# a standard build scenario
+configure
+make
+make_test
+make_install
+make_clean
+

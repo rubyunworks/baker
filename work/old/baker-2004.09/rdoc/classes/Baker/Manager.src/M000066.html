@@ -1,0 +1,28 @@
+
+<html>
+<head><title>recipes= (Baker::Manager)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style>
+  .kw { color: #3333FF; font-weight: bold }
+  .cmt { color: green; font-style: italic }
+  .str { color: #662222; font-style: italic }
+  .re  { color: #662222; }
+</style>
+</head>
+<body bgcolor="white">
+<pre><span class="cmt"># File src/manager.rb, line 61</span>
+    <span class="kw">def</span> recipes=(selected_recipes)
+      @recipe_collection = RecipeCollection.new(<span class="str">'Bake-session'</span>, Time.now.to_s, selected_recipes)
+      @recipe_collection.resolve_dependencies <span class="cmt">#(@catalog)</span>
+      <span class="kw">if</span> @recipe_collection.unresolved_dependencies.length &gt; 0
+        raise(BakerError, &quot;cannot resolve recipes #{@recipe_collection.unresolved_dependencies.join(', ')}&quot;)
+      <span class="kw">end</span>
+      @recipe_lookup = {}        <span class="cmt"># this will store the recipe objects for lookup by name</span>
+      @prioritized_recipes = []  <span class="cmt"># this will store the names of required recipes in the order to be processed</span>
+      recursive_add_recipes(@recipe_collection)
+      @recipe_lookup[@recipe_collection.program] = @recipe_collection
+      @prioritized_recipes &lt;&lt; @recipe_collection.program
+      puts @prioritized_recipes.join(<span class="str">' &lt;- '</span>) <span class="kw">if</span> SETTINGS.opt_verbose
+    <span class="kw">end</span></pre>
+</body>
+</html>

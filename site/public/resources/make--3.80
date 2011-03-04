@@ -1,0 +1,25 @@
+--- !baker.rubyforge.org,2004/resource
+program: make
+version: 3.80
+created: 2003-12-20
+updated: 2003-12-20
+maintainer: transami@runbox.com
+brief: Make Build Script Tool
+description: >
+  Make is a tool which controls the generation of executables and
+  other non-source files of a program from the program's source files.
+install_size: 3MB
+website: http://www.gnu.org/software/make/make.html
+categories: [base, programming]
+source_urls:
+  - [ 'http://ftp.gnu.org/pub/gnu/make/make-3.80.tar.gz', 'Unspecified', '', 1290000 ]
+patch_urls: []
+install_indicators:
+  - /bin/bzip
+install_conflicts: {}
+dependencies: []
+conflicts: []
+compliment: []
+supplement: []
+no_architecture: []
+notes: |

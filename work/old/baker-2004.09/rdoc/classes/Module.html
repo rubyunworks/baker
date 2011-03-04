@@ -1,0 +1,122 @@
+
+<html><head>
+  <title>Class: Module</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <link rel=StyleSheet href=".././rdoc-style.css" type="text/css" media=screen>
+  <script type="text/javascript" language="JavaScript">
+  <!--
+  function popCode(url) {
+    parent.frames.source.location = url
+  }
+  //-->
+  </script>
+</head>
+<body bgcolor="white">
+
+
+<table width="100%" border=0 cellspacing=0>
+ <tr class="title-row">
+ <td class="big-title-font">
+   <font size=-3><B>Class</B><BR></font>Module
+ </td>
+ <td align="right">
+   <table cellspacing=0 cellpadding=2>
+     <tr valign="top">
+      <td class="small-title-font">In:</td>
+      <td class="small-title-font">
+<a href="../files/src/recipe_rb.html">src/recipe.rb</a>
+      </td>
+     </tr>
+     <tr>
+      <td class="small-title-font">Parent:</td>
+      <td class="small-title-font">
+Object
+      </td>
+     </tr>
+   </table>
+  </td>
+  </tr>
+</table><br>
+  <!-- banner header -->
+
+
+<div class="description"><p>
+adds some class evaluators that help in constructing recipes
+</p>
+</div>
+
+</div>
+
+<table cellpadding=5 width="100%">
+<tr><td class="tablesubtitle">Methods</td></tr>
+</table><br>
+<div class="name-list">
+<a href="#M000007">accessor</a>,
+<a href="#M000005">reader</a>,
+<a href="#M000008">scripter</a>,
+<a href="#M000006">writer</a>,
+</div>
+
+
+
+  
+
+<table cellpadding=5 width="100%">
+<tr><td class="tablesubtitle">Public Instance methods</td></tr>
+</table>
+<table width="100%" cellspacing = 0 cellpadding=5 border=0>
+<tr><td class="methodtitle">
+<a name="M000005">
+<b>reader</b>(*args) 
+<a href="Module.src/M000005.html" target="source" class="srclink">src</a>
+</a></td></tr>
+</table>
+<div class="description">
+<p>
+shorthand for attr_reader but returns args
+</p>
+</div>
+<table width="100%" cellspacing = 0 cellpadding=5 border=0>
+<tr><td class="methodtitle">
+<a name="M000006">
+<b>writer</b>(*args) 
+<a href="Module.src/M000006.html" target="source" class="srclink">src</a>
+</a></td></tr>
+</table>
+<div class="description">
+<p>
+shorthand for attr_writer but returns args
+</p>
+</div>
+<table width="100%" cellspacing = 0 cellpadding=5 border=0>
+<tr><td class="methodtitle">
+<a name="M000007">
+<b>accessor</b>(*args) 
+<a href="Module.src/M000007.html" target="source" class="srclink">src</a>
+</a></td></tr>
+</table>
+<div class="description">
+<p>
+shorthand for attr_accessor but returns args
+</p>
+</div>
+<table width="100%" cellspacing = 0 cellpadding=5 border=0>
+<tr><td class="methodtitle">
+<a name="M000008">
+<b>scripter</b>(*args) 
+<a href="Module.src/M000008.html" target="source" class="srclink">src</a>
+</a></td></tr>
+</table>
+<div class="description">
+<p>
+this is some of the cool stuff ruby can do it dynamically creates a reader
+method for the attributes that routes the output through a varaible
+substitution parser (see <a
+href="Baker/Recipe.html#M000061">eval_scripter</a>) so be sure to use
+accessor methods rather then @
+</p>
+</div>
+  <!-- method descriptions -->
+
+</body>
+</html>

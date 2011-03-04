@@ -1,0 +1,21 @@
+require 'baker/dsl'
+
+recipe     'linux-libc-headers'
+maintainer 'trans', 'trans at gmail.com'
+date       '2005-11-04'
+
+copy_install  # This package is simply copied whole to the install location
+
+# Link into rest of system
+link_section
+
+link 'include/asm-i386', '/usr/include/asm'
+link 'include/linux', '/usr/include/linux'
+
+shell 'chown -Rv root:root /usr/include/{asm,linux}'
+shell 'find /usr/include/{asm,linux} -type d -exec chmod -v 755 {} \;'
+shell 'find /usr/include/{asm,linux} -type f -exec chmod -v 644 {} \;'
+
+shell "chown -Rv root:root /usr/include/{asm,linux}"
+shell 'find /usr/include/{asm,linux} -type d -exec chmod -v 755 {} \;'
+shell 'find /usr/include/{asm,linux} -type f -exec chmod -v 644 {} \;'

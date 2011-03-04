@@ -1,0 +1,28 @@
+
+<html>
+<head><title>resolve_dependencies (Baker::Recipe)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style>
+  .kw { color: #3333FF; font-weight: bold }
+  .cmt { color: green; font-style: italic }
+  .str { color: #662222; font-style: italic }
+  .re  { color: #662222; }
+</style>
+</head>
+<body bgcolor="white">
+<pre><span class="cmt"># File src/recipe.rb, line 163</span>
+    <span class="kw">def</span> resolve_dependencies <span class="cmt">#(catalog)</span>
+      @resolved_dependencies = [] <span class="kw">unless</span> @resolved_dependencies
+      @unresolved_dependencies = [] <span class="kw">unless</span> @unresolved_dependencies
+      @dependencies.concat(<span class="kw">self</span>.compliment_and_supplement)
+      @dependencies.each <span class="kw">do</span> |unresolved_name|
+        recipe_name = resolve_name(unresolved_name)
+        <span class="kw">if</span> recipe_name
+          @resolved_dependencies &lt;&lt; recipe_name  <span class="cmt"># :)</span>
+        <span class="kw">else</span>
+          @unresolved_dependencies &lt;&lt; unresolved_name  <span class="cmt"># :(</span>
+        <span class="kw">end</span>
+      <span class="kw">end</span>
+    <span class="kw">end</span></pre>
+</body>
+</html>

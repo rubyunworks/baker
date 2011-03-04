@@ -1,0 +1,23 @@
+
+<html>
+<head><title>arch (Baker::BuildConfigManager)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style>
+  .kw { color: #3333FF; font-weight: bold }
+  .cmt { color: green; font-style: italic }
+  .str { color: #662222; font-style: italic }
+  .re  { color: #662222; }
+</style>
+</head>
+<body bgcolor="white">
+<pre><span class="cmt"># File src/buildconfig.rb, line 108</span>
+    <span class="kw">def</span> arch
+      arch_msg = <span class="str">&quot;Supported Architectures:\n&quot;</span>
+      ARCHITECTURES.each <span class="kw">do</span> |arch, desc|
+        pad = <span class="str">' '</span> * (15 - arch.length)
+        arch_msg += &quot;\t#{arch}#{pad}\t(#{desc[0]}, #{desc[1]}, #{desc[2]})\n&quot;
+      <span class="kw">end</span>
+      <span class="kw">return</span> arch_msg
+    <span class="kw">end</span></pre>
+</body>
+</html>

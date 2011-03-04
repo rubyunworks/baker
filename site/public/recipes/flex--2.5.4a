@@ -1,0 +1,6 @@
+--- !ruby/object:Baker::AutoShellRecipe
+program: flex
+version: 2.5+
+updated: 2003-12-20
+maintainer: transami@runbox.com
+

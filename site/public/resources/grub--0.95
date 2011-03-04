@@ -1,0 +1,24 @@
+--- !baker.rubyforge.org,2004/resource
+program: Grub
+version: 0.95
+updated: 2004-12-20
+maintainer: transami@runbox.com
+brief: Grub Boot Loader
+description: >
+   A grub boot loader is a good boot loader.
+install_size: 2MB
+website: ''
+categories: [base, boot]
+source_urls:
+  - [ 'ftp://alpha.gnu.org/pub/gnu/grub/grub-0.95.tar.gz', 'Unspecified', '', 1000000 ]
+patch_urls: []
+install_indicators:
+  - /bin/grub
+  - /sbin/grub
+install_conflicts: {}
+dependencies: []
+conflicts: []
+compliment: []
+supplement: []
+no_architecture: []
+notes: |

@@ -1,0 +1,45 @@
+--- !baker.rubyforge.org,2004/resource
+program: Binutils
+version: 2.14
+updated: 2003-12-20
+maintainer: transami@runbox.com
+brief: Binary Programming Utilities
+description: >
+  The GNU Binutils are a collection of binary tools. The main ones are:
+    * ld - the GNU linker.
+    * as - the GNU assembler.
+  But they also include:
+    * addr2line - Converts addresses into filenames and line numbers.
+    * ar - A utility for creating, modifying and extracting from archives.
+    * c++filt - Filter to demangle encoded C++ symbols.
+    * gprof - Displays profiling information.
+    * nlmconv - Converts object code into an NLM.
+    * nm - Lists symbols from object files.
+    * objcopy - Copys and translates object files.
+    * objdump - Displays information from object files.
+    * ranlib - Generates an index to the contents of an archive.
+    * readelf - Displays information from any ELF format object file.
+    * size - Lists the section sizes of an object or archive file.
+    * strings - Lists printable strings from files.
+    * strip - Discards symbols.
+    * windres - A compiler for Windows resource files.
+  Most of these programs use BFD, the Binary File Descriptor library, to do low-level manipulation.
+  Many of them also use the opcodes library to assemble and disassemble machine instructions.
+install_size: 21MB
+website: http://www.gnu.org/software/binutils/
+categories: [base, programming]
+source_urls:
+  - [ 'http://ftp.gnu.org/gnu/binutils/binutils-2.14.tar.bz2', 'Unspecified', '', 12900000 ]
+  - [ 'http://ftp.gnu.org/gnu/binutils/binutils-2.14.tar.gz',  'Unspecified', '', 15900000 ]
+patch_urls: []
+install_indicators:
+  - /bin/ar
+install_conflicts: {}
+dependencies:
+  - sed
+  - perl
+conflicts: []
+compliment: []
+supplement: []
+no_architecture: []
+notes: ''

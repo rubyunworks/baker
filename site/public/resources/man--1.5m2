@@ -1,0 +1,26 @@
+--- !baker.rubyforge.org,2004/resource
+program: man
+version: 1.5m2
+created: 2003-12-20
+updated: 2003-12-20
+maintainer: transami@runbox.com
+brief: GNU Manual
+description: >
+  The man page suite (man, apropos, and whatis) contains programs used to read
+  most of the documentation on a GNU/ Linux system. The whatis and apropos programs
+  are used to find documentation related to a particular subject.
+install_size: 1MB
+website: http://www.gnu.org/software/binutils/
+categories: [base, doc]
+source_urls:
+  - [ 'ftp://ftp.win.tue.nl/pub/linux-local/utils/man/man-1.5m2.tar.gz', 'Unspecified', '', 300000 ]
+patch_urls: []
+install_indicators:
+  - /bin/man
+install_conflicts: {}
+dependencies: []
+conflicts: []
+compliment: []
+supplement: []
+no_architecture: []
+notes: |

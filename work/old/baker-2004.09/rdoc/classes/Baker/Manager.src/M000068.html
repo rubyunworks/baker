@@ -1,0 +1,38 @@
+
+<html>
+<head><title>conflicts (Baker::Manager)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style>
+  .kw { color: #3333FF; font-weight: bold }
+  .cmt { color: green; font-style: italic }
+  .str { color: #662222; font-style: italic }
+  .re  { color: #662222; }
+</style>
+</head>
+<body bgcolor="white">
+<pre><span class="cmt"># File src/manager.rb, line 92</span>
+    <span class="kw">def</span> conflicts
+      conflicts_hash = {}
+      @recipe_lookup.each <span class="kw">do</span> |recipe_name, recipe|
+        actual_conflicts = []
+        recipe.conflicts.each <span class="kw">do</span> |rc|
+          rcp, rcv = rc.split(<span class="re">/(\s+|\s*,\s*|\s*--\s*)/</span>)
+          @prioritized_recipes.each <span class="kw">do</span> |pr|
+            prp, prv = pr.split(<span class="re">/(\s+|\s*,\s*|\s*--\s*)/</span>)
+            <span class="kw">if</span> rcp == prp
+              <span class="kw">if</span> rcv[-1..-1] == <span class="str">'+'</span>
+                actual_conflicts &lt;&lt; rc <span class="kw">if</span> rcv &gt;= prv
+              <span class="kw">elsif</span> rcv == prv
+                actual_conflicts &lt;&lt; rc
+              <span class="kw">end</span>
+            <span class="kw">end</span>
+           <span class="kw">end</span>
+        <span class="kw">end</span>
+        <span class="kw">if</span> actual_conflicts.length &gt; 0
+          conflicts_hash[recipe_name] = actual_conflicts
+        <span class="kw">end</span>
+      <span class="kw">end</span>
+      <span class="kw">return</span> conflicts_hash
+    <span class="kw">end</span></pre>
+</body>
+</html>

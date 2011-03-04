@@ -1,0 +1,36 @@
+
+<html>
+<head><title>entries (Baker::Catalog)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style>
+  .kw { color: #3333FF; font-weight: bold }
+  .cmt { color: green; font-style: italic }
+  .str { color: #662222; font-style: italic }
+  .re  { color: #662222; }
+</style>
+</head>
+<body bgcolor="white">
+<pre><span class="cmt"># File src/catalog.rb, line 50</span>
+    <span class="kw">def</span> entries
+      <span class="cmt">#</span>
+      personal_entries = []
+      Dir.entries(@personal_dir).each <span class="kw">do</span> |r|
+        personal_entries &lt;&lt; r <span class="kw">if</span> FileTest::file?(File.join(@catalog_dir,r))
+      <span class="kw">end</span>
+      <span class="cmt"># this probably needs enhancement</span>
+      reposits = @catalog_urls.collect { |r|
+        [<span class="str">'.gz'</span>,<span class="str">'.bz2'</span>,<span class="str">'.zip'</span>,<span class="str">'.tgz'</span>,<span class="str">'.tar'</span>].inject(File.basename(r)) { |bn, ch| bn.chomp(ch) }
+      }.reverse
+      public_entries = []
+      reposits.each <span class="kw">do</span> |r|
+        reposit_dir = File.join(@catalog_dir,r)
+        <span class="kw">if</span> FileTest.directory?(reposit_dir)
+          Dir.entries(reposit_dir).each <span class="kw">do</span> |d|
+            public_entries &lt;&lt; &quot;#{File.basename(reposit_dir)}/#{d}&quot; <span class="kw">if</span> FileTest::file?(File.join(reposit_dir,d))
+          <span class="kw">end</span>
+        <span class="kw">end</span>
+      <span class="kw">end</span>
+      <span class="kw">return</span> personal_entries + public_entries
+    <span class="kw">end</span></pre>
+</body>
+</html>

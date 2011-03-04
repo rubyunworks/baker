@@ -1,0 +1,37 @@
+--- !ruby/object:Baker::ShellRecipe
+program: Dummy
+version: 1.0
+created: 2003-12-11
+updated: 2003-12-11
+maintainer:
+  name: T. Onoma
+  email: transami@runbox.com
+brief: Dummy Shell Recipe
+description: >
+  This receipe is just for testing purposes only.
+package_size: 100
+website: http://baker.rubyforge.org/
+categories: [test, baker]
+distributions: [debian--3.0]
+super: ~
+source_urls:
+  - [ 'http://',              'Unspecified',   'bae7a2d39fd6658d4aa181ddc73bd5d5', 1123189 ]
+patch_urls: []
+install_indicators:
+  - /home/transami/tests/t6.rb
+install_conflicts: {}
+dependencies: []
+conflicts: []
+compliment: []
+supplement: []
+no_architecture: []
+prepare_script: |
+  echo "\=(avoid?KDE --disable-kde-app) \=(avoid?Mesa --disable-glgraph)"
+compile_script: |
+  echo "Testing... \=(program) \=(version) \=(cflags) \=(maintainer.email) \=(categories?qt yes) needed."
+test_script: |
+  echo "Testing... \=(program) \=(version) \=(cflags) \=(maintainer.email) \=(categories?qt yes) needed."
+install_script: |
+  echo "Testing... \=(program) \=(version) \=(cflags) \=(maintainer.email) \=(categories?qt yes) needed."
+notes: |
+  Like I said, just for testing baker.

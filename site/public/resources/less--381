@@ -1,0 +1,27 @@
+--- !baker.rubyforge.org,2004/resource
+program: less
+version: 380
+created: 2003-12-20
+updated: 2003-12-20
+maintainer: transami@runbox.com
+brief: Less File Display Tool
+description: >
+  Less is a program similar to more, but which allows backward movement in the file as well as forward movement.
+  Also, less does not have to read the entire input file before starting, so with large input files it starts up
+  faster than text editors like vi. Less uses termcap (or terminfo on some systems), so it can run on a variety
+  of terminals. There is even limited support for hardcopy terminals.
+install_size: 1MB
+website: http://www.gnu.org/software/less/less.html
+categories: [base, file]
+source_urls:
+  - [ 'http://ftp.gnu.org/gnu/less/less-381.tar.gz', 'Unspecified', '', 300000 ]
+patch_urls: []
+install_indicators:
+  - /bin/less
+install_conflicts: {}
+dependencies: []
+conflicts: []
+compliment: []
+supplement: []
+no_architecture: []
+notes: |

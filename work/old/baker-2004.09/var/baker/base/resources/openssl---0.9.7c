@@ -1,0 +1,27 @@
+--- !baker.rubyforge.org,2004/resource
+program: openssl
+version: 0.9.7c
+created: 2003-12-20
+updated: 2003-12-20
+maintainer: transami@runbox.com
+brief: Openssl Secure Communications Library
+description: >
+  Openssl is a robust, commercial-grade, full-featured, and Open Source toolkit
+  implementing the Secure Sockets Layer (SSL v2/v3) and Transport Layer Security
+  (TLS v1) protocols as well as a full-strength general purpose cryptography library.
+install_size: 5MB
+website: http://www.openssl.org/
+categories: [base, cryptography, programming]
+source_urls:
+  - [ 'http://www.openssl.org/source/openssl-0.9.7c.tar.gz', 'Unspecified', 'c54fb36218adaaaba01ef733cd88c8ec', 2500000 ]
+  - [ 'ftp://ftp.openssl.org/source/openssl-0.9.7c.tar.gz',  'Unspecified', 'c54fb36218adaaaba01ef733cd88c8ec', 2500000 ]
+patch_urls: []
+install_indicators:
+  - /usr/bin/ssh
+install_conflicts: {}
+dependencies: []
+conflicts: []
+compliment: []
+supplement: []
+no_architecture: []
+notes: |

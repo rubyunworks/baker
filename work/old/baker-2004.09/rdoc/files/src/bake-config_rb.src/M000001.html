@@ -1,0 +1,43 @@
+
+<html>
+<head><title>process_command (src/bake-config.rb)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style>
+  .kw { color: #3333FF; font-weight: bold }
+  .cmt { color: green; font-style: italic }
+  .str { color: #662222; font-style: italic }
+  .re  { color: #662222; }
+</style>
+</head>
+<body bgcolor="white">
+<pre><span class="cmt"># File src/bake-config.rb, line 30</span>
+<span class="kw">def</span> process_command(mgr, cmd, args)
+  <span class="kw">case</span> cmd
+    <span class="kw">when</span> <span class="str">'arch'</span>
+      puts mgr.arch
+    <span class="kw">when</span> <span class="str">'show'</span>
+      puts mgr.show
+    <span class="kw">when</span> <span class="str">'reset'</span>
+      mgr.reset_configuration
+    <span class="kw">when</span> <span class="str">'undo'</span>
+      mgr.undo_configuration
+      puts <span class="str">&quot;Previous configuration is now current. (Use undo again to redo.)&quot;</span>
+    <span class="kw">when</span> <span class="str">'use'</span>
+      mgr.use_configuration(args[0])
+      puts &quot;Configuration '#{args[0]}' is now current.&quot;
+    <span class="kw">when</span> <span class="str">'save'</span>
+      mgr.save_configuration(args[0])
+      puts <span class="str">&quot;Current configration has been saved.&quot;</span>
+    <span class="kw">when</span> <span class="str">'remove'</span>
+      mgr.remove_configuration(args[0])
+      puts <span class="str">&quot;Configration has been removed.&quot;</span>
+    <span class="kw">when</span> <span class="str">'edit'</span>
+      mgr.edit_configuration
+    <span class="kw">when</span> <span class="str">'batch'</span>
+      mgr.settings.batch_toggle(args[0])
+    <span class="kw">else</span>
+      puts <span class="str">'Unknown configuration command.'</span>
+  <span class="kw">end</span>
+<span class="kw">end</span></pre>
+</body>
+</html>

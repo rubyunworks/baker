@@ -1,0 +1,25 @@
+--- !baker.rubyforge.org,2004/resource
+program: groff
+version: 1.19
+created: 2003-12-20
+updated: 2003-12-20
+maintainer: transami@runbox.com
+brief: Groff Typesetting System
+description: >
+   Groff (GNU Troff) software is a typesetting package which reads plain text mixed
+   with formatting commands and produces formatted output. Groff now supports HTML.
+install_size: 5MB
+website: http://www.gnu.org/software/binutils/
+categories: [base, typesetting]
+source_urls:
+  - [ 'ftp://ftp.gnu.org/gnu/groff/groff-1.18.tar.gz', 'Unspecified', '', 2300000 ]
+patch_urls: []
+install_indicators:
+  - /bin/groff
+install_conflicts: {}
+dependencies: []
+conflicts: []
+compliment: []
+supplement: []
+no_architecture: []
+notes: |

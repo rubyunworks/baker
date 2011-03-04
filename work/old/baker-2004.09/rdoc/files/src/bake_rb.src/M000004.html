@@ -1,0 +1,18 @@
+
+<html>
+<head><title>show_help (src/bake.rb)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style>
+  .kw { color: #3333FF; font-weight: bold }
+  .cmt { color: green; font-style: italic }
+  .str { color: #662222; font-style: italic }
+  .re  { color: #662222; }
+</style>
+</head>
+<body bgcolor="white">
+<pre><span class="cmt"># File src/bake.rb, line 116</span>
+<span class="kw">def</span> show_help
+  puts <span class="str">&quot;\nbake v.09\n\n  USAGE: bake [options...] &lt;command&gt; [arguments...]\n\n  CATALOG COMMANDS:\n\n    sync\n        Syncronize local catalogs with masters.\n\n    find &lt;arg&gt;\n        Search the package catalog for all matching recipes.\n        Argument is a grep expression. (Currently only searches on file name.)\n\n    catd\n        Outputs the local path of the recipe catalog.\n\n    info &lt;program&gt;\n        Provides a description of the specified progam.\n\n    dep &lt;programs...&gt;\n        Displays a dependency tree.\n\n    con &lt;programs...&gt;\n        Displays confilcts.\n\n    new &lt;type&gt; &lt;program&gt; &lt;version&gt;\n        Creates a new receipe of given type. (Type is case sensitive.)\n\n    edit &lt;program--version&gt;\n        Edit the recipe with default editor.\n        (The editor is determined by enviornment variable 'EDITOR'.)\n\n  BUILD COMMANDS:\n\n    cast &lt;programs...&gt;\n        The cast processes does the following in order:\n        1) fetch 2) extract 3) patch 4) prepare 5) compile 6) install\n        The following commands can be used to do these individually.\n\n    fetch &lt;programs...&gt;\n        Fetches the source.\n\n    extract &lt;programs...&gt;\n        Extracts the source. (Will fetch if -b is set)\n\n    patch &lt;programs...&gt;  (NOT YET IMPLEMENTED)\n        Patches the source. (Will extract if -b is set)\n\n    prepare &lt;programs...&gt;\n        Prepares the source. (Will patch if -b is set)\n\n    compile &lt;programs...&gt;\n        Compiles the source. (Will prepare if -b is set)\n\n    install &lt;programs...&gt;\n        Installs the program. (Will compile if -b is set)\n        In batch mode this is the same as cast.\n\n    uninstall &lt;programs...&gt;\n        Uninstalls the program(s). This is not recommended if you did\n        not use this program to install.\n\n    purge &lt;programs...&gt;\n        Purges source. Completely removes the source. Ready for fresh fetch.\n\n  OTHER COMMANDS:\n\n    help\n        Displays this help information. (Same as -h or --help option)\n\n  OPTIONS:\n\n    -h  --help\n        Display this help information.\n\n    -b  --batch\n        Batch mode will back track operations to accomplish task.\n\n    -f  --force\n        Force downloads and extractions.\n\n    -i  --ignore\n        Ignore dependencies and conflicts.\n\n    -r  --redo\n        Will recompile and reinstall even if program is already installed.\n\n    -v  --verbose\n        Provides extra verbose processing information.\n\n    -p  --pretend  (NOT YET IMPLEMENTED)\n        Pretend, just to see what would happen.\n\n    -u  --use &lt;file&gt;\n        Use the specified configuration file for this build,\n        but does not set configuration.\n\n&quot;</span>
+<span class="kw">end</span></pre>
+</body>
+</html>

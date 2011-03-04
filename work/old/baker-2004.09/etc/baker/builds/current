@@ -1,0 +1,17 @@
+--- !ruby/object:Baker::BuildConfig
+host: i686
+target: i686
+cflags: []
+check: true
+concurrent_threads: 1
+cppflags: []
+distcc: true
+kernel_config: ''
+strip: false
+thread_library: nptl
+prefix: /usr/local
+man_dirpath: ''
+info_dirpath: ''
+avoid: [ 'tk' ]
+ensure: []
+

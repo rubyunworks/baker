@@ -1,0 +1,31 @@
+
+<html>
+<head><title>template (Baker::Manager)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style>
+  .kw { color: #3333FF; font-weight: bold }
+  .cmt { color: green; font-style: italic }
+  .str { color: #662222; font-style: italic }
+  .re  { color: #662222; }
+</style>
+</head>
+<body bgcolor="white">
+<pre><span class="cmt"># File src/manager.rb, line 200</span>
+    <span class="kw">def</span> template(recipe_type, recipe_name, recipe_version)
+      recipe_version = <span class="str">'1.0.0'</span> <span class="kw">if</span> recipe_version.strip == <span class="str">''</span>
+      from_file = File.join(SETTINGS_DIRPATH,&quot;templates/#{recipe_type}&quot;)
+      to_file = File.join(@catalog.catalog_dir,&quot;#{recipe_name}--#{recipe_version}&quot;)
+      <span class="kw">if</span> FileTest::exists?(to_file)
+        raise BakerError, <span class="str">&quot;source recipe already exists&quot;</span>
+      <span class="kw">elsif</span> !FileTest::exists?(from_file)
+        raise BakerError, <span class="str">&quot;template recipe does not exist&quot;</span>
+      <span class="kw">end</span>
+      File.syscopy(from_file, to_file)
+      <span class="kw">if</span> FileTest::exists?(to_file)
+        <span class="kw">return</span> &quot;#{recipe_name}--#{recipe_version}&quot;
+      <span class="kw">else</span>
+        raise &quot;could not write for #{to_path}, permissions correct?&quot;
+      <span class="kw">end</span>
+    <span class="kw">end</span></pre>
+</body>
+</html>

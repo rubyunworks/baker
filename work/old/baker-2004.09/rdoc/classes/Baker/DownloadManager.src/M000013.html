@@ -1,0 +1,41 @@
+
+<html>
+<head><title>extract (Baker::DownloadManager)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style>
+  .kw { color: #3333FF; font-weight: bold }
+  .cmt { color: green; font-style: italic }
+  .str { color: #662222; font-style: italic }
+  .re  { color: #662222; }
+</style>
+</head>
+<body bgcolor="white">
+<pre><span class="cmt"># File src/download.rb, line 131</span>
+    <span class="kw">def</span> DownloadManager.extract(local_path)
+      success = <span class="kw">false</span>
+      local_dir = File.dirname(local_path)
+      local_file = File.basename(local_path)
+      current_dir = Dir.getwd
+      <span class="kw">begin</span>
+        Dir.chdir(local_dir)
+        <span class="kw">case</span> local_file
+          <span class="kw">when</span> <span class="re">/.*gz$/</span>
+            system &quot;tar -xzf #{local_file}&quot;
+          <span class="kw">when</span> <span class="re">/.*bz2$/</span>
+            system &quot;tar -xjf #{local_file}&quot;
+          <span class="kw">when</span> <span class="re">/.zip$/</span>
+            system &quot;unzip #{local_file}&quot;
+          <span class="kw">else</span>
+            success = <span class="kw">false</span>
+        <span class="kw">end</span>
+      <span class="kw">rescue</span>
+        success = <span class="kw">false</span>
+      <span class="kw">else</span>
+        success = <span class="kw">true</span>
+      <span class="kw">ensure</span>
+        Dir.chdir(current_dir)
+      <span class="kw">end</span>
+      <span class="kw">return</span> success
+    <span class="kw">end</span></pre>
+</body>
+</html>

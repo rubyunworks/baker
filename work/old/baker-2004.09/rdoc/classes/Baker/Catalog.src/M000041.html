@@ -1,0 +1,29 @@
+
+<html>
+<head><title>sync (Baker::Catalog)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style>
+  .kw { color: #3333FF; font-weight: bold }
+  .cmt { color: green; font-style: italic }
+  .str { color: #662222; font-style: italic }
+  .re  { color: #662222; }
+</style>
+</head>
+<body bgcolor="white">
+<pre><span class="cmt"># File src/catalog.rb, line 78</span>
+    <span class="kw">def</span> sync
+      <span class="cmt"># source directory already exists? if not then create</span>
+      <span class="kw">if</span> !File.directory?(<span class="kw">self</span>.catalog_dir)
+        File.makedirs(<span class="kw">self</span>.catalog_dir)
+      <span class="kw">end</span>
+      local_path = DownloadManager.regional_download(<span class="kw">self</span>.catalog_urls, <span class="kw">self</span>.local_region, <span class="kw">self</span>.catalog_dir, <span class="kw">true</span>)
+      <span class="kw">if</span> !local_path
+        raise <span class="str">&quot;Catalog synchronization failed when downloading.&quot;</span>
+      <span class="kw">end</span>
+      success = DownloadManager.extract(local_path)
+      <span class="kw">if</span> !success
+        puts <span class="str">&quot;Catalog synchronization failed when extracting.&quot;</span>
+      <span class="kw">end</span>
+    <span class="kw">end</span></pre>
+</body>
+</html>

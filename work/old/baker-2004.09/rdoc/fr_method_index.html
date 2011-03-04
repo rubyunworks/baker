@@ -1,0 +1,123 @@
+
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style>
+<!--
+  body {
+background-color: #ddddff;
+     font-family: Verdana, Arial, Helvetica, sans-serif; 
+       font-size: 11px; 
+      font-style: normal;
+     line-height: 14px; 
+           color: #000040;
+  }
+div.banner {
+  background: #0000aa;
+  color:      white;
+  padding: 1;
+  margin: 0;
+  font-size: 90%;
+  font-weight: bold;
+  line-height: 1.1;
+  text-align: center;
+  width: 100%;
+}
+  
+-->
+</style>
+<base target="docwin">
+</head>
+<body>
+<div class="banner">Methods</div>
+<a href="classes/Module.html#M000007">accessor (Module)</a><br>
+<a href="classes/Baker/BuildConfigManager.html#M000014">arch (Baker::BuildConfigManager)</a><br>
+<a href="classes/Baker/Recipe.html#M000063">bug_report (Baker::Recipe)</a><br>
+<a href="classes/Baker/Recipe.html#M000055">build_dir (Baker::Recipe)</a><br>
+<a href="classes/Baker/Manager.html#M000086">cast (Baker::Manager)</a><br>
+<a href="classes/Baker/Recipe.html#M000048">check_install_conflicts (Baker::Recipe)</a><br>
+<a href="classes/Baker/DownloadManager.html#M000012">checksum (Baker::DownloadManager)</a><br>
+<a href="classes/Baker/Manager.html#M000083">compile (Baker::Manager)</a><br>
+<a href="classes/Baker/Recipe.html#M000043">compile (Baker::Recipe)</a><br>
+<a href="classes/Baker/ShellRecipe.html#M000026">compile (Baker::ShellRecipe)</a><br>
+<a href="classes/Baker/Recipe.html#M000052">compliment_and_supplement (Baker::Recipe)</a><br>
+<a href="classes/Baker/Manager.html#M000068">conflicts (Baker::Manager)</a><br>
+<a href="classes/Baker/Manager.html#M000069">conflicts? (Baker::Manager)</a><br>
+<a href="classes/Baker/Manager.html#M000073">dependency_tree (Baker::Manager)</a><br>
+<a href="classes/Baker/DownloadManager.html#M000011">download (Baker::DownloadManager)</a><br>
+<a href="classes/Baker/BuildConfigManager.html#M000021">edit_configuration (Baker::BuildConfigManager)</a><br>
+<a href="classes/Baker/Catalog.html#M000039">entries (Baker::Catalog)</a><br>
+<a href="classes/Baker/Recipe.html#M000061">eval_scripter (Baker::Recipe)</a><br>
+<a href="classes/Baker/Recipe.html#M000062">eval_token (Baker::Recipe)</a><br>
+<a href="classes/Baker/Recipe.html#M000058">extract (Baker::Recipe)</a><br>
+<a href="classes/Baker/DownloadManager.html#M000013">extract (Baker::DownloadManager)</a><br>
+<a href="classes/Baker/RecipeCollection.html#M000033">extract (Baker::RecipeCollection)</a><br>
+<a href="classes/Baker/Manager.html#M000080">extract (Baker::Manager)</a><br>
+<a href="classes/Baker/Recipe.html#M000057">fetch (Baker::Recipe)</a><br>
+<a href="classes/Baker/Manager.html#M000079">fetch (Baker::Manager)</a><br>
+<a href="classes/Baker/RecipeCollection.html#M000032">fetch (Baker::RecipeCollection)</a><br>
+<a href="classes/Baker/Manager.html#M000077">find (Baker::Manager)</a><br>
+<a href="classes/Baker/Recipe.html#M000049">findfile (Baker::Recipe)</a><br>
+<a href="classes/Baker/Recipe.html#M000045">install (Baker::Recipe)</a><br>
+<a href="classes/Baker/Manager.html#M000085">install (Baker::Manager)</a><br>
+<a href="classes/Baker/ShellRecipe.html#M000028">install (Baker::ShellRecipe)</a><br>
+<a href="classes/Baker/Manager.html#M000070">install_conflicts (Baker::Manager)</a><br>
+<a href="classes/Baker/Recipe.html#M000047">installed? (Baker::Recipe)</a><br>
+<a href="classes/Baker/BuildConfig.html#M000089">instance (Baker::BuildConfig)</a><br>
+<a href="classes/Baker/Catalog.html#M000038">load (Baker::Catalog)</a><br>
+<a href="classes/Baker/ShellRecipe.html#M000023">methods_available_to_script (Baker::ShellRecipe)</a><br>
+<a href="classes/Baker/Manager.html#M000071">missing (Baker::Manager)</a><br>
+<a href="classes/Baker/Manager.html#M000072">missing? (Baker::Manager)</a><br>
+<a href="classes/Baker/BuildConfig.html#M000087">new (Baker::BuildConfig)</a><br>
+<a href="classes/Baker/Settings.html#M000035">new (Baker::Settings)</a><br>
+<a href="classes/Baker/Catalog.html#M000037">new (Baker::Catalog)</a><br>
+<a href="classes/Baker/Manager.html#M000065">new (Baker::Manager)</a><br>
+<a href="classes/Baker/RecipeCollection.html#M000031">new (Baker::RecipeCollection)</a><br>
+<a href="classes/Baker/ShellRecipe.html#M000024">new (Baker::ShellRecipe)</a><br>
+<a href="classes/Baker/Settings.html#M000036">opt_use_filepath (Baker::Settings)</a><br>
+<a href="classes/Baker/Recipe.html#M000053">package_dir (Baker::Recipe)</a><br>
+<a href="classes/Baker/Recipe.html#M000054">package_file (Baker::Recipe)</a><br>
+<a href="classes/Baker/RecipeCollection.html#M000034">patch (Baker::RecipeCollection)</a><br>
+<a href="classes/Baker/Recipe.html#M000059">patch (Baker::Recipe)</a><br>
+<a href="classes/Baker/Manager.html#M000081">patch (Baker::Manager)</a><br>
+<a href="classes/Baker/Manager.html#M000082">prepare (Baker::Manager)</a><br>
+<a href="classes/Baker/ShellRecipe.html#M000025">prepare (Baker::ShellRecipe)</a><br>
+<a href="classes/Baker/Recipe.html#M000042">prepare (Baker::Recipe)</a><br>
+<a href="classes/Baker/DownloadManager.html#M000010">prioritize_regional_urls (Baker::DownloadManager)</a><br>
+<a href="files/src/bake_rb.html#M000003">process_command (src/bake.rb)</a><br>
+<a href="files/src/bake-config_rb.html#M000001">process_command (src/bake-config.rb)</a><br>
+<a href="classes/Baker/Recipe.html#M000060">purge (Baker::Recipe)</a><br>
+<a href="classes/Baker/Manager.html#M000075">raise_on_missing_or_conflicts (Baker::Manager)</a><br>
+<a href="classes/Module.html#M000005">reader (Module)</a><br>
+<a href="classes/Baker/Manager.html#M000066">recipes= (Baker::Manager)</a><br>
+<a href="classes/Baker/Manager.html#M000074">recurse_dependency_tree (Baker::Manager)</a><br>
+<a href="classes/Baker/Manager.html#M000067">recursive_add_recipes (Baker::Manager)</a><br>
+<a href="classes/Baker/DownloadManager.html#M000009">regional_download (Baker::DownloadManager)</a><br>
+<a href="classes/Baker/BuildConfigManager.html#M000020">remove_configuration (Baker::BuildConfigManager)</a><br>
+<a href="classes/Baker/BuildConfigManager.html#M000016">reset_configuration (Baker::BuildConfigManager)</a><br>
+<a href="classes/Baker/Recipe.html#M000050">resolve_dependencies (Baker::Recipe)</a><br>
+<a href="classes/Baker/Recipe.html#M000051">resolve_name (Baker::Recipe)</a><br>
+<a href="classes/Baker/BuildConfigManager.html#M000019">save_configuration (Baker::BuildConfigManager)</a><br>
+<a href="classes/Module.html#M000008">scripter (Module)</a><br>
+<a href="classes/Baker/Catalog.html#M000040">search (Baker::Catalog)</a><br>
+<a href="classes/Baker/Recipe.html#M000064">set_configuration (Baker::Recipe)</a><br>
+<a href="classes/Baker/ShellRecipe.html#M000030">shell (Baker::ShellRecipe)</a><br>
+<a href="classes/Baker/BuildConfigManager.html#M000015">show (Baker::BuildConfigManager)</a><br>
+<a href="files/src/bake_rb.html#M000004">show_help (src/bake.rb)</a><br>
+<a href="files/src/bake-config_rb.html#M000002">show_help (src/bake-config.rb)</a><br>
+<a href="classes/Baker/Recipe.html#M000056">source_dir (Baker::Recipe)</a><br>
+<a href="classes/Baker/Catalog.html#M000041">sync (Baker::Catalog)</a><br>
+<a href="classes/Baker/Manager.html#M000076">sync (Baker::Manager)</a><br>
+<a href="classes/Baker/Manager.html#M000078">template (Baker::Manager)</a><br>
+<a href="classes/Baker/ShellRecipe.html#M000027">test (Baker::ShellRecipe)</a><br>
+<a href="classes/Baker/Manager.html#M000084">test (Baker::Manager)</a><br>
+<a href="classes/Baker/Recipe.html#M000044">test (Baker::Recipe)</a><br>
+<a href="classes/Baker/ShellRecipe.html#M000022">to_yaml_properties (Baker::ShellRecipe)</a><br>
+<a href="classes/Baker/BuildConfig.html#M000088">to_yaml_properties (Baker::BuildConfig)</a><br>
+<a href="classes/Baker/BuildConfigManager.html#M000017">undo_configuration (Baker::BuildConfigManager)</a><br>
+<a href="classes/Baker/Recipe.html#M000046">uninstall (Baker::Recipe)</a><br>
+<a href="classes/Baker/ShellRecipe.html#M000029">uninstall (Baker::ShellRecipe)</a><br>
+<a href="classes/Baker/BuildConfigManager.html#M000018">use_configuration (Baker::BuildConfigManager)</a><br>
+<a href="classes/Module.html#M000006">writer (Module)</a><br>
+</body></html>

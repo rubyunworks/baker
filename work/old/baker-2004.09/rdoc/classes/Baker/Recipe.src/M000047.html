@@ -1,0 +1,28 @@
+
+<html>
+<head><title>installed? (Baker::Recipe)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style>
+  .kw { color: #3333FF; font-weight: bold }
+  .cmt { color: green; font-style: italic }
+  .str { color: #662222; font-style: italic }
+  .re  { color: #662222; }
+</style>
+</head>
+<body bgcolor="white">
+<pre><span class="cmt"># File src/recipe.rb, line 110</span>
+    <span class="kw">def</span> installed?
+      success = <span class="kw">false</span>
+      @install_indicators.each <span class="kw">do</span> |ii|
+        <span class="kw">if</span> ii.include?(<span class="str">' '</span>)
+          root, pattern, exclusions = ii.split(<span class="str">' '</span>)
+          success = findfile(root, pattern, exclusions) ? <span class="kw">true</span> : <span class="kw">false</span>
+        <span class="kw">else</span>
+          success = FileTest::exists?(ii)
+        <span class="kw">end</span>
+        <span class="kw">break</span> <span class="kw">if</span> success
+      <span class="kw">end</span>
+      success
+    <span class="kw">end</span></pre>
+</body>
+</html>

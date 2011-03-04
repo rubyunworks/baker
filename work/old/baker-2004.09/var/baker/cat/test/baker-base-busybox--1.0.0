@@ -1,0 +1,63 @@
+--- !ruby/object:Baker::RecipeCollection
+program: Baker-Base-BusyBox
+version: 1.0.0
+created: 2003-12-20
+updated: 2003-12-20
+maintainer:
+  name: T. Onoma
+  email: transami@runbox.com
+brief: Base Recipe Collection for Baker Build Process based on BusyBox
+description: >
+  Collection of programs required for Baker to operate.
+  Your current system will be used to build these packages
+  in order to bootstap the Baker system. Once the base is
+  built, these programs will be used to provide
+  a protected environment for building all other programs.
+website: http://baker.rubyforge.org/index.html
+categories: [baker, base]
+dependencies:
+ - coreutils
+ - diffutils
+ - shareutils
+ - findutils
+ - sed
+ - gawk
+ - gcc
+ - glibc
+ - autoconf
+ - automake
+ - m4
+ - make
+ - binutils
+ - perl
+ - pcre
+ - rsync
+ - libtool
+ - ruby
+ - groff
+ - bison
+ - flex
+ - ncurses
+ - less
+ - openssl
+ - file
+ - readline
+ - kbd
+ - mktemp
+ - gdbm
+ - zlib
+ - gettext
+ - bash
+ - uucp
+ - gzip
+ - unzip
+ - bzip2
+ - grep
+ - sudo
+ - tar
+ - patch
+conflicts: []
+compliment: []
+supplement: []
+notes: |
+  This collecton may need modification for variant systems.

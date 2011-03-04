@@ -1,0 +1,140 @@
+
+<html><head>
+  <title>Module: Baker::DownloadManager</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <link rel=StyleSheet href="../.././rdoc-style.css" type="text/css" media=screen>
+  <script type="text/javascript" language="JavaScript">
+  <!--
+  function popCode(url) {
+    parent.frames.source.location = url
+  }
+  //-->
+  </script>
+</head>
+<body bgcolor="white">
+
+
+<table width="100%" border=0 cellspacing=0>
+ <tr class="title-row">
+ <td class="big-title-font">
+   <font size=-3><B>Module</B><BR></font>Baker::DownloadManager
+ </td>
+ <td align="right">
+   <table cellspacing=0 cellpadding=2>
+     <tr valign="top">
+      <td class="small-title-font">In:</td>
+      <td class="small-title-font">
+<a href="../../files/src/download_rb.html">src/download.rb</a>
+      </td>
+     </tr>
+   </table>
+  </td>
+  </tr>
+</table><br>
+  <!-- banner header -->
+
+
+<div class="description"><p>
+DownloadManger
+</p>
+<p>
+this is module of tools for downloading and extracting archived files
+</p>
+</div>
+
+</div>
+
+<table cellpadding=5 width="100%">
+<tr><td class="tablesubtitle">Methods</td></tr>
+</table><br>
+<div class="name-list">
+<a href="#M000012">checksum</a>,
+<a href="#M000011">download</a>,
+<a href="#M000013">extract</a>,
+<a href="#M000010">prioritize_regional_urls</a>,
+<a href="#M000009">regional_download</a>,
+</div>
+
+
+
+  
+
+<table cellpadding=5 width="100%">
+<tr><td class="tablesubtitle">Public Class methods</td></tr>
+</table>
+<table width="100%" cellspacing = 0 cellpadding=5 border=0>
+<tr><td class="methodtitle">
+<a name="M000009">
+<b>regional_download</b>(regional_urls, local_region, source_dir, force=false) 
+<a href="DownloadManager.src/M000009.html" target="source" class="srclink">src</a>
+</a></td></tr>
+</table>
+<div class="description">
+<p>
+regional_urls - array of arrays of [ url, region, md5, expected_size ]
+local_region - region of the user&#8217;s system <a
+href="Recipe.html#M000056">source_dir</a> - where to store downloaded file
+(full path) force - redownload even if it already exists
+</p>
+</div>
+<table width="100%" cellspacing = 0 cellpadding=5 border=0>
+<tr><td class="methodtitle">
+<a name="M000010">
+<b>prioritize_regional_urls</b>(regional_urls, local_region) 
+<a href="DownloadManager.src/M000010.html" target="source" class="srclink">src</a>
+</a></td></tr>
+</table>
+<div class="description">
+<p>
+prioritize regional urls putting local geographical region first
+regional_urls - array of arrays of [ url, region, md5, expected_size ] in
+the future we may test each connection for fastest download
+</p>
+</div>
+<table width="100%" cellspacing = 0 cellpadding=5 border=0>
+<tr><td class="methodtitle">
+<a name="M000011">
+<b>download</b>(url, file_path, file_checksum, file_size=nil) 
+<a href="DownloadManager.src/M000011.html" target="source" class="srclink">src</a>
+</a></td></tr>
+</table>
+<div class="description">
+<p>
+currently can only download a single compressed file does not handle
+downloading an uncompressed directory tree (should it? doubt it)
+</p>
+<p>
+currently this displays progress to STDOUT; either their should be a way to
+activate/deactivate or preferably use all new ducktype singletons (more on
+that later, see google://_whytheluckystiff if interested) of course I
+prefer chain messaging but matz said no :( we&#8217;ll see :)
+</p>
+</div>
+<table width="100%" cellspacing = 0 cellpadding=5 border=0>
+<tr><td class="methodtitle">
+<a name="M000012">
+<b>checksum</b>(local_path) 
+<a href="DownloadManager.src/M000012.html" target="source" class="srclink">src</a>
+</a></td></tr>
+</table>
+<div class="description">
+<p>
+checksum
+</p>
+</div>
+<table width="100%" cellspacing = 0 cellpadding=5 border=0>
+<tr><td class="methodtitle">
+<a name="M000013">
+<b>extract</b>(local_path) 
+<a href="DownloadManager.src/M000013.html" target="source" class="srclink">src</a>
+</a></td></tr>
+</table>
+<div class="description">
+<p>
+extract
+</p>
+</div>
+  <!-- method descriptions -->
+
+</body>
+</html>

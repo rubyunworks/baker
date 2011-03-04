@@ -1,0 +1,29 @@
+--- !baker.rubyforge.org,2004/resource
+program: e2fsprogs
+version: 1.34
+created: 2004-12-20
+updated: 2004-12-20
+maintainer:
+  name: Mika Pesu
+  email: pmika@japo.fi
+brief: Ext2 Filesystem Utilities
+description: >
+  The ext2fsprogs package contains essential ext2 filesystem utilities
+  which consists of e2fsck, mke2fs, debugfs, dumpe2fs, tune2fs, and most
+  of the other core ext2 filesystem utilities. Diffutils is a set of
+  utilities for processing file differences.
+install_size: 6MB
+website: http://freshmeat.net/redir/e2fsprogs/2163/url_homepage/e2fsprogs.sourceforge.net
+categories: [base, filesystem]
+source_urls:
+  - [ 'http://prdownloads.sourceforge.net/e2fsprogs/e2fsprogs-1.34.tar.gz', 'Unspecified', '', 3300000 ]
+patch_urls: []
+install_indicators:
+  - /bin/e2fs
+install_conflicts: {}
+dependencies: []
+conflicts: []
+compliment: []
+supplement: []
+no_architecture: []
+notes: |

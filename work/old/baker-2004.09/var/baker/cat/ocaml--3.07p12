@@ -1,0 +1,43 @@
+--- !ruby/object:Baker::ShellRecipe
+program: OCaml
+version: 3.07p12
+created: 2003-12-11
+updated: 2003-12-11
+maintainer:
+  name: T. Onoma
+  email: transami@runbox.com
+brief: OCaml Programming Language
+description: >
+  Objective Caml is a fast modern type-inferring functional programming language
+  descended from the ML (Meta Language) family. The O'Caml compiler was developed
+  at INRIA's projet Cristal.
+install_size: 10000
+website: http://ruby-lang.org/
+categories: [programming]
+super: ~
+source_urls:
+  - [ 'http://caml.inria.fr/distrib/ocaml-3.07/ocaml-3.07pl2.tar.gz', 'Unspecified', 'e58057f1ecca2da3fee035c846ac7db2', 2599999 ]
+patch_urls: []
+install_indicators:
+  - /usr/bin/ocaml
+  - /usr/local/bin/ocaml
+install_conflicts: {}
+dependencies: []
+conflicts: []
+compliment: []
+supplement:
+  - tk+
+prepare_script: |
+  ./configure \=(ensure!tk -no-tk)
+compile_script: |
+  make clean
+  make world.opt
+test_script: |
+  make test
+install_script: |
+  make install
+system_files: []
+no_architecture: []
+distributions: [debian--3.0]
+notes: |
+  Doesn't handle less install's like cygwin, sun, etc.

@@ -1,0 +1,28 @@
+--- !baker.rubyforge.org,2004/resource
+program: glibc
+version: 2.3.2
+created: 2003-12-20
+updated: 2003-12-20
+maintainer: transami@runbox.com
+brief: GNU C library
+description: >
+  Any Unix-like operating system needs a C library: the library which defines the
+  "system calls" and other basic facilities such as open, malloc, printf, exit...
+  The GNU C library is used as the C library in the GNU system and most newer
+  systems with the Linux kernel.
+install_size: 30MB
+website: http://www.gnu.org/software/libc/libc.html
+categories: [base, programming]
+source_urls:
+  - [ 'http://ftp.gnu.org/gnu/glibc/glibc-2.3.2.tar.bz2', 'Unspecified', '', 13000000 ]
+  - [ 'http://ftp.gnu.org/gnu/glibc/glibc-2.3.2.tar.gz',  'Unspecified', '', 18000000 ]
+patch_urls: []
+install_indicators:
+  - /lib/glibc.so
+install_conflicts: {}
+dependencies: []
+conflicts: []
+compliment: []
+supplement: []
+no_architecture: []
+notes: |

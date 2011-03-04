@@ -1,0 +1,24 @@
+--- !ruby/object:SourceManager::RecipeCollection
+program: 'CollectionName'
+version: '0.0.0'
+created: 2003-11-11
+updated: 2003-11-11
+maintainer:
+  name: Maintainer Needed
+  email: aaa@bbb.ccc'
+brief: 'A One Liner Description'
+description: >
+  Providea full description here.
+package_size: 900000
+website: 'http://www.programs.home.website.url'
+categories: [ 'qt?', 'gtk?', 'kde?', 'gnome?', 'x?', 'math?', 'etc...' ]
+super: ~
+install_conflicts: {}
+dependencies:
+  - OtherRecipe--1.0+
+conflicts: []
+compliment:
+  - ComplimentRecipe--1.0+
+supplement: []
+notes: |
+  Whatever notes here.

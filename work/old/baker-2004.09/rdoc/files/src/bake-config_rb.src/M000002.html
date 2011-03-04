@@ -1,0 +1,18 @@
+
+<html>
+<head><title>show_help (src/bake-config.rb)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style>
+  .kw { color: #3333FF; font-weight: bold }
+  .cmt { color: green; font-style: italic }
+  .str { color: #662222; font-style: italic }
+  .re  { color: #662222; }
+</style>
+</head>
+<body bgcolor="white">
+<pre><span class="cmt"># File src/bake-config.rb, line 60</span>
+<span class="kw">def</span> show_help
+  puts <span class="str">&quot;\nbake-config v.09\n\n  USAGE: bake-config [options...] &lt;command&gt; [arguments...]\n\n  COMMANDS:\n\n    show\n        Show current configuration\n\n    reset\n        Revert to default configuration.\n\n    undo\n        Reverts to previous configuration.\n        i.e. the configuration prior to last change made using this tool.\n\n    save &lt;name&gt;\n        Saves the the current configuration as the given name.\n\n    use &lt;name&gt;\n        Replaces the current configuration using alternate configuration file.\n\n  OTHER COMMANDS:\n\n    help\n        Displays this help information. (Same as -h or --help option)\n\n  OPTIONS:\n\n    -h  --help\n        Display this help information.\n\n    -v  --verbose\n        Provides extra verbose information.\n\n&quot;</span>
+<span class="kw">end</span></pre>
+</body>
+</html>

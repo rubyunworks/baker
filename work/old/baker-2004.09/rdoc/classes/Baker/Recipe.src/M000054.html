@@ -1,0 +1,26 @@
+
+<html>
+<head><title>package_file (Baker::Recipe)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style>
+  .kw { color: #3333FF; font-weight: bold }
+  .cmt { color: green; font-style: italic }
+  .str { color: #662222; font-style: italic }
+  .re  { color: #662222; }
+</style>
+</head>
+<body bgcolor="white">
+<pre><span class="cmt"># File src/recipe.rb, line 222</span>
+    <span class="kw">def</span> package_file
+      pkg_file = <span class="kw">nil</span>
+      @source_urls.each <span class="kw">do</span> |url|
+        poss_pkg_file = File.join(<span class="kw">self</span>.package_dir, File.basename(url[0]))
+        <span class="kw">if</span> File::exists?(poss_pkg_file)
+          pkg_file = poss_pkg_file
+          <span class="kw">break</span>
+        <span class="kw">end</span>
+      <span class="kw">end</span>
+      pkg_file
+    <span class="kw">end</span></pre>
+</body>
+</html>

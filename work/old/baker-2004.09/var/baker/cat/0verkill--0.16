@@ -1,0 +1,41 @@
+--- !ruby/object:Baker::ShellRecipe
+program: 0verkill
+version: '0.16'
+created: 2003-12-11
+updated: 2003-12-11
+maintainer:
+  name: T. Onoma
+  email: transami@runbox.com
+brief: Client-Server Ascii-art Deathmatch
+description: >
+  0verkill is bloody 2D action deathmatch-like game in ASCII-ART.
+  Throw away Doom, Quake and Duke Nukem - 0verkill comes.
+  Now you don't even need graphic mode if you wanna take a
+  bloody deathmatch with your friends.
+install_size: 600
+website: http://artax.karlin.mff.cuni.cz/~brain/0verkill/
+categories: [games]
+distributions: [debian--3.0]
+source_urls:
+  - [ 'http://artax.karlin.mff.cuni.cz/~brain/0verkill/release/0verkill.tgz', 'Unspecified', '814097fc21a82723a40ec8ae5dd792a7', 276580 ]
+patch_urls: []
+install_indicators:
+  - /usr/bin/0verkill
+  - /usr/bin/local/0verkill
+install_conflicts: {}
+dependencies: []
+conflicts: []
+compliment: []
+supplement: []
+no_architecture: []
+prepare_script: |
+  ./configure
+compile_script: |
+  make clean
+  make
+test_script: ''
+install_script: |
+  #make install
+system_files: []
+notes: |
+  Add X11 compliment when X11 receipe is done.

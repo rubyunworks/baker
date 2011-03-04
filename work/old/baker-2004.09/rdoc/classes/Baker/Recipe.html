@@ -1,0 +1,367 @@
+
+<html><head>
+  <title>Class: Baker::Recipe</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <link rel=StyleSheet href="../.././rdoc-style.css" type="text/css" media=screen>
+  <script type="text/javascript" language="JavaScript">
+  <!--
+  function popCode(url) {
+    parent.frames.source.location = url
+  }
+  //-->
+  </script>
+</head>
+<body bgcolor="white">
+
+
+<table width="100%" border=0 cellspacing=0>
+ <tr class="title-row">
+ <td class="big-title-font">
+   <font size=-3><B>Class</B><BR></font>Baker::Recipe
+ </td>
+ <td align="right">
+   <table cellspacing=0 cellpadding=2>
+     <tr valign="top">
+      <td class="small-title-font">In:</td>
+      <td class="small-title-font">
+<a href="../../files/src/recipe_rb.html">src/recipe.rb</a>
+      </td>
+     </tr>
+     <tr>
+      <td class="small-title-font">Parent:</td>
+      <td class="small-title-font">
+Object
+      </td>
+     </tr>
+   </table>
+  </td>
+  </tr>
+</table><br>
+  <!-- banner header -->
+
+
+<div class="description"><p>
+<a href="Recipe.html">Recipe</a>
+</p>
+<p>
+this is the base class for all recipe subclasses, in itself rather useless
+create new recipes types by subclassing and redef hollow stage methods
+</p>
+</div>
+
+</div>
+
+<table cellpadding=5 width="100%">
+<tr><td class="tablesubtitle">Methods</td></tr>
+</table><br>
+<div class="name-list">
+<a href="#M000063">bug_report</a>,
+<a href="#M000055">build_dir</a>,
+<a href="#M000048">check_install_conflicts</a>,
+<a href="#M000043">compile</a>,
+<a href="#M000052">compliment_and_supplement</a>,
+<a href="#M000061">eval_scripter</a>,
+<a href="#M000062">eval_token</a>,
+<a href="#M000058">extract</a>,
+<a href="#M000057">fetch</a>,
+<a href="#M000049">findfile</a>,
+<a href="#M000045">install</a>,
+<a href="#M000047">installed?</a>,
+<a href="#M000053">package_dir</a>,
+<a href="#M000054">package_file</a>,
+<a href="#M000059">patch</a>,
+<a href="#M000042">prepare</a>,
+<a href="#M000060">purge</a>,
+<a href="#M000050">resolve_dependencies</a>,
+<a href="#M000051">resolve_name</a>,
+<a href="#M000064">set_configuration</a>,
+<a href="#M000056">source_dir</a>,
+<a href="#M000044">test</a>,
+<a href="#M000046">uninstall</a>,
+</div>
+
+
+
+  
+
+<table cellpadding=5 width="100%">
+<tr><td class="tablesubtitle">Public Class methods</td></tr>
+</table>
+<table width="100%" cellspacing = 0 cellpadding=5 border=0>
+<tr><td class="methodtitle">
+<a name="M000064">
+<b>set_configuration</b>() 
+<a href="Recipe.src/M000064.html" target="source" class="srclink">src</a>
+</a></td></tr>
+</table>
+<div class="description">
+<p>
+&#8212; CLASS METHODS
+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;
+</p>
+</div>
+<table cellpadding=5 width="100%">
+<tr><td class="tablesubtitle">Public Instance methods</td></tr>
+</table>
+<table width="100%" cellspacing = 0 cellpadding=5 border=0>
+<tr><td class="methodtitle">
+<a name="M000042">
+<b>prepare</b>() 
+<a href="Recipe.src/M000042.html" target="source" class="srclink">src</a>
+</a></td></tr>
+</table>
+<div class="description">
+<p>
+hollow stage methods
+</p>
+</div>
+<table width="100%" cellspacing = 0 cellpadding=5 border=0>
+<tr><td class="methodtitle">
+<a name="M000043">
+<b>compile</b>() 
+<a href="Recipe.src/M000043.html" target="source" class="srclink">src</a>
+</a></td></tr>
+</table>
+<table width="100%" cellspacing = 0 cellpadding=5 border=0>
+<tr><td class="methodtitle">
+<a name="M000044">
+<b>test</b>() 
+<a href="Recipe.src/M000044.html" target="source" class="srclink">src</a>
+</a></td></tr>
+</table>
+<table width="100%" cellspacing = 0 cellpadding=5 border=0>
+<tr><td class="methodtitle">
+<a name="M000045">
+<b>install</b>() 
+<a href="Recipe.src/M000045.html" target="source" class="srclink">src</a>
+</a></td></tr>
+</table>
+<table width="100%" cellspacing = 0 cellpadding=5 border=0>
+<tr><td class="methodtitle">
+<a name="M000046">
+<b>uninstall</b>() 
+<a href="Recipe.src/M000046.html" target="source" class="srclink">src</a>
+</a></td></tr>
+</table>
+<table width="100%" cellspacing = 0 cellpadding=5 border=0>
+<tr><td class="methodtitle">
+<a name="M000047">
+<b>installed?</b>() 
+<a href="Recipe.src/M000047.html" target="source" class="srclink">src</a>
+</a></td></tr>
+</table>
+<div class="description">
+<p>
+if only one word is given it is assumed a definte filepath if two or more
+words then it uses findfile (see below) (actually i think the find feature
+should probably be removed)
+</p>
+</div>
+<table width="100%" cellspacing = 0 cellpadding=5 border=0>
+<tr><td class="methodtitle">
+<a name="M000048">
+<b>check_install_conflicts</b>() 
+<a href="Recipe.src/M000048.html" target="source" class="srclink">src</a>
+</a></td></tr>
+</table>
+<div class="description">
+<p>
+this works the same way, but it keeps track of the conflicts
+</p>
+</div>
+<table width="100%" cellspacing = 0 cellpadding=5 border=0>
+<tr><td class="methodtitle">
+<a name="M000049">
+<b>findfile</b>(root_dir, filepath_pattern, exclude_paths=[]) 
+<a href="Recipe.src/M000049.html" target="source" class="srclink">src</a>
+</a></td></tr>
+</table>
+<div class="description">
+<p>
+search for a file, works like a simple find shell command
+</p>
+</div>
+<table width="100%" cellspacing = 0 cellpadding=5 border=0>
+<tr><td class="methodtitle">
+<a name="M000050">
+<b>resolve_dependencies</b>() 
+<a href="Recipe.src/M000050.html" target="source" class="srclink">src</a>
+</a></td></tr>
+</table>
+<div class="description">
+<p>
+recursive function to reslove dependencies
+</p>
+</div>
+<table width="100%" cellspacing = 0 cellpadding=5 border=0>
+<tr><td class="methodtitle">
+<a name="M000051">
+<b>resolve_name</b>(program_reference) 
+<a href="Recipe.src/M000051.html" target="source" class="srclink">src</a>
+</a></td></tr>
+</table>
+<div class="description">
+<p>
+resolves a program name making sure it exists and getting latest + version.
+</p>
+</div>
+<table width="100%" cellspacing = 0 cellpadding=5 border=0>
+<tr><td class="methodtitle">
+<a name="M000052">
+<b>compliment_and_supplement</b>() 
+<a href="Recipe.src/M000052.html" target="source" class="srclink">src</a>
+</a></td></tr>
+</table>
+<div class="description">
+<p>
+collects the compliemts and suppliments which get added or subtract to
+dependencies depending on ensure and aviod in build config
+</p>
+</div>
+<table width="100%" cellspacing = 0 cellpadding=5 border=0>
+<tr><td class="methodtitle">
+<a name="M000053">
+<b>package_dir</b>() 
+<a href="Recipe.src/M000053.html" target="source" class="srclink">src</a>
+</a></td></tr>
+</table>
+<div class="description">
+<p>
+returns the dir location of source package file
+</p>
+</div>
+<table width="100%" cellspacing = 0 cellpadding=5 border=0>
+<tr><td class="methodtitle">
+<a name="M000054">
+<b>package_file</b>() 
+<a href="Recipe.src/M000054.html" target="source" class="srclink">src</a>
+</a></td></tr>
+</table>
+<div class="description">
+<p>
+returns the full path to the source package file
+</p>
+</div>
+<table width="100%" cellspacing = 0 cellpadding=5 border=0>
+<tr><td class="methodtitle">
+<a name="M000055">
+<b>build_dir</b>() 
+<a href="Recipe.src/M000055.html" target="source" class="srclink">src</a>
+</a></td></tr>
+</table>
+<table width="100%" cellspacing = 0 cellpadding=5 border=0>
+<tr><td class="methodtitle">
+<a name="M000056">
+<b>source_dir</b>() 
+<a href="Recipe.src/M000056.html" target="source" class="srclink">src</a>
+</a></td></tr>
+</table>
+<table width="100%" cellspacing = 0 cellpadding=5 border=0>
+<tr><td class="methodtitle">
+<a name="M000057">
+<b>fetch</b>() 
+<a href="Recipe.src/M000057.html" target="source" class="srclink">src</a>
+</a></td></tr>
+</table>
+<div class="description">
+<p>
+download the source package
+</p>
+</div>
+<table width="100%" cellspacing = 0 cellpadding=5 border=0>
+<tr><td class="methodtitle">
+<a name="M000058">
+<b>extract</b>() 
+<a href="Recipe.src/M000058.html" target="source" class="srclink">src</a>
+</a></td></tr>
+</table>
+<div class="description">
+<p>
+extract source package
+</p>
+</div>
+<table width="100%" cellspacing = 0 cellpadding=5 border=0>
+<tr><td class="methodtitle">
+<a name="M000059">
+<b>patch</b>() 
+<a href="Recipe.src/M000059.html" target="source" class="srclink">src</a>
+</a></td></tr>
+</table>
+<div class="description">
+<p>
+TO DO!!!!!!!!!
+</p>
+</div>
+<table width="100%" cellspacing = 0 cellpadding=5 border=0>
+<tr><td class="methodtitle">
+<a name="M000060">
+<b>purge</b>() 
+<a href="Recipe.src/M000060.html" target="source" class="srclink">src</a>
+</a></td></tr>
+</table>
+<div class="description">
+<p>
+purge the upacked source directory and source file this is a little on the
+unsafe side a the moment, so it is left out for now
+</p>
+</div>
+<table width="100%" cellspacing = 0 cellpadding=5 border=0>
+<tr><td class="methodtitle">
+<a name="M000061">
+<b>eval_scripter</b>(raw_script) 
+<a href="Recipe.src/M000061.html" target="source" class="srclink">src</a>
+</a></td></tr>
+</table>
+<div class="description">
+<p>
+<a href="Recipe.html#M000061">eval_scripter</a> substitution has three
+forms, all of which are enclosed by \=( &#8230; ).
+</p>
+<ul>
+<li>the 1st is a simple variable name, eg. \=(program)
+
+</li>
+<li>the 2nd is for lookup of sub content eg. \=(maintainer.email)
+
+</li>
+<li>the 3rd using a ? asks if a list includes a value and returns text if so
+eg. \=(categories?qt yes)
+
+</li>
+<li>the 4th using a ! asks if a list does NOT include a value and returns text
+if so eg. \=(categories!qt yano)
+
+</li>
+</ul>
+<p>
+this works in conjunction with scripter attributes (so is automatic)
+</p>
+</div>
+<table width="100%" cellspacing = 0 cellpadding=5 border=0>
+<tr><td class="methodtitle">
+<a name="M000062">
+<b>eval_token</b>(raw_marker_match) 
+<a href="Recipe.src/M000062.html" target="source" class="srclink">src</a>
+</a></td></tr>
+</table>
+<div class="description">
+<p>
+support function for above
+</p>
+</div>
+<table width="100%" cellspacing = 0 cellpadding=5 border=0>
+<tr><td class="methodtitle">
+<a name="M000063">
+<b>bug_report</b>() 
+<a href="Recipe.src/M000063.html" target="source" class="srclink">src</a>
+</a></td></tr>
+</table>
+<div class="description">
+<p>
+email a bug report to the package maintainer (TO DO!!!!!!)
+</p>
+</div>
+  <!-- method descriptions -->
+
+</body>
+</html>

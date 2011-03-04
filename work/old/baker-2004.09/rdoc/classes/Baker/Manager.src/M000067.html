@@ -1,0 +1,27 @@
+
+<html>
+<head><title>recursive_add_recipes (Baker::Manager)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style>
+  .kw { color: #3333FF; font-weight: bold }
+  .cmt { color: green; font-style: italic }
+  .str { color: #662222; font-style: italic }
+  .re  { color: #662222; }
+</style>
+</head>
+<body bgcolor="white">
+<pre><span class="cmt"># File src/manager.rb, line 76</span>
+    <span class="kw">def</span> recursive_add_recipes(recipe_object, matched=[])
+      recipe_object.resolve_dependencies <span class="cmt">#(@catalog)</span>
+      recipe_object.resolved_dependencies.each <span class="kw">do</span> |dependency_name|
+        <span class="kw">if</span> !matched.include?(dependency_name)  <span class="cmt"># no need to add if already there</span>
+          matched &lt;&lt; dependency_name  <span class="cmt"># so we won't do it again</span>
+          dependency_recipe_object = YAML::load(File.new(File.join(@catalog.catalog_dir,dependency_name)))
+          recursive_add_recipes(dependency_recipe_object, matched)
+          @recipe_lookup[dependency_name] = dependency_recipe_object
+          @prioritized_recipes &lt;&lt; dependency_name
+        <span class="kw">end</span>
+      <span class="kw">end</span>
+    <span class="kw">end</span></pre>
+</body>
+</html>

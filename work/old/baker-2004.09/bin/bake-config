@@ -1,0 +1,140 @@
+#!ruby
+
+# Baker - The Delicious Program Maker
+# (c)2003 PsiT Corporation, LGPL
+
+# Baker is free software; you can redistribute it and/or modify
+# it under the terms of the GNU Lesser General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# Baker is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU Lesser General Public License for more details.
+#
+# You should have received a copy of the GNU Lesser General Public License
+# along with Baker; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+
+# external libs
+require 'getoptlong'
+require 'yaml'
+require 'ftools'
+
+# internal libs
+require 'settings'
+require 'buildconfig'
+
+# perform actions
+def process_command(mgr, cmd, args)
+  case cmd
+    when 'arch'
+      puts mgr.arch
+    when 'show'
+      puts mgr.show
+    when 'reset'
+      mgr.reset_configuration
+    when 'undo'
+      mgr.undo_configuration
+      puts "Previous configuration is now current. (Use undo again to redo.)"
+    when 'use'
+      mgr.use_configuration(args[0])
+      puts "Configuration '#{args[0]}' is now current."
+    when 'save'
+      mgr.save_configuration(args[0])
+      puts "Current configration has been saved."
+    when 'remove'
+      mgr.remove_configuration(args[0])
+      puts "Configration has been removed."
+    when 'edit'
+      mgr.edit_configuration
+    when 'batch'
+      mgr.settings.batch_toggle(args[0])
+    else
+      puts 'Unknown configuration command.'
+  end
+end
+
+# dislpay the help information
+def show_help
+  puts <<-HERE
+
+bake-config v.09
+
+  USAGE: bake-config [options...] <command> [arguments...]
+
+  COMMANDS:
+
+    show
+        Show current configuration
+
+    reset
+        Revert to default configuration.
+
+    undo
+        Reverts to previous configuration.
+        i.e. the configuration prior to last change made using this tool.
+
+    save <name>
+        Saves the the current configuration as the given name.
+
+    use <name>
+        Replaces the current configuration using alternate configuration file.
+
+  OTHER COMMANDS:
+
+    help
+        Displays this help information. (Same as -h or --help option)
+
+  OPTIONS:
+
+    -h  --help
+        Display this help information.
+
+    -v  --verbose
+        Provides extra verbose information.
+
+  HERE
+end
+
+# START OF EXECUTION
+
+if __FILE__ == $0
+
+  opts = GetoptLong.new(
+    [ "-h", "--help", GetoptLong::NO_ARGUMENT ],
+    [ "-v", "--verbose", GetoptLong::NO_ARGUMENT ]
+  )
+
+  opt_help = false
+
+  opts.each do |opt, arg|
+    case opt
+      when '-h'
+        opt_help = true
+      when '-v'
+        Baker::SETTINGS.opt_verbose = true
+    end
+  end
+
+  if ARGV.length == 0 or opt_help then
+    cmd = 'help'
+  else
+    cmd = ARGV[0].downcase
+    args = ARGV[1..-1]
+  end
+
+  if cmd == 'help'
+    show_help
+    exit 0
+  end
+
+  begin
+    mgr = Baker::BuildConfigManager.new
+    process_command(mgr, cmd, args)
+  rescue Baker::BakerError => error_message
+    puts "Sorry, #{error_message}."
+  end
+
+end

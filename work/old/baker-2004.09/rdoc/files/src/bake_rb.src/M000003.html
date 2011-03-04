@@ -1,0 +1,99 @@
+
+<html>
+<head><title>process_command (src/bake.rb)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style>
+  .kw { color: #3333FF; font-weight: bold }
+  .cmt { color: green; font-style: italic }
+  .str { color: #662222; font-style: italic }
+  .re  { color: #662222; }
+</style>
+</head>
+<body bgcolor="white">
+<pre><span class="cmt"># File src/bake.rb, line 30</span>
+<span class="kw">def</span> process_command(mgr, cmd, args)
+  <span class="kw">case</span> cmd
+    <span class="kw">when</span> <span class="str">'sync'</span>, <span class="str">'update'</span>
+      mgr.sync
+    <span class="kw">when</span> <span class="str">'find'</span>, <span class="str">'search'</span>, <span class="str">'query'</span>, <span class="str">'lookup'</span>
+      results = mgr.find(args[0])
+      <span class="kw">if</span> results.length &gt; 0 <span class="kw">then</span>
+        <span class="cmt">#puts &quot;Found #{results.length} matching #{ results.length &gt; 1 ? 'entries' : 'entry'}:&quot;</span>
+        results.each { |r| puts &quot;#{r}&quot; }
+        puts &quot;Found (#{results.length}) matching #{ results.length &gt; 1 ? 'entries' : 'entry'}.&quot;
+      <span class="kw">else</span>
+        puts <span class="str">&quot;No matches found.&quot;</span>
+      <span class="kw">end</span>
+    <span class="kw">when</span> <span class="str">'catd'</span>
+      puts mgr.catalog.recipe_dir
+    <span class="kw">when</span> <span class="str">'info'</span>
+      mgr.recipes = args
+      recipe_name = args[0]
+      recipe = mgr.recipe_lookup[recipe_name]
+      puts
+      puts &quot;#{recipe.brief} | #{recipe_name} | #{recipe.install_size}KB&quot;
+      puts &quot;#{recipe.description}&quot;
+      puts (recipe.installed? ? <span class="str">&quot;[This program is INSTALLED]&quot;</span> : <span class="str">&quot;[This program is NOT INSTALLED]&quot;</span>)
+      puts
+    <span class="kw">when</span> <span class="str">'dep'</span>
+      mgr.recipes = args
+      puts mgr.dependency_tree.to_yaml
+      puts
+    <span class="kw">when</span> <span class="str">'con'</span>
+      mgr.recipes = args
+      c = mgr.conflicts
+      puts &quot;Recipe conflicts #{c.to_yaml}&quot; <span class="kw">if</span> !c.empty?
+      c = mgr.install_conflicts
+      puts &quot;Install conflicts #{c.to_yaml}&quot; <span class="kw">if</span> !c.empty?
+      puts
+    <span class="kw">when</span> <span class="str">'new'</span>
+       temp, name, vers = args[0], args[1], args[2]
+       args[1], args[2] = args[1].split(<span class="str">'--'</span>) <span class="kw">if</span> args[1].include?(<span class="str">'--'</span>)
+       raise Baker::BakerError, <span class="str">&quot;no version was given&quot;</span> <span class="kw">if</span> !args[2]
+       f = mgr.template(args[0], args[1], args[2])
+       puts &quot;Successfully created #{f} in your personal catalog.&quot; <span class="kw">if</span> f
+    <span class="kw">when</span> <span class="str">'edit'</span>
+      <span class="cmt"># this should be changed</span>
+      <span class="cmt"># when a user goes to edit a respositry recipe</span>
+      <span class="cmt"># it should probably be copied to personal</span>
+      <span class="cmt"># so not to effect the original best way to do?</span>
+      recipe_path = File.join(mgr.catalog.catalog_dir,args[0])
+      <span class="kw">if</span> FileTest::exists?(recipe_path)
+        system &quot;#{ENV['EDITOR']} #{recipe_path}&quot;
+      <span class="kw">else</span>
+        raise Baker::BakerError, &quot;recipe #{recipe_path} dosen't exist&quot;
+      <span class="kw">end</span>
+    <span class="kw">when</span> <span class="str">'cast'</span>
+      SETTINGS.opt_batch = <span class="kw">true</span>  <span class="cmt"># casting is always autobatch</span>
+      mgr.recipes = args
+      mgr.cast
+    <span class="kw">when</span> <span class="str">'fetch'</span>
+      mgr.recipes = args
+      mgr.fetch
+    <span class="kw">when</span> <span class="str">'extract'</span>
+      mgr.recipes = args
+      mgr.extract
+    <span class="kw">when</span> <span class="str">'test'</span>
+      mgr.recipes = args
+      mgr.test
+    <span class="kw">when</span> <span class="str">'patch'</span>
+      mgr.recipes = args
+      mgr.patch
+    <span class="kw">when</span> <span class="str">'prepare'</span>
+      mgr.recipes = args
+      mgr.prepare
+    <span class="kw">when</span> <span class="str">'compile'</span>
+      mgr.recipes = args
+      mgr.compile
+    <span class="kw">when</span> <span class="str">'install'</span>
+      mgr.recipes = args
+      mgr.install
+    <span class="kw">when</span> <span class="str">'purge'</span>
+      mgr.recipes = args
+      mgr.purge
+    <span class="kw">else</span>
+      puts <span class="str">'Unknown command.'</span>
+  <span class="kw">end</span>
+<span class="kw">end</span></pre>
+</body>
+</html>

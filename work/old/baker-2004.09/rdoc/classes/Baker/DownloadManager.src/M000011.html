@@ -1,0 +1,51 @@
+
+<html>
+<head><title>download (Baker::DownloadManager)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style>
+  .kw { color: #3333FF; font-weight: bold }
+  .cmt { color: green; font-style: italic }
+  .str { color: #662222; font-style: italic }
+  .re  { color: #662222; }
+</style>
+</head>
+<body bgcolor="white">
+<pre><span class="cmt"># File src/download.rb, line 84</span>
+    <span class="kw">def</span> DownloadManager.download(url, file_path, file_checksum, file_size=<span class="kw">nil</span>)
+    <span class="cmt">#p file_path</span>
+    <span class="cmt">#exit 0</span>
+      download_complete = <span class="kw">nil</span>
+      STDOUT.sync = <span class="kw">true</span>
+      print &quot;Fetching #{File.basename(file_path)} &quot; <span class="kw">if</span> !SETTINGS.opt_verbose
+      print &quot;Fetching #{url} &quot; <span class="kw">if</span> SETTINGS.opt_verbose
+      print &quot;(#{(file_size.to_f/1024).to_i} KBytes)&quot; <span class="kw">if</span> file_size
+      puts
+      progress_total = file_size ? file_size : 100000000  <span class="cmt"># pretend 100MB if no size</span>
+      pbar = ProgressBar.new(<span class="str">&quot; &quot;</span>, progress_total, STDOUT)
+      pbar.bar_mark=<span class="str">&quot;&gt;&quot;</span>
+      pbar.format=<span class="str">&quot;%-1s %3d%% %s %s&quot;</span>
+      pbar.file_transfer_mode <span class="kw">if</span> file_size
+      progress_proc = proc { |posit| pbar.set(posit) }
+      <span class="cmt">#</span>
+      <span class="kw">begin</span>
+        local_file = File.open(file_path,<span class="str">'w'</span>)
+        remote_file = open(url,progress_proc)
+        local_file &lt;&lt; remote_file.read
+      <span class="kw">rescue</span>
+        pbar.halt
+        download_complete = <span class="kw">nil</span>
+        <span class="cmt">#remote_file.close unless remote_file.nil?</span>
+        raise
+      <span class="kw">else</span>
+        pbar.finish
+        download_complete = file_path
+      <span class="kw">ensure</span>
+        remote_file.close <span class="kw">unless</span> remote_file.nil?
+        local_file.close <span class="kw">unless</span> local_file.nil?
+        STDOUT.sync = <span class="kw">false</span>
+      <span class="kw">end</span>
+      download_complete = <span class="kw">nil</span> <span class="kw">if</span> checksum(file_path) != file_checksum <span class="kw">and</span> file_checksum != <span class="kw">nil</span>
+      <span class="kw">return</span> download_complete
+    <span class="kw">end</span></pre>
+</body>
+</html>

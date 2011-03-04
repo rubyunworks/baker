@@ -1,0 +1,71 @@
+--- !ruby/object:Baker::ShellRecipe
+program: MesaLib
+version: 5.0.2
+created: 2003-12-11
+updated: 2003-12-11
+maintainer:
+  name: T. Onoma
+  email: transami@runbox.com
+brief: Mesa3D's OpenGL Implementation
+description: >
+  Mesa is a 3-D graphics library with an API which is very similar to that of OpenGL.
+  To the extent that Mesa utilizes the OpenGL command syntax or state machine,
+  it is being used with authorization from Silicon Graphics, Inc.(SGI).
+install_size: 4500
+website: http://www.mesa3d.org/
+categories: [3d, graphics]
+distributions: [debian--3.0]
+super: ~
+source_urls:
+  - [ 'http://prdownloads.sourceforge.net/mesa3d/MesaLib-5.0.2.tar.bz2',              'Unspecified',   '7b4bf9261657c2fca03796d4955e6f50', 1719545 ]
+  - [ 'http://flow.dl.sourceforge.net/sourceforge/mesa3d/MesaLib-5.0.2.tar.bz2',      'Australia',     '7b4bf9261657c2fca03796d4955e6f50', 1719545 ]
+  - [ 'http://umn.dl.sourceforge.net/sourceforge/mesa3d/MesaLib-5.0.2.tar.bz2',       'North America', '7b4bf9261657c2fca03796d4955e6f50', 1719545 ]
+  - [ 'http://aleron.dl.sourceforge.net/sourceforge/mesa3d/MesaLib-5.0.2.tar.bz2',    'North America', '7b4bf9261657c2fca03796d4955e6f50', 1719545 ]
+  - [ 'http://unc.dl.sourceforge.net/sourceforge/mesa3d/MesaLib-5.0.2.tar.bz2',       'North America', '7b4bf9261657c2fca03796d4955e6f50', 1719545 ]
+  - [ 'http://easynews.dl.sourceforge.net/sourceforge/mesa3d/MesaLib-5.0.2.tar.bz2',  'North America', '7b4bf9261657c2fca03796d4955e6f50', 1719545 ]
+  - [ 'http://twtelecom.dl.sourceforge.net/sourceforge/mesa3d/MesaLib-5.0.2.tar.bz2', 'North America', '7b4bf9261657c2fca03796d4955e6f50', 1719545 ]
+  - [ 'http://cesnet.dl.sourceforge.net/sourceforge/mesa3d/MesaLib-5.0.2.tar.bz2',    'Europe',        '7b4bf9261657c2fca03796d4955e6f50', 1719545 ]
+  - [ 'http://belnet.dl.sourceforge.net/sourceforge/mesa3d/MesaLib-5.0.2.tar.bz2',    'Europe',        '7b4bf9261657c2fca03796d4955e6f50', 1719545 ]
+  - [ 'http://heanet.dl.sourceforge.net/sourceforge/mesa3d/MesaLib-5.0.2.tar.bz2',    'Europe',        '7b4bf9261657c2fca03796d4955e6f50', 1719545 ]
+  - [ 'http://keihanna.dl.sourceforge.net/sourceforge/mesa3d/MesaLib-5.0.2.tar.bz2',  'Asia',          '7b4bf9261657c2fca03796d4955e6f50', 1719545 ]
+patch_urls: []
+install_indicators:
+  - /usr/bin/fung-calc
+  - /usr/local/bin/fung-calc
+  - /Programs/Fung-Calc/1.3.2b/bin/fung-calc
+install_conflicts: {}
+dependencies:
+  - X11+
+conflicts: []
+compliment: []
+supplement: []
+no_architecture: []
+prepare_script: |
+  export LDFLAGS="-lstdc++"
+  ./configure --prefix=/usr
+compile_script: |
+  make clean
+  make
+  #/=(make strip)
+test_script: |
+  echo "Testing..."
+  make check
+  #make exec
+install_script: |
+  make install
+system_files: []
+notes: |
+
+  This recipe has NOT been tested!
+
+  Sourceforge Download Locations
+    Sydney, Australia Australia
+    Minneapolis, MN North America
+    Reston, VA North America
+    Chapel Hill, NC North America
+    Brookfield, WI North America
+    Phoenix, AZ North America
+    Prague, Czech Republic Europe
+    Brussels, Belgium Europe
+    Dublin, Ireland Europe
+    Keihanna, Japan Asia

@@ -1,0 +1,9 @@
+--- !ruby/object:Baker::AutoShellRecipe
+program: Bison
+version: 1.875+
+updated: 2003-12-20
+maintainer: Mika Pesu <pmika@japo.fi>
+build_size:
+noarch: []
+system_files: []
+notes: ''

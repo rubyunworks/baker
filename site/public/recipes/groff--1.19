@@ -1,0 +1,6 @@
+--- !ruby/object:Baker::AutoShellRecipe
+program: groff
+version: 1.19+
+updated: 2003-12-20
+maintainer: transami@runbox.com
+

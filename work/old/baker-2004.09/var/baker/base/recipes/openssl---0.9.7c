@@ -1,0 +1,6 @@
+--- !ruby/object:Baker::AutoShellRecipe
+program: openssl
+version: 0.9+
+updated: 2003-12-20
+maintainer: transami@runbox.com
+

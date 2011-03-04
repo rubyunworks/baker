@@ -1,0 +1,28 @@
+
+<html>
+<head><title>source_dir (Baker::Recipe)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style>
+  .kw { color: #3333FF; font-weight: bold }
+  .cmt { color: green; font-style: italic }
+  .str { color: #662222; font-style: italic }
+  .re  { color: #662222; }
+</style>
+</head>
+<body bgcolor="white">
+<pre><span class="cmt"># File src/recipe.rb, line 239</span>
+    <span class="kw">def</span> source_dir
+      bld_dir = <span class="kw">self</span>.build_dir
+      <span class="cmt">#p poss_src_dir = Dir.entries(bld_dir)</span>
+      poss_src_dir = Dir.entries(bld_dir).select {
+        |e| e != <span class="str">'.'</span> <span class="kw">and</span> e != <span class="str">'..'</span> <span class="kw">and</span> File.directory?(File.join(bld_dir,e))
+      }
+      <span class="kw">if</span> poss_src_dir.length &gt; 1
+        raise BakerError, &quot;more than one source directory exists for #{@program}--#{@version}&quot;
+      <span class="kw">end</span>
+      src_fn = poss_src_dir[0]
+      <span class="kw">return</span> File.join(bld_dir,src_fn) <span class="kw">if</span> src_fn
+      <span class="kw">return</span> <span class="kw">nil</span>  <span class="cmt"># will return nil if dir not found</span>
+    <span class="kw">end</span></pre>
+</body>
+</html>

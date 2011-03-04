@@ -1,0 +1,65 @@
+--- %YAML:1.0
+PKG_TITLE: &title YourTitle
+PKG_NAME: package_name
+PKG_VERSION: '0.0.0'
+PKG_AUTHOR: Your Name
+PKG_EMAIL: your@email.net
+PKG_SUMMARY: Very breif description
+PKG_DESCRIPTION: >
+  A description as long as your heart desires.
+  Just keep on trucking!
+
+# site info
+# remark out if you don't need
+PKG_HOMEPAGE: 'http://yourproject.rubyforge.org'
+PKG_RUBYFORGE_PROJECT: yourproject
+PKG_RUBYFORGE_PASS: abc123
+
+# all package files
+PKG_FILES:
+  - 'lib/**/*'
+  - 'test/**/*'
+  - 'examples/**/*'
+  - 'doc/**/*'
+  - '[A-Z]*'
+  - 'Rakefile'
+  - 'Rake.yaml'
+
+# rdoc
+RDOC_TITLE: *title
+RDOC_DIR: doc
+RDOC_TEMPLATE: html
+RDOC_OPTIONS: ''
+RDOC_INCLUDE: [ 'VERSION', 'README', 'CHANGES', 'CHANGELOG', 'TODO', 'COPY', 'LICENSE', 'lib/**/*.rb', 'bin/**/*.rb' ]
+RDOC_EXCLUDE: []
+
+# include in distribution
+PKG_DIST_DIRS: [ 'bin', 'lib', 'test', 'examples' ]
+PKG_DIST_FILES:
+  - README
+  - TODO
+  - CHANGES
+  - CHNAGELOG
+  - VERSION
+  - LICENSE
+  - Rakefile
+  - Rake.yaml
+
+# tests
+PKG_TEST_DIR: test
+PKG_TEST_FILES:
+  - 'test/*_test.rb'
+  - 'test/**/*_test.rb'
+
+# library files for manual install
+PKG_LIB_DIR: lib
+PKG_LIB_MKDIRS: '**/*/'
+PKG_LIB_FILES:
+  - '**/*.rb'
+  - '**/*.yaml'
+PKG_LIB_DEPRECATE: []
+
+# binary files for manual install
+PKG_BIN_DIR: bin
+PKG_BIN_FILES: '**/*'
+PKG_BIN_DEPRECATE: []

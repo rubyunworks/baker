@@ -1,0 +1,70 @@
+--- !ruby/object:Baker::ShellRecipe
+program: Fung-Calc
+version: 1.3.2b
+created: 2003-11-11
+updated: 2003-11-11
+maintainer:
+  name: T. Onoma
+  email: transami@runbox.com
+brief: Advanced Graphics Calculator
+description: >
+  Fung-Calc is a free, open source advanced, yet easy to use,
+  graphing calculator for Linux using Qt/KDE. It plots several types
+  of 2D and 3D graphs. It combines the use of advanced mathematical
+  features and ease of use all in one package.
+install_size: 1200
+website: http://fung-calc.sourceforge.net/index.php
+categories: [qt, math]
+distributions: [debian--3.0]
+super: ~
+source_urls:
+  - [ 'http://prdownloads.sourceforge.net/fung-calc/fung-calc-1.3.2b.tar.gz',              'Unspecified',   'bae7a2d39fd6658d4aa181ddc73bd5d5', 1123189 ]
+  - [ 'http://flow.dl.sourceforge.net/sourceforge/fung-calc/fung-calc-1.3.2b.tar.gz',      'Australia',     'bae7a2d39fd6658d4aa181ddc73bd5d5', 1123189 ]
+  - [ 'http://umn.dl.sourceforge.net/sourceforge/fung-calc/fung-calc-1.3.2b.tar.gz',       'North America', 'bae7a2d39fd6658d4aa181ddc73bd5d5', 1123189 ]
+  - [ 'http://aleron.dl.sourceforge.net/sourceforge/fung-calc/fung-calc-1.3.2b.tar.gz',    'North America', 'bae7a2d39fd6658d4aa181ddc73bd5d5', 1123189 ]
+  - [ 'http://unc.dl.sourceforge.net/sourceforge/fung-calc/fung-calc-1.3.2b.tar.gz',       'North America', 'bae7a2d39fd6658d4aa181ddc73bd5d5', 1123189 ]
+  - [ 'http://easynews.dl.sourceforge.net/sourceforge/fung-calc/fung-calc-1.3.2b.tar.gz',  'North America', 'bae7a2d39fd6658d4aa181ddc73bd5d5', 1123189 ]
+  - [ 'http://twtelecom.dl.sourceforge.net/sourceforge/fung-calc/fung-calc-1.3.2b.tar.gz', 'North America', 'bae7a2d39fd6658d4aa181ddc73bd5d5', 1123189 ]
+  - [ 'http://cesnet.dl.sourceforge.net/sourceforge/fung-calc/fung-calc-1.3.2b.tar.gz',    'Europe',        'bae7a2d39fd6658d4aa181ddc73bd5d5', 1123189 ]
+  - [ 'http://belnet.dl.sourceforge.net/sourceforge/fung-calc/fung-calc-1.3.2b.tar.gz',    'Europe',        'bae7a2d39fd6658d4aa181ddc73bd5d5', 1123189 ]
+  - [ 'http://heanet.dl.sourceforge.net/sourceforge/fung-calc/fung-calc-1.3.2b.tar.gz',    'Europe',        'bae7a2d39fd6658d4aa181ddc73bd5d5', 1123189 ]
+  - [ 'http://keihanna.dl.sourceforge.net/sourceforge/fung-calc/fung-calc-1.3.2b.tar.gz',  'Asia',          'bae7a2d39fd6658d4aa181ddc73bd5d5', 1123189 ]
+patch_urls: []
+install_indicators:
+  - /usr/bin/fung-calc
+  - /usr/local/bin/fung-calc
+  - /Programs/Fung-Calc/1.3.2b/bin/fung-calc
+#  - /usr .*/bin/fung-calc include
+install_conflicts: {}
+dependencies:
+  - QT--3.1+
+conflicts: []
+compliment:
+  - KDE--3.1+
+  - Mesa--5+
+supplement: []
+no_architecture: []
+prepare_script: |
+  ./configure \=(avoid?KDE --disable-kde-app) \=(avoid?Mesa --disable-glgraph)
+compile_script: |
+  make clean
+  make
+test_script: |
+  echo "Testing... \=(program) \=(version) \=(cflags) \=(maintainer.email) \=(categories?qt yes) needed."
+install_script: |
+  make install
+system_files: []
+notes: |
+  This program compiles using the CompileProgram script without incident.
+  Source Download Locations are
+    Sydney, Australia Australia
+    Minneapolis, MN North America
+    Reston, VA North America
+    Chapel Hill, NC North America
+    Brookfield, WI North America
+    Phoenix, AZ North America
+    Prague, Czech Republic Europe
+    Brussels, Belgium Europe
+    Dublin, Ireland Europe
+    Keihanna, Japan Asia
+

@@ -1,0 +1,31 @@
+--- !baker.rubyforge.org,2004/resource
+program: Bison
+version: 1.875
+created: 2003-12-20
+updated: 2003-12-20
+maintainer: Mika Pesu <pmika@japo.fi>
+brief: General Purpose Parser Generator
+description: >
+  Bison is a general-purpose parser generator that converts a grammar description for
+  an LALR context-free grammar into a C program to parse that grammar. Once you are
+  proficient with Bison, you can use it to develop a wide range of language parsers,
+  from those used in simple desk calculators to complex programming languages.
+  Bison is upward compatible with Yacc: all properly-written Yacc grammars ought to work
+  with Bison with no change. Anyone familiar with Yacc should be able to use Bison with
+  little trouble. You need to be fluent in C programming in order to use Bison.
+install_size: 2MB
+website: http://www.gnu.org/software/binutils/
+categories: [base, programming]
+source_urls:
+  - [ 'http://ftp.gnu.org/gnu/bison/bison-1.875.tar.bz2', 'Unspecified', '', 1000000 ]
+  - [ 'http://ftp.gnu.org/gnu/bison/bison-1.875.tar.gz',  'Unspecified', '', 1300000 ]
+patch_urls: []
+install_indicators:
+  - /bin/bison
+install_conflicts: {}
+dependencies: []
+conflicts: []
+compliment: []
+supplement: []
+no_architecture: []
+notes: |

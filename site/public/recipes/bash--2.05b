@@ -1,0 +1,19 @@
+--- !ruby/object:Baker::ShellRecipe
+program      : bash
+version      : 2.05b+
+updated      : 2003-11-11
+maintainer   : Mika Pesu <pmika@japo.fi>
+build_size   : 2MB
+noarch       : []
+config_script: |
+  ./configure #{--prefix=#{prefix}}
+setup_script: |
+  make
+test_script: |
+  make test
+install_script: |
+  make install
+clean_script: |
+  make clean
+notes: >
+  compiles fine
